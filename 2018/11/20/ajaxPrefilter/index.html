@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。  1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法这四个方法是jquery提供的向某个元素内插">
+<meta name="description" content="1. jQuery.ajaxPrefilter([dataTypes],handler) jquery的官网文档给出的api方法描述：Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.aja">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态加载js文件">
-<meta property="og:url" content="http://lccbupt.github.io/2018/11/15/动态加载js文件/index.html">
+<meta property="og:title" content="了解一下jQuery.ajaxPrefilter()">
+<meta property="og:url" content="http://lccbupt.github.io/2018/11/20/ajaxPrefilter/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。  1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法这四个方法是jquery提供的向某个元素内插">
+<meta property="og:description" content="1. jQuery.ajaxPrefilter([dataTypes],handler) jquery的官网文档给出的api方法描述：Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.aja">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-15T08:48:19.741Z">
+<meta property="og:updated_time" content="2018-11-20T08:22:18.548Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态加载js文件">
-<meta name="twitter:description" content="在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。  1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法这四个方法是jquery提供的向某个元素内插">
+<meta name="twitter:title" content="了解一下jQuery.ajaxPrefilter()">
+<meta name="twitter:description" content="1. jQuery.ajaxPrefilter([dataTypes],handler) jquery的官网文档给出的api方法描述：Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.aja">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/11/15/动态加载js文件/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2018/11/20/ajaxPrefilter/"/>
 
 
 
 
 
-  <title>动态加载js文件 | 星*空</title>
+  <title>了解一下jQuery.ajaxPrefilter() | 星*空</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/15/动态加载js文件/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/20/ajaxPrefilter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">动态加载js文件</h1>
+          <h1 class="post-title" itemprop="name headline">了解一下jQuery.ajaxPrefilter()</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T15:33:07+08:00">
-                2018-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T15:58:39+08:00">
+                2018-11-20
               </time>
             
 
@@ -299,54 +299,51 @@
       
 
       
-        <blockquote>
-<p>在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。</p>
+        <h4 id="1-jQuery-ajaxPrefilter-dataTypes-handler"><a href="#1-jQuery-ajaxPrefilter-dataTypes-handler" class="headerlink" title="1. jQuery.ajaxPrefilter([dataTypes],handler)"></a>1. jQuery.ajaxPrefilter([dataTypes],handler)</h4><blockquote>
+<p>jquery的官网文档给出的api方法描述：<br>Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax().</p>
 </blockquote>
-<h4 id="1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"><a href="#1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法" class="headerlink" title="1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"></a>1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法</h4><pre><code>这四个方法是jquery提供的向某个元素内插入指定内容，当然指定的内容可以包括script标签
-插入的指定内容是不收限制，虽然这个方法可以向html页面中添加js文件但却会产生问题
-比如：
-    $(&apos;head&apos;).prepend(&apos;&lt;script src=&quot;xxx.js&quot;&gt;&lt;/script&gt;&apos;)
-    window.xxx.init() 
-    //xxx方法是xxx.js中定义的全局方法
-    //此时就会报错，提示xxx是undefined
-
-因为prepend的方法无法保证js文件的加载速度，在调用init方法的时候js文件还没有完全加载成功
-因此就会报错，所以不建议使用该方法去动态引入js文件。
-</code></pre><h4 id="2-动态加载js文件方法之二：document-createElement"><a href="#2-动态加载js文件方法之二：document-createElement" class="headerlink" title="2.动态加载js文件方法之二：document.createElement"></a>2.动态加载js文件方法之二：document.createElement</h4><pre><code>document.createElement(nodename) 是js原生方法，指定名称创建一个元素
-
-    var myScript= document.createElement(&quot;script&quot;);
-    myScript.type = &quot;text/javascript&quot;;
-    myScript.src=&quot;xxx.js&quot;;
-    document.body.appendChild(myScript);
-    //此处若立即执行xxx.js中的方法也会报错，因为没有加载完，这种方法脚本也是异步加载
-</code></pre><h4 id="3-动态加载js文件方法之三：document-write"><a href="#3-动态加载js文件方法之三：document-write" class="headerlink" title="3.动态加载js文件方法之三：document.write"></a>3.动态加载js文件方法之三：document.write</h4><pre><code>document.write是直接写入某一元素，也是异步加载的顺序，因此如果立即执行脚本也会出现问题
-
-    document.write(&apos;&lt;script src=&quot;xxx.js&quot;&gt;&lt;/script&gt;&apos;)//加载js脚本，异步
-    window.xxx.init() //找不到该方法，脚本异步加载没有完成
-</code></pre><h4 id="4-动态加载js文件解决异步方法：script的onload事件"><a href="#4-动态加载js文件解决异步方法：script的onload事件" class="headerlink" title="4.动态加载js文件解决异步方法：script的onload事件"></a>4.动态加载js文件解决异步方法：script的onload事件</h4><pre><code>上面的3中方法都是异步的，因此动态生成script标签后不能立即执行js文件中的函数，需要监听一下
-script标签加载完成事件，等js文件加载完成后再去调用js中的方法。
-这里就需要使用script的onload事件
-
-    var myScript = document.createElement(&apos;script&apos;)
-    myScript.src=&quot;xxx.js&quot;
-    document.body.appendChild(myScript)
-    myScript.onload =function(){
-        window.xxx.init() //保证在加载完xxx.js时执行init函数
+<p>ajaxPrefilter()方法主要是在每次ajax发送send请求前处理请求的选项或者修改存在的一些设置。简单来讲就是调用send之前对HTTP头等进行修改和进一步处理。</p>
+<blockquote>
+<p>dataTypes 类型: String<br>一个可选的字符串，其中包含一个或多个空格分隔的数据类型<br>handler(options, originalOptions, jqXHR) 类型: Function()<br>一个处理程序程序，用于设置未来的Ajax请求的默认值。</p>
+</blockquote>
+<h4 id="2-ajaxPrefilter-方法的作用"><a href="#2-ajaxPrefilter-方法的作用" class="headerlink" title="2.ajaxPrefilter 方法的作用"></a>2.ajaxPrefilter 方法的作用</h4><blockquote>
+<p>参考：<a href="https://www.css88.com/jqapi-1.9/jQuery.ajaxPrefilter/" target="_blank" rel="noopener">https://www.css88.com/jqapi-1.9/jQuery.ajaxPrefilter/</a></p>
+</blockquote>
+<p>通过ajaxPrefilter方法可以取消重复发送的ajax请求,如下官网给的例子：</p>
+<blockquote>
+<p>当自定义选项，需要提前处理，预过滤器（Prefilters）是一个完美的选择。给定下面的代码， 例如，如果自定义abortOnRetry选项被设置为true，那么调用$.ajax()会自动中止请求相同的URL：</p>
+</blockquote>
+<pre><code>var currentRequests = {};
+$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+  if ( options.abortOnRetry ) {
+    if ( currentRequests[ options.url ] ) {
+      currentRequests[ options.url ].abort();
     }
-</code></pre><h4 id="5-可以使用jquery的-getScript-方法"><a href="#5-可以使用jquery的-getScript-方法" class="headerlink" title="5.可以使用jquery的$.getScript()方法"></a>5.可以使用jquery的$.getScript()方法</h4><blockquote>
-<p>   详细参看：<a href="https://api.jquery.com/jquery.getscript/" target="_blank" rel="noopener">https://api.jquery.com/jquery.getscript/</a></p>
-</blockquote>
-<pre><code>$.getScript()方法通过http get方法请求并执行js文件
+    currentRequests[ options.url ] = jqXHR;
+  }
+});
+</code></pre><p>通过ajaxPrefilter 还可以修改已经存在的选项，如下面例子：</p>
+<pre><code>$.ajaxPrefilter( function( options ) {
+  if ( options.crossDomain ) {
+    options.url = &quot;http://mydomain.net/proxy/&quot; + encodeURIComponent( options.url );
+    options.crossDomain = false;
+  }
+});
+</code></pre><p>通过ajaxPrefilter方法可以根据提供的dataTypes参数，指定处理特定的请求有效</p>
+<pre><code>//以下只针对 json和srcript 请求有效
 
-    jQuery.getScript(url,success(response,status))
-    等价于：
-    $.ajax({
-      url: url,
-      dataType: &quot;script&quot;,
-      success: success
+$.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jqXHR ) {
+  // Modify options, control originalOptions, store jqXHR, etc
+});
+</code></pre><p>通过ajaxPrefilter 可以将请求重定向到另一个类型，并且返回该数据类型。</p>
+<pre><code>//如下，如果url中函数isActuallyScript函数中设定的指定属性，就设置成script的请求
+
+    $.ajaxPrefilter(function( options ) {
+      if ( isActuallyScript( options.url ) ) {
+        return &quot;script&quot;;
+      }
     });
-</code></pre><p>以上是对动态加载js方法的一个小小的总结，在项目开发中注意js的异步加载，在保证动态引入的js加载成功后再调用其中的方法。</p>
-
+</code></pre>
       
     </div>
     
@@ -370,8 +367,8 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/31/我的第一个博客第一篇博文/" rel="next" title="我的第一个博客第一篇博文">
-                <i class="fa fa-chevron-left"></i> 我的第一个博客第一篇博文
+              <a href="/2018/11/15/动态加载js文件/" rel="next" title="动态加载js文件">
+                <i class="fa fa-chevron-left"></i> 动态加载js文件
               </a>
             
           </div>
@@ -379,10 +376,6 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/20/ajaxPrefilter/" rel="prev" title="了解一下jQuery.ajaxPrefilter()">
-                了解一下jQuery.ajaxPrefilter() <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -496,7 +489,7 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"><span class="nav-number">1.</span> <span class="nav-text">1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-动态加载js文件方法之二：document-createElement"><span class="nav-number">2.</span> <span class="nav-text">2.动态加载js文件方法之二：document.createElement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-动态加载js文件方法之三：document-write"><span class="nav-number">3.</span> <span class="nav-text">3.动态加载js文件方法之三：document.write</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-动态加载js文件解决异步方法：script的onload事件"><span class="nav-number">4.</span> <span class="nav-text">4.动态加载js文件解决异步方法：script的onload事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-可以使用jquery的-getScript-方法"><span class="nav-number">5.</span> <span class="nav-text">5.可以使用jquery的$.getScript()方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-jQuery-ajaxPrefilter-dataTypes-handler"><span class="nav-number">1.</span> <span class="nav-text">1. jQuery.ajaxPrefilter([dataTypes],handler)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-ajaxPrefilter-方法的作用"><span class="nav-number">2.</span> <span class="nav-text">2.ajaxPrefilter 方法的作用</span></a></li></ol></div>
             
 
           </div>

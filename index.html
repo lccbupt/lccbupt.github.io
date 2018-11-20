@@ -232,6 +232,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/20/ajaxPrefilter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/20/ajaxPrefilter/" itemprop="url">了解一下jQuery.ajaxPrefilter()</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T15:58:39+08:00">
+                2018-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-jQuery-ajaxPrefilter-dataTypes-handler"><a href="#1-jQuery-ajaxPrefilter-dataTypes-handler" class="headerlink" title="1. jQuery.ajaxPrefilter([dataTypes],handler)"></a>1. jQuery.ajaxPrefilter([dataTypes],handler)</h4><blockquote>
+<p>jquery的官网文档给出的api方法描述：<br>Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax().</p>
+</blockquote>
+<p>ajaxPrefilter()方法主要是在每次ajax发送send请求前处理请求的选项或者修改存在的一些设置。简单来讲就是调用send之前对HTTP头等进行修改和进一步处理。</p>
+<blockquote>
+<p>dataTypes 类型: String<br>一个可选的字符串，其中包含一个或多个空格分隔的数据类型<br>handler(options, originalOptions, jqXHR) 类型: Function()<br>一个处理程序程序，用于设置未来的Ajax请求的默认值。</p>
+</blockquote>
+<h4 id="2-ajaxPrefilter-方法的作用"><a href="#2-ajaxPrefilter-方法的作用" class="headerlink" title="2.ajaxPrefilter 方法的作用"></a>2.ajaxPrefilter 方法的作用</h4><blockquote>
+<p>参考：<a href="https://www.css88.com/jqapi-1.9/jQuery.ajaxPrefilter/" target="_blank" rel="noopener">https://www.css88.com/jqapi-1.9/jQuery.ajaxPrefilter/</a></p>
+</blockquote>
+<p>通过ajaxPrefilter方法可以取消重复发送的ajax请求,如下官网给的例子：</p>
+<blockquote>
+<p>当自定义选项，需要提前处理，预过滤器（Prefilters）是一个完美的选择。给定下面的代码， 例如，如果自定义abortOnRetry选项被设置为true，那么调用$.ajax()会自动中止请求相同的URL：</p>
+</blockquote>
+<pre><code>var currentRequests = {};
+$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+  if ( options.abortOnRetry ) {
+    if ( currentRequests[ options.url ] ) {
+      currentRequests[ options.url ].abort();
+    }
+    currentRequests[ options.url ] = jqXHR;
+  }
+});
+</code></pre><p>通过ajaxPrefilter 还可以修改已经存在的选项，如下面例子：</p>
+<pre><code>$.ajaxPrefilter( function( options ) {
+  if ( options.crossDomain ) {
+    options.url = &quot;http://mydomain.net/proxy/&quot; + encodeURIComponent( options.url );
+    options.crossDomain = false;
+  }
+});
+</code></pre><p>通过ajaxPrefilter方法可以根据提供的dataTypes参数，指定处理特定的请求有效</p>
+<pre><code>//以下只针对 json和srcript 请求有效
+
+$.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jqXHR ) {
+  // Modify options, control originalOptions, store jqXHR, etc
+});
+</code></pre><p>通过ajaxPrefilter 可以将请求重定向到另一个类型，并且返回该数据类型。</p>
+<pre><code>//如下，如果url中函数isActuallyScript函数中设定的指定属性，就设置成script的请求
+
+    $.ajaxPrefilter(function( options ) {
+      if ( isActuallyScript( options.url ) ) {
+        return &quot;script&quot;;
+      }
+    });
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/15/动态加载js文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -683,7 +846,7 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
