@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="1. promise 定义 　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://lccbupt.github.io/2018/05/24/hello-world/index.html">
+<meta property="og:title" content="promise对象">
+<meta property="og:url" content="http://lccbupt.github.io/2018/11/27/promise详解/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="1. promise 定义 　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-24T09:53:53.998Z">
+<meta property="og:updated_time" content="2018-11-30T08:54:53.242Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="promise对象">
+<meta name="twitter:description" content="1. promise 定义 　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/05/24/hello-world/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2018/11/27/promise详解/"/>
 
 
 
 
 
-  <title>Hello World | 星*空</title>
+  <title>promise对象 | 星*空</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/05/24/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/27/promise详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">promise对象</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T17:53:53+08:00">
-                2018-05-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T18:57:46+08:00">
+                2018-11-27
               </time>
             
 
@@ -299,16 +299,32 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <h2 id="1-promise-定义"><a href="#1-promise-定义" class="headerlink" title="1. promise 定义"></a>1. promise 定义</h2><blockquote>
+<p>　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。<br>　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。</p>
+</blockquote>
+<h2 id="2-promise基本用法"><a href="#2-promise基本用法" class="headerlink" title="2.promise基本用法"></a>2.promise基本用法</h2><h3 id="（1）生成promise实例"><a href="#（1）生成promise实例" class="headerlink" title="（1）生成promise实例"></a>（1）生成promise实例</h3><p>　　promise对象是一个构造函数，用来生成promise实例，因此可以使用new关键字来构造实例。</p>
+<pre><code>new promise(function(resolve, reject){
+    // code
+    if (/* 异步操作成功 */){
+        resolve(value);
+    } else {
+        reject(error);
+    }
+})
+</code></pre><h3 id="（2）promise的then方法-Promise-prototype-then"><a href="#（2）promise的then方法-Promise-prototype-then" class="headerlink" title="（2）promise的then方法[Promise.prototype.then()]"></a>（2）promise的then方法[Promise.prototype.then()]</h3><p>　　Promise 实例具有then方法，也就是说，then方法是定义在原型对象。promise的then方法可以指定resolved状态和rejected状态的回调函数。then方法可以接受两个回调函数作为参数。第一个回调函数是promise对象的状态变为resolved时调用，第二个回调函数是promise对象的状态变为rejected时调用。其中第二个参数可选，不一定需要提供。两个函数都接收promise对象传出的值作为参数。</p>
+<pre><code>promise.then(function(value) {
+  // success
+}, function(error) {
+  // failure
+});
+</code></pre><h3 id="（3）promise的catch方法-Promise-prototype-catch"><a href="#（3）promise的catch方法-Promise-prototype-catch" class="headerlink" title="（3）promise的catch方法[Promise.prototype.catch()]"></a>（3）promise的catch方法[Promise.prototype.catch()]</h3><p>　　pomise的catch方法也是定义在原型对象上。指定发生错误时的回调方法。</p>
+<pre><code>getJSON(&apos;/posts.json&apos;).then(function(posts) {
+  // ...
+}).catch(function(error) {
+  // 处理 getJSON 和 前一个回调函数运行时发生的错误
+  console.log(&apos;发生错误！&apos;, error);
+});
+</code></pre>
       
     </div>
     
@@ -332,15 +348,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/26/async函数/" rel="next" title="async函数">
+                <i class="fa fa-chevron-left"></i> async函数
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/31/我的第一个博客第一篇博文/" rel="prev" title="我的第一个博客第一篇博文">
-                我的第一个博客第一篇博文 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -454,7 +470,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-promise-定义"><span class="nav-number">1.</span> <span class="nav-text">1. promise 定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-promise基本用法"><span class="nav-number">2.</span> <span class="nav-text">2.promise基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）生成promise实例"><span class="nav-number">2.1.</span> <span class="nav-text">（1）生成promise实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）promise的then方法-Promise-prototype-then"><span class="nav-number">2.2.</span> <span class="nav-text">（2）promise的then方法[Promise.prototype.then()]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）promise的catch方法-Promise-prototype-catch"><span class="nav-number">2.3.</span> <span class="nav-text">（3）promise的catch方法[Promise.prototype.catch()]</span></a></li></ol></li></ol></div>
             
 
           </div>

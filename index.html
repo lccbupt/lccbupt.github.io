@@ -232,6 +232,312 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/27/promise详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/27/promise详解/" itemprop="url">promise对象</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T18:57:46+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-promise-定义"><a href="#1-promise-定义" class="headerlink" title="1. promise 定义"></a>1. promise 定义</h2><blockquote>
+<p>　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。<br>　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。</p>
+</blockquote>
+<h2 id="2-promise基本用法"><a href="#2-promise基本用法" class="headerlink" title="2.promise基本用法"></a>2.promise基本用法</h2><h3 id="（1）生成promise实例"><a href="#（1）生成promise实例" class="headerlink" title="（1）生成promise实例"></a>（1）生成promise实例</h3><p>　　promise对象是一个构造函数，用来生成promise实例，因此可以使用new关键字来构造实例。</p>
+<pre><code>new promise(function(resolve, reject){
+    // code
+    if (/* 异步操作成功 */){
+        resolve(value);
+    } else {
+        reject(error);
+    }
+})
+</code></pre><h3 id="（2）promise的then方法-Promise-prototype-then"><a href="#（2）promise的then方法-Promise-prototype-then" class="headerlink" title="（2）promise的then方法[Promise.prototype.then()]"></a>（2）promise的then方法[Promise.prototype.then()]</h3><p>　　Promise 实例具有then方法，也就是说，then方法是定义在原型对象。promise的then方法可以指定resolved状态和rejected状态的回调函数。then方法可以接受两个回调函数作为参数。第一个回调函数是promise对象的状态变为resolved时调用，第二个回调函数是promise对象的状态变为rejected时调用。其中第二个参数可选，不一定需要提供。两个函数都接收promise对象传出的值作为参数。</p>
+<pre><code>promise.then(function(value) {
+  // success
+}, function(error) {
+  // failure
+});
+</code></pre><h3 id="（3）promise的catch方法-Promise-prototype-catch"><a href="#（3）promise的catch方法-Promise-prototype-catch" class="headerlink" title="（3）promise的catch方法[Promise.prototype.catch()]"></a>（3）promise的catch方法[Promise.prototype.catch()]</h3><p>　　pomise的catch方法也是定义在原型对象上。指定发生错误时的回调方法。</p>
+<pre><code>getJSON(&apos;/posts.json&apos;).then(function(posts) {
+  // ...
+}).catch(function(error) {
+  // 处理 getJSON 和 前一个回调函数运行时发生的错误
+  console.log(&apos;发生错误！&apos;, error);
+});
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/26/async函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/26/async函数/" itemprop="url">async函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-26T17:59:02+08:00">
+                2018-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-async函数基本用法"><a href="#1-async函数基本用法" class="headerlink" title="1.async函数基本用法"></a>1.async函数基本用法</h4><blockquote>
+<p>async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：</p>
+</blockquote>
+<pre><code>async function getStockByName(name) {
+    const symbol = await getStockSymbol(name);
+    const stockPrice = await getStockPrice(symbol)
+    return stcokPrice;
+}
+getStockByName(&apos;gogle&apos;).then(function(result) {
+    console.log(result)
+})
+</code></pre><hr>
+<h4 id="2-async函数特点"><a href="#2-async函数特点" class="headerlink" title="2.async函数特点"></a>2.async函数特点</h4><p>（1）、返回Promise对象<br>　async函数内部return返回的值，成为then方法回调的参数<br>　async函数内部平抛出错误会导致返回的Promise对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到<br>（2）、搭配await命令<br>　await命令后面返回一个Promise对象，返回该对象的结果，如果不是promise对象，就直接返回对应的值<br>（３）、async函数写法直观，相比于promise，generator的写法更简单易懂。</p>
+<pre><code>function login(urls) {
+    const textPromises = urls.map(url =&gt; {
+        return fetch(url).then(respose =&gt; respose.text());
+    })
+    textPromise.reduce((chain, textPromise) =&gt; {
+        return chain.then(() =&gt; textPromise)
+            .then(text =&gt; console.log(text))
+    }, Promise.resolve());
+} //  promise写法实现异步操作按顺序读取url，按顺序输出
+
+//上面代码使用fetch方法，同时远程读取一组 URL。每个fetch操作都返回一个 Promise
+ 对象，放入textPromises数组。然后，reduce方法依次处理每个 Promise 
+ 对象，然后使用then，将所有 Promise 对象连起来，因此就可以依次输出结果
+
+async function login(urls) {
+    for(const url of urls) {
+        const response = await fetch(url);
+        console.log(await respose.text());
+    }
+}// async 函数实现
+
+async function login() {
+    const textPromises = urls.map(async url =&gt; {
+        const respose = await fetch(url)
+        reurn respose.text();
+    })
+    for(const textpromise of textPromises) {
+        console.log(await texpromise)
+    }
+}// 多个await并发发出
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/20/ajaxPrefilter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -846,7 +1152,7 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

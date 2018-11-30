@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://lccbupt.github.io/2018/05/24/hello-world/index.html">
+<meta property="og:title" content="async函数">
+<meta property="og:url" content="http://lccbupt.github.io/2018/11/26/async函数/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-24T09:53:53.998Z">
+<meta property="og:updated_time" content="2018-11-26T10:45:39.442Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="async函数">
+<meta name="twitter:description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/05/24/hello-world/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2018/11/26/async函数/"/>
 
 
 
 
 
-  <title>Hello World | 星*空</title>
+  <title>async函数 | 星*空</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/05/24/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/26/async函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">async函数</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T17:53:53+08:00">
-                2018-05-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-26T17:59:02+08:00">
+                2018-11-26
               </time>
             
 
@@ -299,16 +299,50 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h4 id="1-async函数基本用法"><a href="#1-async函数基本用法" class="headerlink" title="1.async函数基本用法"></a>1.async函数基本用法</h4><blockquote>
+<p>async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：</p>
+</blockquote>
+<pre><code>async function getStockByName(name) {
+    const symbol = await getStockSymbol(name);
+    const stockPrice = await getStockPrice(symbol)
+    return stcokPrice;
+}
+getStockByName(&apos;gogle&apos;).then(function(result) {
+    console.log(result)
+})
+</code></pre><hr>
+<h4 id="2-async函数特点"><a href="#2-async函数特点" class="headerlink" title="2.async函数特点"></a>2.async函数特点</h4><p>（1）、返回Promise对象<br>　async函数内部return返回的值，成为then方法回调的参数<br>　async函数内部平抛出错误会导致返回的Promise对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到<br>（2）、搭配await命令<br>　await命令后面返回一个Promise对象，返回该对象的结果，如果不是promise对象，就直接返回对应的值<br>（３）、async函数写法直观，相比于promise，generator的写法更简单易懂。</p>
+<pre><code>function login(urls) {
+    const textPromises = urls.map(url =&gt; {
+        return fetch(url).then(respose =&gt; respose.text());
+    })
+    textPromise.reduce((chain, textPromise) =&gt; {
+        return chain.then(() =&gt; textPromise)
+            .then(text =&gt; console.log(text))
+    }, Promise.resolve());
+} //  promise写法实现异步操作按顺序读取url，按顺序输出
 
+//上面代码使用fetch方法，同时远程读取一组 URL。每个fetch操作都返回一个 Promise
+ 对象，放入textPromises数组。然后，reduce方法依次处理每个 Promise 
+ 对象，然后使用then，将所有 Promise 对象连起来，因此就可以依次输出结果
+
+async function login(urls) {
+    for(const url of urls) {
+        const response = await fetch(url);
+        console.log(await respose.text());
+    }
+}// async 函数实现
+
+async function login() {
+    const textPromises = urls.map(async url =&gt; {
+        const respose = await fetch(url)
+        reurn respose.text();
+    })
+    for(const textpromise of textPromises) {
+        console.log(await texpromise)
+    }
+}// 多个await并发发出
+</code></pre>
       
     </div>
     
@@ -332,14 +366,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/20/ajaxPrefilter/" rel="next" title="了解一下jQuery.ajaxPrefilter()">
+                <i class="fa fa-chevron-left"></i> 了解一下jQuery.ajaxPrefilter()
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/31/我的第一个博客第一篇博文/" rel="prev" title="我的第一个博客第一篇博文">
-                我的第一个博客第一篇博文 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/27/promise详解/" rel="prev" title="promise对象">
+                promise对象 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -454,7 +492,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-async函数基本用法"><span class="nav-number">1.</span> <span class="nav-text">1.async函数基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-async函数特点"><span class="nav-number">2.</span> <span class="nav-text">2.async函数特点</span></a></li></ol></div>
             
 
           </div>
