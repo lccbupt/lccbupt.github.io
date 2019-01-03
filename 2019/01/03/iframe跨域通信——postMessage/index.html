@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="本次在对接cp的时候，平台通过iframe嵌套cp页面，cp页面中又通过iframe嵌套其他页面，在这多个iframe之间需要进行交互，子页面和父页面都需要进行跨域通信,而在iframe中解决跨域通信的最佳方法是使用window对象下的postMessage方法。  一、postMessage使用方法otherwindow.postMessage(message, targetOrigin,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://lccbupt.github.io/2018/05/24/hello-world/index.html">
+<meta property="og:title" content="iframe跨域通信——postMessage">
+<meta property="og:url" content="http://lccbupt.github.io/2019/01/03/iframe跨域通信——postMessage/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="本次在对接cp的时候，平台通过iframe嵌套cp页面，cp页面中又通过iframe嵌套其他页面，在这多个iframe之间需要进行交互，子页面和父页面都需要进行跨域通信,而在iframe中解决跨域通信的最佳方法是使用window对象下的postMessage方法。  一、postMessage使用方法otherwindow.postMessage(message, targetOrigin,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-24T09:53:53.998Z">
+<meta property="og:updated_time" content="2019-01-03T10:56:14.485Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="iframe跨域通信——postMessage">
+<meta name="twitter:description" content="本次在对接cp的时候，平台通过iframe嵌套cp页面，cp页面中又通过iframe嵌套其他页面，在这多个iframe之间需要进行交互，子页面和父页面都需要进行跨域通信,而在iframe中解决跨域通信的最佳方法是使用window对象下的postMessage方法。  一、postMessage使用方法otherwindow.postMessage(message, targetOrigin,">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/05/24/hello-world/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2019/01/03/iframe跨域通信——postMessage/"/>
 
 
 
 
 
-  <title>Hello World | 星*空</title>
+  <title>iframe跨域通信——postMessage | 星*空</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/05/24/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2019/01/03/iframe跨域通信——postMessage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">iframe跨域通信——postMessage</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T17:53:53+08:00">
-                2018-05-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-03T17:33:20+08:00">
+                2019-01-03
               </time>
             
 
@@ -299,16 +299,50 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <hr>
+<p>　　本次在对接cp的时候，平台通过iframe嵌套cp页面，cp页面中又通过iframe嵌套其他页面，在这多个iframe之间需要进行交互，子页面和父页面都需要进行跨域通信,而在iframe中解决跨域通信的最佳方法是使用window对象下的postMessage方法。</p>
+<hr>
+<h3 id="一、postMessage使用方法"><a href="#一、postMessage使用方法" class="headerlink" title="一、postMessage使用方法"></a>一、postMessage使用方法</h3><pre><code>otherwindow.postMessage(message, targetOrigin, [transfer])
+</code></pre><p>　　otherwindow:<br>　　其他窗口的一个引用，比如iframe的contentWindow属性，执行window.open返回的窗口对象，或者是命名或或数值索引的window.frames<br>　　message：<br>　　将要发送到其他window的数据。它将会被结构化克隆算法序列化。这意味着你可以不受什么限制的将数据对象安全的传送给目标窗口而无需自己序列化<br>　　targetOrigin：<br>　　通过窗口的origin属性来指定哪些窗口能接收到消息事件，其值可以是字符串* （表示无限制）或者一个URI。在发送消息的时候，如果目标窗口的协议、主机地址或端口这三者的任意一项不匹配targetOrigin提供的值，那么消息就不会被发送；只有三者完全匹配，消息才会被发送。这个机制用来控制消息可以发送到哪些窗口；例如，当用postMessage传送密码时，这个参数就显得尤为重要，必须保证它的值与这条包含密码的信息的预期接受者的origin属性完全一致，来防止密码被恶意的第三方截获。如果你明确的知道消息应该发送到哪个窗口，那么请始终提供一个有确切值的targetOrigin，而不是*。不提供确切的目标将导致数据泄露到任何对数据感兴趣的恶意站点。<br>　　transfer（可选）：<br>　　是一串和message同时传递的Transferable对象.这些对象的所有权将被转移给消息的接收方，而发送一方将不再保有所有权。</p>
+<hr>
+<h3 id="二、监听message事件"><a href="#二、监听message事件" class="headerlink" title="二、监听message事件"></a>二、监听message事件</h3><p>　　执行如下代码，其他window可以监听派遣的message：</p>
+<pre><code>window.addEventListener(&quot;message&quot;, receiveMessage, false)
+function receiveMessage(event) {
+    var origin = event.origin
+    if(origin !== &quot;http://xxx.com&quot;) {
+        return
+    }
+    ...
+}
+</code></pre><hr>
+<h3 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h3><p>　　具体参考例子如下</p>
+<pre><code>&lt;!-- 父页面inddex.html --&gt;
+&lt;body&gt;
+    &lt;iframe src=&quot;./iframe.html&quot; id=&quot;iframe&quot;&gt;&lt;/iframe&gt;
+    &lt;script&gt;
+        // 获取iframe
+        iFrame = document.getElementById(iframe)
+        // iframe 加载完成立即发送一条消息
+        iFrame.onload = function() {
+            iFrame.contentWindow.postMessage(&apos;messageFromIndex&apos;, &apos;*&apos;)
+        }
+    &lt;/script&gt;
+&lt;/body&gt;    
 
+
+&lt;!-- 子页面 iframe.html --&gt;
+&lt;body&gt;
+    &lt;h1&gt;this is a test&lt;/h1&gt;
+    &lt;script&gt;
+        //回调函数
+        function receiveMessageFromIndex(event) {
+            console.log(&apos;receivemessage&apos;, event)
+        }
+        //监听message事件
+        window.addEventListener(&quot;message&quot;, receiveMessageFromIndex, false)
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
       
     </div>
     
@@ -332,15 +366,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/27/promise详解/" rel="next" title="promise对象">
+                <i class="fa fa-chevron-left"></i> promise对象
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/31/我的第一个博客第一篇博文/" rel="prev" title="我的第一个博客第一篇博文">
-                我的第一个博客第一篇博文 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -454,7 +488,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、postMessage使用方法"><span class="nav-number">1.</span> <span class="nav-text">一、postMessage使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、监听message事件"><span class="nav-number">2.</span> <span class="nav-text">二、监听message事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、实例"><span class="nav-number">3.</span> <span class="nav-text">三、实例</span></a></li></ol></div>
             
 
           </div>

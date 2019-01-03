@@ -232,6 +232,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2019/01/03/iframe跨域通信——postMessage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/03/iframe跨域通信——postMessage/" itemprop="url">iframe跨域通信——postMessage</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-03T17:33:20+08:00">
+                2019-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>　　本次在对接cp的时候，平台通过iframe嵌套cp页面，cp页面中又通过iframe嵌套其他页面，在这多个iframe之间需要进行交互，子页面和父页面都需要进行跨域通信,而在iframe中解决跨域通信的最佳方法是使用window对象下的postMessage方法。</p>
+<hr>
+<h3 id="一、postMessage使用方法"><a href="#一、postMessage使用方法" class="headerlink" title="一、postMessage使用方法"></a>一、postMessage使用方法</h3><pre><code>otherwindow.postMessage(message, targetOrigin, [transfer])
+</code></pre><p>　　otherwindow:<br>　　其他窗口的一个引用，比如iframe的contentWindow属性，执行window.open返回的窗口对象，或者是命名或或数值索引的window.frames<br>　　message：<br>　　将要发送到其他window的数据。它将会被结构化克隆算法序列化。这意味着你可以不受什么限制的将数据对象安全的传送给目标窗口而无需自己序列化<br>　　targetOrigin：<br>　　通过窗口的origin属性来指定哪些窗口能接收到消息事件，其值可以是字符串* （表示无限制）或者一个URI。在发送消息的时候，如果目标窗口的协议、主机地址或端口这三者的任意一项不匹配targetOrigin提供的值，那么消息就不会被发送；只有三者完全匹配，消息才会被发送。这个机制用来控制消息可以发送到哪些窗口；例如，当用postMessage传送密码时，这个参数就显得尤为重要，必须保证它的值与这条包含密码的信息的预期接受者的origin属性完全一致，来防止密码被恶意的第三方截获。如果你明确的知道消息应该发送到哪个窗口，那么请始终提供一个有确切值的targetOrigin，而不是*。不提供确切的目标将导致数据泄露到任何对数据感兴趣的恶意站点。<br>　　transfer（可选）：<br>　　是一串和message同时传递的Transferable对象.这些对象的所有权将被转移给消息的接收方，而发送一方将不再保有所有权。</p>
+<hr>
+<h3 id="二、监听message事件"><a href="#二、监听message事件" class="headerlink" title="二、监听message事件"></a>二、监听message事件</h3><p>　　执行如下代码，其他window可以监听派遣的message：</p>
+<pre><code>window.addEventListener(&quot;message&quot;, receiveMessage, false)
+function receiveMessage(event) {
+    var origin = event.origin
+    if(origin !== &quot;http://xxx.com&quot;) {
+        return
+    }
+    ...
+}
+</code></pre><hr>
+<h3 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h3><p>　　具体参考例子如下</p>
+<pre><code>&lt;!-- 父页面inddex.html --&gt;
+&lt;body&gt;
+    &lt;iframe src=&quot;./iframe.html&quot; id=&quot;iframe&quot;&gt;&lt;/iframe&gt;
+    &lt;script&gt;
+        // 获取iframe
+        iFrame = document.getElementById(iframe)
+        // iframe 加载完成立即发送一条消息
+        iFrame.onload = function() {
+            iFrame.contentWindow.postMessage(&apos;messageFromIndex&apos;, &apos;*&apos;)
+        }
+    &lt;/script&gt;
+&lt;/body&gt;    
+
+
+&lt;!-- 子页面 iframe.html --&gt;
+&lt;body&gt;
+    &lt;h1&gt;this is a test&lt;/h1&gt;
+    &lt;script&gt;
+        //回调函数
+        function receiveMessageFromIndex(event) {
+            console.log(&apos;receivemessage&apos;, event)
+        }
+        //监听message事件
+        window.addEventListener(&quot;message&quot;, receiveMessageFromIndex, false)
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/27/promise详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1152,7 +1314,7 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1193,7 +1355,7 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
