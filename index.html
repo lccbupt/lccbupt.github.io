@@ -232,6 +232,355 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2019/01/10/rem实现响应式布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/10/rem实现响应式布局/" itemprop="url">rem实现自适应布局</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-10T14:02:16+08:00">
+                2019-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、rem是指什么？"><a href="#一、rem是指什么？" class="headerlink" title="一、rem是指什么？"></a>一、rem是指什么？</h3><p>　　rem是指相对于根元素的字体大小单位（font size of the root element），它是一个相对单位，与之相似的还有em单位，em是指相对于父元素的字体大小单位。</p>
+<hr>
+<h3 id="二、为什么要用rem？rem适用于哪些场景？"><a href="#二、为什么要用rem？rem适用于哪些场景？" class="headerlink" title="二、为什么要用rem？rem适用于哪些场景？"></a>二、为什么要用rem？rem适用于哪些场景？</h3><p>　　因为浏览器以及其他兼容性问题，rem比较常用于webapp开发或者h5页面开发，而且在移动端的开发中rem更能发挥其优点。现在自适应布局的有很多种方法，比如固定宽度，百分比布局，viewport进行缩放，响应布局等，因为现在的各类显示器屏幕尺寸特别多，移动端的手机屏幕大小也都不统一，设计师在出图的时候只会出一份标准的设计图，如果采用固定宽度就必须要保证设计图中尽量少出现一些图片，对于设计来说就会有很大的局限，因为在不同尺寸屏幕的时候设计图就要出现一定比例的缩放，为了保证能等比例的实现设计图中的交互，这时我们就需要使用rem了，rem的方法简单又高效。</p>
+<hr>
+<h3 id="三、rem实现原理"><a href="#三、rem实现原理" class="headerlink" title="三、rem实现原理"></a>三、rem实现原理</h3><p>　　rem主要是相对根元素的字体大小，我们可以自己实现一个小demo，比如</p>
+<pre><code>html{
+    font-size:20px;
+}
+button{
+    width:6rem;
+    height:3rem;
+    font-size:1.2rem;
+    line-height:3rem;
+    background:#ccc;
+}// 此时按钮的宽度为120px,高度为60px，若html的font-size为10px;则按钮的宽度为60px,高度为30px;
+</code></pre><p>　　因此从上面的例子中我们可以推算：<br>　　1rem = 10px根元素(font-size:10px)<br>　　1rem = 20px根元素(font-size:20px)<br>　　如上面所得出rem与根元素的字体font-size大小有关，改变根元素的字体大小就可以等比例的改变其他元素的大小。<br>　　在实际开发中，我首先和定义一个标准的设计图尺寸，比如以宽度为640px的为准，先计算如下表格：</p>
+<table>
+<thead>
+<tr>
+<th>宽度</th>
+<th>屏幕比例</th>
+<th>html font-size</th>
+<th>元素宽度rem</th>
+<th>元素宽度px</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>640</td>
+<td>1</td>
+<td>20px</td>
+<td>200px</td>
+<td>10rem</td>
+</tr>
+<tr>
+<td>480</td>
+<td>0.75</td>
+<td>15px</td>
+<td>150px</td>
+<td>10rem</td>
+</tr>
+<tr>
+<td>320</td>
+<td>0.5</td>
+<td>10px</td>
+<td>100px</td>
+<td>10rem</td>
+</tr>
+<tr>
+<td>384</td>
+<td>0.6</td>
+<td>12px</td>
+<td>120px</td>
+<td>10rem</td>
+</tr>
+</tbody>
+</table>
+<p>　　具体自适应rem的js实现方法：</p>
+<pre><code>//designWidth:设计稿的实际宽度值，需要根据实际设置
+//maxWidth:制作稿的最大宽度值，需要根据实际设置
+//这段js的最后面有两个参数记得要设置，一个为设计稿实际宽度，一个为制作稿最大宽度，例如设计稿为750，最大宽度为750，则为(750,750)
+;(function(designWidth, maxWidth) {
+    var doc = document,
+    win = window,
+    docEl = doc.documentElement,
+    remStyle = document.createElement(&quot;style&quot;),
+    tid;
+
+    function refreshRem() {
+        var width = docEl.getBoundingClientRect().width;
+        maxWidth = maxWidth || 540;
+        width&gt;maxWidth &amp;&amp; (width=maxWidth);
+        var rem = width * 100 / designWidth;
+        remStyle.innerHTML = &apos;html{font-size:&apos; + rem + &apos;px;}&apos;;
+    }
+
+    if (docEl.firstElementChild) {
+        docEl.firstElementChild.appendChild(remStyle);
+    } else {
+        var wrap = doc.createElement(&quot;div&quot;);
+        wrap.appendChild(remStyle);
+        doc.write(wrap.innerHTML);
+        wrap = null;
+    }
+    //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+    refreshRem();
+
+    win.addEventListener(&quot;resize&quot;, function() {
+        clearTimeout(tid); //防止执行两次
+        tid = setTimeout(refreshRem, 300);
+    }, false);
+
+    win.addEventListener(&quot;pageshow&quot;, function(e) {
+        if (e.persisted) { // 浏览器后退的时候重新计算
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+        }
+    }, false);
+
+    if (doc.readyState === &quot;complete&quot;) {
+        doc.body.style.fontSize = &quot;16px&quot;;
+    } else {
+        doc.addEventListener(&quot;DOMContentLoaded&quot;, function(e) {
+            doc.body.style.fontSize = &quot;16px&quot;;
+        }, false);
+    }
+})(750, 750);
+</code></pre><hr>
+<pre><code>;(function(win, lib) {
+    var doc = win.document;
+    var docEl = doc.documentElement;
+    var metaEl = doc.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);
+    var designEl = doc.querySelector(&apos;meta[name=&quot;design&quot;]&apos;);
+    var dpr = 0;
+    var scale = 0;
+    var dsw = 480;
+    var tid;
+    var flexible = lib.flexible || (lib.flexible = {});
+    var maxWidth = 640;
+
+    if (metaEl) {
+        console.warn(&apos;将根据已有的meta标签来设置缩放比例&apos;);
+        var match = metaEl.getAttribute(&apos;content&apos;).match(/initial\-scale=([\d\.]+)/);
+        if (match) {
+            scale = parseFloat(match[1]);
+            dpr = parseInt(1 / scale);
+        }
+    }
+    // 通过design设计稿
+    if (designEl) {
+        var content = designEl.getAttribute(&apos;content&apos;);
+        if (content) {
+            var designWidth = content.match(/design\-width=([\d\.]+)/);
+            maxWidth = content.match(/max\-width=([\d\.]+)/);
+            if (designWidth) {
+                dsw = parseFloat(designWidth[1]);
+            }
+            if (maxWidth) {
+                maxWidth = maxWidth[1];
+                var css = &apos;body { max-width:&apos; + maxWidth +&apos;px; }&apos;,
+                style = document.createElement(&apos;style&apos;);
+                style.type = &apos;text/css&apos;;
+                if (style.styleSheet){
+                  style.styleSheet.cssText = css;
+                } else {
+                  style.appendChild(document.createTextNode(css));
+                }
+                writeHead(style)
+            }
+        }
+    }
+    if (!dpr &amp;&amp; !scale) {
+        var isAndroid = win.navigator.appVersion.match(/android/gi);
+        var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+        var devicePixelRatio = win.devicePixelRatio;
+        if (isIPhone) {
+            // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+            if (devicePixelRatio &gt;= 3 &amp;&amp; (!dpr || dpr &gt;= 3)) {                
+                dpr = 3;
+            } else if (devicePixelRatio &gt;= 2 &amp;&amp; (!dpr || dpr &gt;= 2)){
+                dpr = 2;
+            } else {
+                dpr = 1;
+            }
+        } else {
+            // 其他设备下，仍旧使用1倍的方案
+            dpr = 1;
+        }
+        scale = 1 / dpr;
+    }
+    docEl.setAttribute(&apos;data-dpr&apos;, dpr);
+    if (!metaEl) {
+        metaEl = doc.createElement(&apos;meta&apos;);
+        metaEl.setAttribute(&apos;name&apos;, &apos;viewport&apos;);
+        metaEl.setAttribute(&apos;content&apos;, &apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);
+        writeHead(metaEl);
+    }
+    // 写入头部
+    function writeHead(el) {
+        if (docEl.firstElementChild) {
+            docEl.firstElementChild.appendChild(el);
+        } else {
+            var wrap = doc.createElement(&apos;div&apos;);
+            wrap.appendChild(el);
+            doc.write(wrap.innerHTML);
+        }
+    }
+    // 设置html的rem
+    function refreshRem(){
+        // docEl.clientWidth客户端宽度
+        // docEl.getBoundingClientRect().width 文档宽度
+        var width = docEl.clientWidth || docEl.getBoundingClientRect().width;
+        if (width / dpr &gt; maxWidth) {
+            width = maxWidth * dpr;
+        }
+        // var rem = width / 10;
+        var rem = 100 * (width / dsw);
+        docEl.style.fontSize = rem + &apos;px&apos;;
+        flexible.rem = win.rem = rem;
+    }
+    refreshRem();
+    win.addEventListener(&apos;resize&apos;, function() {
+        clearTimeout(tid);
+        tid = setTimeout(refreshRem, 300);
+    }, false);
+    win.addEventListener(&apos;pageshow&apos;, function(e) {
+        if (e.persisted) {
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+        }
+    }, false);
+    // 设置body字体大小
+
+    flexible.dpr = win.dpr = dpr;
+    flexible.refreshRem = refreshRem;
+    flexible.rem2px = function(d) {
+        var val = parseFloat(d) * this.rem;
+        if (typeof d === &apos;string&apos; &amp;&amp; d.match(/rem$/)) {
+            val += &apos;px&apos;;
+        }
+        return val;
+    }
+    flexible.px2rem = function(d) {
+        var val = parseFloat(d) / this.rem;
+        if (typeof d === &apos;string&apos; &amp;&amp; d.match(/px$/)) {
+            val += &apos;rem&apos;;
+        }
+        return val;
+    }
+})(window, window[&apos;lib&apos;] || (window[&apos;lib&apos;] = {}));
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2019/01/03/iframe跨域通信——postMessage/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1314,7 +1663,7 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
