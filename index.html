@@ -232,6 +232,324 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/03/24/20200324/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/24/20200324/" itemprop="url">javascript中的call、apply和bind</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-24T14:28:17+08:00">
+                2020-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
+<p>在工作中会经常碰到或者使用到call，apply以及bind，之前只是简单了解这三个原型链上的函数，并没有很深入的搞懂，所以今天看了一些文章总结，觉得写的很好，对自己也有所启发，我自己也总结记录一下。</p>
+</blockquote>
+<hr>
+<h3 id="一、call，apply和bind的基本介绍"><a href="#一、call，apply和bind的基本介绍" class="headerlink" title="一、call，apply和bind的基本介绍"></a>一、call，apply和bind的基本介绍</h3><pre><code>三者的使用方法：
+fun.call(thisarg, param1, param2,...)
+fun.apply(thisarg, [param1, param2, ...])
+fun.bind(thisarg, param1, param2, ...)
+</code></pre><p>call,apply和bind的作用都是改变this的指向即改变函数执行时的上下文，三者既有相同之处，也有区别；</p>
+<h4 id="1-返回值："><a href="#1-返回值：" class="headerlink" title="1.返回值："></a>1.返回值：</h4><ul>
+<li>call/apply 返回的fun的执行结果；</li>
+<li>bind返回的是fun的拷贝，并拥有指定的this和初始值参数；</li>
+</ul>
+<h4 id="2-参数："><a href="#2-参数：" class="headerlink" title="2.参数："></a>2.参数：</h4><blockquote>
+<p>thisarg（可选）</p>
+<ul>
+<li>fun的this指向thisArg对象</li>
+<li>非严格模式下：thisArg指定为null，undefined，fun中的this指向window对象.</li>
+<li>严格模式下：fun的this为undefined</li>
+<li>值为原始值(数字，字符串，布尔值)的this会指向该原始值的自动包装对象，如 String、Number、Boolean</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>param（可选）：传给fun的参数</p>
+<ul>
+<li>可为空值或者null，undefined</li>
+<li>apply的第二个参数格式为数组</li>
+</ul>
+</blockquote>
+<h4 id="3-调用call-apply-bind的fun必须为函数"><a href="#3-调用call-apply-bind的fun必须为函数" class="headerlink" title="3.调用call/apply/bind的fun必须为函数"></a>3.调用call/apply/bind的fun必须为函数</h4><hr>
+<h3 id="二、call，apply和bind的用途"><a href="#二、call，apply和bind的用途" class="headerlink" title="二、call，apply和bind的用途"></a>二、call，apply和bind的用途</h3><p>三者主要的作用就是改变this的指向；只不过call和apply直接返回的是函数的执行结果，而bind返回的是一个拷贝函数，并指定this和初始参数；需再调用返回的拷贝函数可得执行结果。</p>
+<h4 id="1、简单的例子"><a href="#1、简单的例子" class="headerlink" title="1、简单的例子"></a>1、简单的例子</h4><pre><code>//call和apply实现对象的继承
+function super() {
+    this.a = &apos;hello world&apos;,
+    this.print = function() {
+        console.log(this.a)
+    }
+}
+function sub() {
+    super.call(this); //或者super.apply(this)
+    this.print()
+}
+sub(); // 1
+</code></pre><hr>
+<pre><code>//bind绑定回调函数的this指向
+class Page {
+    constructor(callback) {
+        this.className = &apos;Page&apos;
+        // callBack() // 直接执行的话 由于class 内部是严格模式，所以this 实际指向的是 undefined
+        this.MessageCallBack = callback // 回调函数的this 隐式绑定到class page
+        this.MessageCallBack(&apos;发给注册页面的信息&apos;) // 执行PageA的回调函数
+    }
+}
+
+class PageA {
+    constructor() {
+        this.className = &apos;PageA&apos;
+        this.pageClass = new Page(this.handleMessage.bind(this)) //绑定回调函数的this指向
+        // 或者同 this.pageClass = new Page(() =&gt; this.handleMessage()) // 箭头函数绑定this指向
+    }
+    handleMessage(msg) {
+        console.log(&apos;comunication...&apos;, this.className, msg)
+    }
+}
+new PageA()
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2019/01/24/JavaScript-经典实例-——-读书笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/24/JavaScript-经典实例-——-读书笔记/" itemprop="url">JavaScript 经典实例 —— 读书笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T10:41:21+08:00">
+                2019-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、Javascript对象、基本类型和字面值之间的关系"><a href="#一、Javascript对象、基本类型和字面值之间的关系" class="headerlink" title="一、Javascript对象、基本类型和字面值之间的关系"></a>一、Javascript对象、基本类型和字面值之间的关系</h3><p>　　字面值：表示某种特定类型的一个值<br>　　基本类型：字符串，数值，布尔值，null，undefined（5个）<br>　　对象：使用new操作生成的javascript对象实例</p>
+<pre><code>var str1 = &quot;string&quot; // &quot;string&quot;引号内容为字面值
+var str2 = String(&quot;string&quot;) // 生成基本类型
+var str3 = new String(&quot;string&quot;) // 生成对象实例
+str1 === &quot;string&quot; // true
+str2 === &quot;string&quot; // true
+str3 == &quot;string&quot; // true
+str3 === &quot;string&quot; // false 
+// 基本类型严格等于字面值，对象实例则不会严格等于字面值
+</code></pre><p>　　从字符串提取一个列表：使用方法——indexOf/substr/split/substring/trim</p>
+<pre><code>indexOf(str, start) // 返回字符串中从start开始第一个str的位置索引，start可不传，默认从头开始
+substring(start, end) //返回字符串中从start开始到end结束的字符串提取
+substr(start, end-start) //返回字符串中从start开始到end结束的字符串提取,第二参数传的为提取字符串长度
+split(val) //返回一个以val分隔开的数组
+trim() //去掉字符串中的空格 
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2019/01/10/rem实现响应式布局/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1663,7 +1981,7 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1704,7 +2022,7 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

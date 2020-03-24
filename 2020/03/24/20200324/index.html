@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1. promise 定义 　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异">
+<meta name="description" content="前言 在工作中会经常碰到或者使用到call，apply以及bind，之前只是简单了解这三个原型链上的函数，并没有很深入的搞懂，所以今天看了一些文章总结，觉得写的很好，对自己也有所启发，我自己也总结记录一下。   一、call，apply和bind的基本介绍三者的使用方法： fun.call(thisarg, param1, param2,...) fun.apply(thisarg, [param">
 <meta property="og:type" content="article">
-<meta property="og:title" content="promise对象">
-<meta property="og:url" content="http://lccbupt.github.io/2018/11/27/promise详解/index.html">
+<meta property="og:title" content="javascript中的call、apply和bind">
+<meta property="og:url" content="http://lccbupt.github.io/2020/03/24/20200324/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="1. promise 定义 　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异">
+<meta property="og:description" content="前言 在工作中会经常碰到或者使用到call，apply以及bind，之前只是简单了解这三个原型链上的函数，并没有很深入的搞懂，所以今天看了一些文章总结，觉得写的很好，对自己也有所启发，我自己也总结记录一下。   一、call，apply和bind的基本介绍三者的使用方法： fun.call(thisarg, param1, param2,...) fun.apply(thisarg, [param">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-30T08:54:53.242Z">
+<meta property="og:updated_time" content="2020-03-24T07:38:54.256Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="promise对象">
-<meta name="twitter:description" content="1. promise 定义 　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异">
+<meta name="twitter:title" content="javascript中的call、apply和bind">
+<meta name="twitter:description" content="前言 在工作中会经常碰到或者使用到call，apply以及bind，之前只是简单了解这三个原型链上的函数，并没有很深入的搞懂，所以今天看了一些文章总结，觉得写的很好，对自己也有所启发，我自己也总结记录一下。   一、call，apply和bind的基本介绍三者的使用方法： fun.call(thisarg, param1, param2,...) fun.apply(thisarg, [param">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/11/27/promise详解/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/03/24/20200324/"/>
 
 
 
 
 
-  <title>promise对象 | 星*空</title>
+  <title>javascript中的call、apply和bind | 星*空</title>
   
 
 
@@ -232,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/27/promise详解/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/03/24/20200324/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -249,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">promise对象</h1>
+          <h1 class="post-title" itemprop="name headline">javascript中的call、apply和bind</h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T18:57:46+08:00">
-                2018-11-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-24T14:28:17+08:00">
+                2020-03-24
               </time>
             
 
@@ -299,31 +299,71 @@
       
 
       
-        <h2 id="1-promise-定义"><a href="#1-promise-定义" class="headerlink" title="1. promise 定义"></a>1. promise 定义</h2><blockquote>
-<p>　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。<br>　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
+<p>在工作中会经常碰到或者使用到call，apply以及bind，之前只是简单了解这三个原型链上的函数，并没有很深入的搞懂，所以今天看了一些文章总结，觉得写的很好，对自己也有所启发，我自己也总结记录一下。</p>
 </blockquote>
-<h2 id="2-promise基本用法"><a href="#2-promise基本用法" class="headerlink" title="2.promise基本用法"></a>2.promise基本用法</h2><h3 id="（1）生成promise实例"><a href="#（1）生成promise实例" class="headerlink" title="（1）生成promise实例"></a>（1）生成promise实例</h3><p>　　promise对象是一个构造函数，用来生成promise实例，因此可以使用new关键字来构造实例。</p>
-<pre><code>new promise(function(resolve, reject){
-    // code
-    if (/* 异步操作成功 */){
-        resolve(value);
-    } else {
-        reject(error);
+<hr>
+<h3 id="一、call，apply和bind的基本介绍"><a href="#一、call，apply和bind的基本介绍" class="headerlink" title="一、call，apply和bind的基本介绍"></a>一、call，apply和bind的基本介绍</h3><pre><code>三者的使用方法：
+fun.call(thisarg, param1, param2,...)
+fun.apply(thisarg, [param1, param2, ...])
+fun.bind(thisarg, param1, param2, ...)
+</code></pre><p>call,apply和bind的作用都是改变this的指向即改变函数执行时的上下文，三者既有相同之处，也有区别；</p>
+<h4 id="1-返回值："><a href="#1-返回值：" class="headerlink" title="1.返回值："></a>1.返回值：</h4><ul>
+<li>call/apply 返回的fun的执行结果；</li>
+<li>bind返回的是fun的拷贝，并拥有指定的this和初始值参数；</li>
+</ul>
+<h4 id="2-参数："><a href="#2-参数：" class="headerlink" title="2.参数："></a>2.参数：</h4><blockquote>
+<p>thisarg（可选）</p>
+<ul>
+<li>fun的this指向thisArg对象</li>
+<li>非严格模式下：thisArg指定为null，undefined，fun中的this指向window对象.</li>
+<li>严格模式下：fun的this为undefined</li>
+<li>值为原始值(数字，字符串，布尔值)的this会指向该原始值的自动包装对象，如 String、Number、Boolean</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>param（可选）：传给fun的参数</p>
+<ul>
+<li>可为空值或者null，undefined</li>
+<li>apply的第二个参数格式为数组</li>
+</ul>
+</blockquote>
+<h4 id="3-调用call-apply-bind的fun必须为函数"><a href="#3-调用call-apply-bind的fun必须为函数" class="headerlink" title="3.调用call/apply/bind的fun必须为函数"></a>3.调用call/apply/bind的fun必须为函数</h4><hr>
+<h3 id="二、call，apply和bind的用途"><a href="#二、call，apply和bind的用途" class="headerlink" title="二、call，apply和bind的用途"></a>二、call，apply和bind的用途</h3><p>三者主要的作用就是改变this的指向；只不过call和apply直接返回的是函数的执行结果，而bind返回的是一个拷贝函数，并指定this和初始参数；需再调用返回的拷贝函数可得执行结果。</p>
+<h4 id="1、简单的例子"><a href="#1、简单的例子" class="headerlink" title="1、简单的例子"></a>1、简单的例子</h4><pre><code>//call和apply实现对象的继承
+function super() {
+    this.a = &apos;hello world&apos;,
+    this.print = function() {
+        console.log(this.a)
     }
-})
-</code></pre><h3 id="（2）promise的then方法-Promise-prototype-then"><a href="#（2）promise的then方法-Promise-prototype-then" class="headerlink" title="（2）promise的then方法[Promise.prototype.then()]"></a>（2）promise的then方法[Promise.prototype.then()]</h3><p>　　Promise 实例具有then方法，也就是说，then方法是定义在原型对象。promise的then方法可以指定resolved状态和rejected状态的回调函数。then方法可以接受两个回调函数作为参数。第一个回调函数是promise对象的状态变为resolved时调用，第二个回调函数是promise对象的状态变为rejected时调用。其中第二个参数可选，不一定需要提供。两个函数都接收promise对象传出的值作为参数。</p>
-<pre><code>promise.then(function(value) {
-  // success
-}, function(error) {
-  // failure
-});
-</code></pre><h3 id="（3）promise的catch方法-Promise-prototype-catch"><a href="#（3）promise的catch方法-Promise-prototype-catch" class="headerlink" title="（3）promise的catch方法[Promise.prototype.catch()]"></a>（3）promise的catch方法[Promise.prototype.catch()]</h3><p>　　pomise的catch方法也是定义在原型对象上。指定发生错误时的回调方法。</p>
-<pre><code>getJSON(&apos;/posts.json&apos;).then(function(posts) {
-  // ...
-}).catch(function(error) {
-  // 处理 getJSON 和 前一个回调函数运行时发生的错误
-  console.log(&apos;发生错误！&apos;, error);
-});
+}
+function sub() {
+    super.call(this); //或者super.apply(this)
+    this.print()
+}
+sub(); // 1
+</code></pre><hr>
+<pre><code>//bind绑定回调函数的this指向
+class Page {
+    constructor(callback) {
+        this.className = &apos;Page&apos;
+        // callBack() // 直接执行的话 由于class 内部是严格模式，所以this 实际指向的是 undefined
+        this.MessageCallBack = callback // 回调函数的this 隐式绑定到class page
+        this.MessageCallBack(&apos;发给注册页面的信息&apos;) // 执行PageA的回调函数
+    }
+}
+
+class PageA {
+    constructor() {
+        this.className = &apos;PageA&apos;
+        this.pageClass = new Page(this.handleMessage.bind(this)) //绑定回调函数的this指向
+        // 或者同 this.pageClass = new Page(() =&gt; this.handleMessage()) // 箭头函数绑定this指向
+    }
+    handleMessage(msg) {
+        console.log(&apos;comunication...&apos;, this.className, msg)
+    }
+}
+new PageA()
 </code></pre>
       
     </div>
@@ -348,8 +388,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/26/async函数/" rel="next" title="async函数">
-                <i class="fa fa-chevron-left"></i> async函数
+              <a href="/2019/01/24/JavaScript-经典实例-——-读书笔记/" rel="next" title="JavaScript 经典实例 —— 读书笔记">
+                <i class="fa fa-chevron-left"></i> JavaScript 经典实例 —— 读书笔记
               </a>
             
           </div>
@@ -357,10 +397,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/03/iframe跨域通信——postMessage/" rel="prev" title="iframe跨域通信——postMessage">
-                iframe跨域通信——postMessage <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -474,7 +510,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-promise-定义"><span class="nav-number">1.</span> <span class="nav-text">1. promise 定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-promise基本用法"><span class="nav-number">2.</span> <span class="nav-text">2.promise基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）生成promise实例"><span class="nav-number">2.1.</span> <span class="nav-text">（1）生成promise实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）promise的then方法-Promise-prototype-then"><span class="nav-number">2.2.</span> <span class="nav-text">（2）promise的then方法[Promise.prototype.then()]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）promise的catch方法-Promise-prototype-catch"><span class="nav-number">2.3.</span> <span class="nav-text">（3）promise的catch方法[Promise.prototype.catch()]</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一、call，apply和bind的基本介绍"><span class="nav-number"></span> <span class="nav-text">一、call，apply和bind的基本介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-返回值："><span class="nav-number">1.</span> <span class="nav-text">1.返回值：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-参数："><span class="nav-number">2.</span> <span class="nav-text">2.参数：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-调用call-apply-bind的fun必须为函数"><span class="nav-number">3.</span> <span class="nav-text">3.调用call/apply/bind的fun必须为函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、call，apply和bind的用途"><span class="nav-number"></span> <span class="nav-text">二、call，apply和bind的用途</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、简单的例子"><span class="nav-number">1.</span> <span class="nav-text">1、简单的例子</span></a></li></ol></div>
             
 
           </div>
