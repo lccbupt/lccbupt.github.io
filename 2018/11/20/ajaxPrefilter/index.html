@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="星*空">
 <meta property="og:description" content="1. jQuery.ajaxPrefilter([dataTypes],handler) jquery的官网文档给出的api方法描述：Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.aja">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-20T08:22:18.548Z">
+<meta property="og:updated_time" content="2020-04-17T02:52:30.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="了解一下jQuery.ajaxPrefilter()">
 <meta name="twitter:description" content="1. jQuery.ajaxPrefilter([dataTypes],handler) jquery的官网文档给出的api方法描述：Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.aja">
@@ -99,7 +99,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -190,6 +190,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -237,7 +257,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -281,6 +301,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
 
           
 
@@ -300,9 +325,8 @@
 
       
         <h4 id="1-jQuery-ajaxPrefilter-dataTypes-handler"><a href="#1-jQuery-ajaxPrefilter-dataTypes-handler" class="headerlink" title="1. jQuery.ajaxPrefilter([dataTypes],handler)"></a>1. jQuery.ajaxPrefilter([dataTypes],handler)</h4><blockquote>
-<p>jquery的官网文档给出的api方法描述：<br>Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax().</p>
+<p>jquery的官网文档给出的api方法描述：<br>Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax().<br><a id="more"></a><br>ajaxPrefilter()方法主要是在每次ajax发送send请求前处理请求的选项或者修改存在的一些设置。简单来讲就是调用send之前对HTTP头等进行修改和进一步处理。</p>
 </blockquote>
-<p>ajaxPrefilter()方法主要是在每次ajax发送send请求前处理请求的选项或者修改存在的一些设置。简单来讲就是调用send之前对HTTP头等进行修改和进一步处理。</p>
 <blockquote>
 <p>dataTypes 类型: String<br>一个可选的字符串，其中包含一个或多个空格分隔的数据类型<br>handler(options, originalOptions, jqXHR) 类型: Function()<br>一个处理程序程序，用于设置未来的Ajax请求的默认值。</p>
 </blockquote>
@@ -445,6 +469,10 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="Liucheng" />
+            
               <p class="site-author-name" itemprop="name">Liucheng</p>
               <p class="site-description motion-element" itemprop="description">记录点点滴滴的进步</p>
           </div>
@@ -456,14 +484,32 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -502,6 +548,13 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -523,20 +576,34 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
 
 
@@ -548,11 +615,6 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -577,6 +639,8 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
 
   
 
+
+  
 
 
 
@@ -616,6 +680,11 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 

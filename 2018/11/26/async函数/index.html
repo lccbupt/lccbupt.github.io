@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="星*空">
 <meta property="og:description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-26T10:45:39.442Z">
+<meta property="og:updated_time" content="2020-04-17T02:52:59.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="async函数">
 <meta name="twitter:description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
@@ -99,7 +99,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -190,6 +190,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -237,7 +257,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -281,6 +301,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
 
           
 
@@ -311,6 +336,7 @@ getStockByName(&apos;gogle&apos;).then(function(result) {
     console.log(result)
 })
 </code></pre><hr>
+<a id="more"></a>
 <h4 id="2-async函数特点"><a href="#2-async函数特点" class="headerlink" title="2.async函数特点"></a>2.async函数特点</h4><p>（1）、返回Promise对象<br>　async函数内部return返回的值，成为then方法回调的参数<br>　async函数内部平抛出错误会导致返回的Promise对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到<br>（2）、搭配await命令<br>　await命令后面返回一个Promise对象，返回该对象的结果，如果不是promise对象，就直接返回对应的值<br>（３）、async函数写法直观，相比于promise，generator的写法更简单易懂。</p>
 <pre><code>function login(urls) {
     const textPromises = urls.map(url =&gt; {
@@ -444,6 +470,10 @@ async function login() {
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="Liucheng" />
+            
               <p class="site-author-name" itemprop="name">Liucheng</p>
               <p class="site-description motion-element" itemprop="description">记录点点滴滴的进步</p>
           </div>
@@ -455,14 +485,32 @@ async function login() {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -501,6 +549,13 @@ async function login() {
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -522,20 +577,34 @@ async function login() {
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
 
 
@@ -547,11 +616,6 @@ async function login() {
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -576,6 +640,8 @@ async function login() {
 
   
 
+
+  
 
 
 
@@ -615,6 +681,11 @@ async function login() {
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 

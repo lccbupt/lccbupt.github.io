@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="一、rem是指什么？　　rem是指相对于根元素的字体大小单位（font size of the root element），它是一个相对单位，与之相似的还有em单位，em是指相对于父元素的字体大小单位。  二、为什么要用rem？rem适用于哪些场景？　　因为浏览器以及其他兼容性问题，rem比较常用于webapp开发或者h5页面开发，而且在移动端的开发中rem更能发挥其优点。现在自适应布局的有很多种">
+<meta name="description" content="一、rem是指什么？　　rem是指相对于根元素的字体大小单位（font size of the root element），它是一个相对单位，与之相似的还有em单位，em是指相对于父元素的字体大小单位。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="rem实现自适应布局">
 <meta property="og:url" content="http://lccbupt.github.io/2019/01/10/rem实现响应式布局/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="一、rem是指什么？　　rem是指相对于根元素的字体大小单位（font size of the root element），它是一个相对单位，与之相似的还有em单位，em是指相对于父元素的字体大小单位。  二、为什么要用rem？rem适用于哪些场景？　　因为浏览器以及其他兼容性问题，rem比较常用于webapp开发或者h5页面开发，而且在移动端的开发中rem更能发挥其优点。现在自适应布局的有很多种">
+<meta property="og:description" content="一、rem是指什么？　　rem是指相对于根元素的字体大小单位（font size of the root element），它是一个相对单位，与之相似的还有em单位，em是指相对于父元素的字体大小单位。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-10T07:15:04.918Z">
+<meta property="og:updated_time" content="2020-04-17T02:53:29.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rem实现自适应布局">
-<meta name="twitter:description" content="一、rem是指什么？　　rem是指相对于根元素的字体大小单位（font size of the root element），它是一个相对单位，与之相似的还有em单位，em是指相对于父元素的字体大小单位。  二、为什么要用rem？rem适用于哪些场景？　　因为浏览器以及其他兼容性问题，rem比较常用于webapp开发或者h5页面开发，而且在移动端的开发中rem更能发挥其优点。现在自适应布局的有很多种">
+<meta name="twitter:description" content="一、rem是指什么？　　rem是指相对于根元素的字体大小单位（font size of the root element），它是一个相对单位，与之相似的还有em单位，em是指相对于父元素的字体大小单位。">
 
 
 
@@ -99,7 +99,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -190,6 +190,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -237,7 +257,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -281,6 +301,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
 
           
 
@@ -301,6 +326,7 @@
       
         <h3 id="一、rem是指什么？"><a href="#一、rem是指什么？" class="headerlink" title="一、rem是指什么？"></a>一、rem是指什么？</h3><p>　　rem是指相对于根元素的字体大小单位（font size of the root element），它是一个相对单位，与之相似的还有em单位，em是指相对于父元素的字体大小单位。</p>
 <hr>
+<a id="more"></a>
 <h3 id="二、为什么要用rem？rem适用于哪些场景？"><a href="#二、为什么要用rem？rem适用于哪些场景？" class="headerlink" title="二、为什么要用rem？rem适用于哪些场景？"></a>二、为什么要用rem？rem适用于哪些场景？</h3><p>　　因为浏览器以及其他兼容性问题，rem比较常用于webapp开发或者h5页面开发，而且在移动端的开发中rem更能发挥其优点。现在自适应布局的有很多种方法，比如固定宽度，百分比布局，viewport进行缩放，响应布局等，因为现在的各类显示器屏幕尺寸特别多，移动端的手机屏幕大小也都不统一，设计师在出图的时候只会出一份标准的设计图，如果采用固定宽度就必须要保证设计图中尽量少出现一些图片，对于设计来说就会有很大的局限，因为在不同尺寸屏幕的时候设计图就要出现一定比例的缩放，为了保证能等比例的实现设计图中的交互，这时我们就需要使用rem了，rem的方法简单又高效。</p>
 <hr>
 <h3 id="三、rem实现原理"><a href="#三、rem实现原理" class="headerlink" title="三、rem实现原理"></a>三、rem实现原理</h3><p>　　rem主要是相对根元素的字体大小，我们可以自己实现一个小demo，比如</p>
@@ -631,6 +657,10 @@ button{
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="Liucheng" />
+            
               <p class="site-author-name" itemprop="name">Liucheng</p>
               <p class="site-description motion-element" itemprop="description">记录点点滴滴的进步</p>
           </div>
@@ -642,14 +672,32 @@ button{
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -688,6 +736,13 @@ button{
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -709,20 +764,34 @@ button{
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
 
 
@@ -734,11 +803,6 @@ button{
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -763,6 +827,8 @@ button{
 
   
 
+
+  
 
 
 
@@ -802,6 +868,11 @@ button{
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 

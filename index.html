@@ -98,7 +98,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -190,6 +190,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -232,12 +252,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/04/17/vue开发笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/17/vue开发笔记/" itemprop="url">vue开发笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T10:23:53+08:00">
+                2020-04-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="vue-开发笔记"><a href="#vue-开发笔记" class="headerlink" title="vue 开发笔记"></a>vue 开发笔记</h3><p>日常工作中某些业务逻辑不复杂页面交互多的页面我通常采用vue来开发，使用vue以及其相关框架技术，很好的整合代码，简单的h5活动页面可以将弹框，toast提示，header以及footer等实现组件化，方便使用和复用，很好的提高了开发效率。其中也有很多细节需要多总结。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/17/vue开发笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/03/24/20200324/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -302,74 +468,17 @@
 
       
         
-          
-            <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
+          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
 <p>在工作中会经常碰到或者使用到call，apply以及bind，之前只是简单了解这三个原型链上的函数，并没有很深入的搞懂，所以今天看了一些文章总结，觉得写的很好，对自己也有所启发，我自己也总结记录一下。</p>
 </blockquote>
 <hr>
-<h3 id="一、call，apply和bind的基本介绍"><a href="#一、call，apply和bind的基本介绍" class="headerlink" title="一、call，apply和bind的基本介绍"></a>一、call，apply和bind的基本介绍</h3><pre><code>三者的使用方法：
-fun.call(thisarg, param1, param2,...)
-fun.apply(thisarg, [param1, param2, ...])
-fun.bind(thisarg, param1, param2, ...)
-</code></pre><p>call,apply和bind的作用都是改变this的指向即改变函数执行时的上下文，三者既有相同之处，也有区别；</p>
-<h4 id="1-返回值："><a href="#1-返回值：" class="headerlink" title="1.返回值："></a>1.返回值：</h4><ul>
-<li>call/apply 返回的fun的执行结果；</li>
-<li>bind返回的是fun的拷贝，并拥有指定的this和初始值参数；</li>
-</ul>
-<h4 id="2-参数："><a href="#2-参数：" class="headerlink" title="2.参数："></a>2.参数：</h4><blockquote>
-<p>thisarg（可选）</p>
-<ul>
-<li>fun的this指向thisArg对象</li>
-<li>非严格模式下：thisArg指定为null，undefined，fun中的this指向window对象.</li>
-<li>严格模式下：fun的this为undefined</li>
-<li>值为原始值(数字，字符串，布尔值)的this会指向该原始值的自动包装对象，如 String、Number、Boolean</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>param（可选）：传给fun的参数</p>
-<ul>
-<li>可为空值或者null，undefined</li>
-<li>apply的第二个参数格式为数组</li>
-</ul>
-</blockquote>
-<h4 id="3-调用call-apply-bind的fun必须为函数"><a href="#3-调用call-apply-bind的fun必须为函数" class="headerlink" title="3.调用call/apply/bind的fun必须为函数"></a>3.调用call/apply/bind的fun必须为函数</h4><hr>
-<h3 id="二、call，apply和bind的用途"><a href="#二、call，apply和bind的用途" class="headerlink" title="二、call，apply和bind的用途"></a>二、call，apply和bind的用途</h3><p>三者主要的作用就是改变this的指向；只不过call和apply直接返回的是函数的执行结果，而bind返回的是一个拷贝函数，并指定this和初始参数；需再调用返回的拷贝函数可得执行结果。</p>
-<h4 id="1、简单的例子"><a href="#1、简单的例子" class="headerlink" title="1、简单的例子"></a>1、简单的例子</h4><pre><code>//call和apply实现对象的继承
-function super() {
-    this.a = &apos;hello world&apos;,
-    this.print = function() {
-        console.log(this.a)
-    }
-}
-function sub() {
-    super.call(this); //或者super.apply(this)
-    this.print()
-}
-sub(); // 1
-</code></pre><hr>
-<pre><code>//bind绑定回调函数的this指向
-class Page {
-    constructor(callback) {
-        this.className = &apos;Page&apos;
-        // callBack() // 直接执行的话 由于class 内部是严格模式，所以this 实际指向的是 undefined
-        this.MessageCallBack = callback // 回调函数的this 隐式绑定到class page
-        this.MessageCallBack(&apos;发给注册页面的信息&apos;) // 执行PageA的回调函数
-    }
-}
-
-class PageA {
-    constructor() {
-        this.className = &apos;PageA&apos;
-        this.pageClass = new Page(this.handleMessage.bind(this)) //绑定回调函数的this指向
-        // 或者同 this.pageClass = new Page(() =&gt; this.handleMessage()) // 箭头函数绑定this指向
-    }
-    handleMessage(msg) {
-        console.log(&apos;comunication...&apos;, this.className, msg)
-    }
-}
-new PageA()
-</code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/24/20200324/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -421,7 +530,7 @@ new PageA()
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -486,24 +595,14 @@ new PageA()
 
       
         
-          
-            <h3 id="一、Javascript对象、基本类型和字面值之间的关系"><a href="#一、Javascript对象、基本类型和字面值之间的关系" class="headerlink" title="一、Javascript对象、基本类型和字面值之间的关系"></a>一、Javascript对象、基本类型和字面值之间的关系</h3><p>　　字面值：表示某种特定类型的一个值<br>　　基本类型：字符串，数值，布尔值，null，undefined（5个）<br>　　对象：使用new操作生成的javascript对象实例</p>
-<pre><code>var str1 = &quot;string&quot; // &quot;string&quot;引号内容为字面值
-var str2 = String(&quot;string&quot;) // 生成基本类型
-var str3 = new String(&quot;string&quot;) // 生成对象实例
-str1 === &quot;string&quot; // true
-str2 === &quot;string&quot; // true
-str3 == &quot;string&quot; // true
-str3 === &quot;string&quot; // false 
-// 基本类型严格等于字面值，对象实例则不会严格等于字面值
-</code></pre><p>　　从字符串提取一个列表：使用方法——indexOf/substr/split/substring/trim</p>
-<pre><code>indexOf(str, start) // 返回字符串中从start开始第一个str的位置索引，start可不传，默认从头开始
-substring(start, end) //返回字符串中从start开始到end结束的字符串提取
-substr(start, end-start) //返回字符串中从start开始到end结束的字符串提取,第二参数传的为提取字符串长度
-split(val) //返回一个以val分隔开的数组
-trim() //去掉字符串中的空格 
-</code></pre>
-          
+          <h3 id="一、Javascript对象、基本类型和字面值之间的关系"><a href="#一、Javascript对象、基本类型和字面值之间的关系" class="headerlink" title="一、Javascript对象、基本类型和字面值之间的关系"></a>一、Javascript对象、基本类型和字面值之间的关系</h3><p>　　字面值：表示某种特定类型的一个值<br>　　基本类型：字符串，数值，布尔值，null，undefined（5个）<br>　　对象：使用new操作生成的javascript对象实例<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/24/JavaScript-经典实例-——-读书笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -555,7 +654,7 @@ trim() //去掉字符串中的空格
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -620,239 +719,15 @@ trim() //去掉字符串中的空格
 
       
         
-          
-            <h3 id="一、rem是指什么？"><a href="#一、rem是指什么？" class="headerlink" title="一、rem是指什么？"></a>一、rem是指什么？</h3><p>　　rem是指相对于根元素的字体大小单位（font size of the root element），它是一个相对单位，与之相似的还有em单位，em是指相对于父元素的字体大小单位。</p>
+          <h3 id="一、rem是指什么？"><a href="#一、rem是指什么？" class="headerlink" title="一、rem是指什么？"></a>一、rem是指什么？</h3><p>　　rem是指相对于根元素的字体大小单位（font size of the root element），它是一个相对单位，与之相似的还有em单位，em是指相对于父元素的字体大小单位。</p>
 <hr>
-<h3 id="二、为什么要用rem？rem适用于哪些场景？"><a href="#二、为什么要用rem？rem适用于哪些场景？" class="headerlink" title="二、为什么要用rem？rem适用于哪些场景？"></a>二、为什么要用rem？rem适用于哪些场景？</h3><p>　　因为浏览器以及其他兼容性问题，rem比较常用于webapp开发或者h5页面开发，而且在移动端的开发中rem更能发挥其优点。现在自适应布局的有很多种方法，比如固定宽度，百分比布局，viewport进行缩放，响应布局等，因为现在的各类显示器屏幕尺寸特别多，移动端的手机屏幕大小也都不统一，设计师在出图的时候只会出一份标准的设计图，如果采用固定宽度就必须要保证设计图中尽量少出现一些图片，对于设计来说就会有很大的局限，因为在不同尺寸屏幕的时候设计图就要出现一定比例的缩放，为了保证能等比例的实现设计图中的交互，这时我们就需要使用rem了，rem的方法简单又高效。</p>
-<hr>
-<h3 id="三、rem实现原理"><a href="#三、rem实现原理" class="headerlink" title="三、rem实现原理"></a>三、rem实现原理</h3><p>　　rem主要是相对根元素的字体大小，我们可以自己实现一个小demo，比如</p>
-<pre><code>html{
-    font-size:20px;
-}
-button{
-    width:6rem;
-    height:3rem;
-    font-size:1.2rem;
-    line-height:3rem;
-    background:#ccc;
-}// 此时按钮的宽度为120px,高度为60px，若html的font-size为10px;则按钮的宽度为60px,高度为30px;
-</code></pre><p>　　因此从上面的例子中我们可以推算：<br>　　1rem = 10px根元素(font-size:10px)<br>　　1rem = 20px根元素(font-size:20px)<br>　　如上面所得出rem与根元素的字体font-size大小有关，改变根元素的字体大小就可以等比例的改变其他元素的大小。<br>　　在实际开发中，我首先和定义一个标准的设计图尺寸，比如以宽度为640px的为准，先计算如下表格：</p>
-<table>
-<thead>
-<tr>
-<th>宽度</th>
-<th>屏幕比例</th>
-<th>html font-size</th>
-<th>元素宽度rem</th>
-<th>元素宽度px</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>640</td>
-<td>1</td>
-<td>20px</td>
-<td>200px</td>
-<td>10rem</td>
-</tr>
-<tr>
-<td>480</td>
-<td>0.75</td>
-<td>15px</td>
-<td>150px</td>
-<td>10rem</td>
-</tr>
-<tr>
-<td>320</td>
-<td>0.5</td>
-<td>10px</td>
-<td>100px</td>
-<td>10rem</td>
-</tr>
-<tr>
-<td>384</td>
-<td>0.6</td>
-<td>12px</td>
-<td>120px</td>
-<td>10rem</td>
-</tr>
-</tbody>
-</table>
-<p>　　具体自适应rem的js实现方法：</p>
-<pre><code>//designWidth:设计稿的实际宽度值，需要根据实际设置
-//maxWidth:制作稿的最大宽度值，需要根据实际设置
-//这段js的最后面有两个参数记得要设置，一个为设计稿实际宽度，一个为制作稿最大宽度，例如设计稿为750，最大宽度为750，则为(750,750)
-;(function(designWidth, maxWidth) {
-    var doc = document,
-    win = window,
-    docEl = doc.documentElement,
-    remStyle = document.createElement(&quot;style&quot;),
-    tid;
-
-    function refreshRem() {
-        var width = docEl.getBoundingClientRect().width;
-        maxWidth = maxWidth || 540;
-        width&gt;maxWidth &amp;&amp; (width=maxWidth);
-        var rem = width * 100 / designWidth;
-        remStyle.innerHTML = &apos;html{font-size:&apos; + rem + &apos;px;}&apos;;
-    }
-
-    if (docEl.firstElementChild) {
-        docEl.firstElementChild.appendChild(remStyle);
-    } else {
-        var wrap = doc.createElement(&quot;div&quot;);
-        wrap.appendChild(remStyle);
-        doc.write(wrap.innerHTML);
-        wrap = null;
-    }
-    //要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
-    refreshRem();
-
-    win.addEventListener(&quot;resize&quot;, function() {
-        clearTimeout(tid); //防止执行两次
-        tid = setTimeout(refreshRem, 300);
-    }, false);
-
-    win.addEventListener(&quot;pageshow&quot;, function(e) {
-        if (e.persisted) { // 浏览器后退的时候重新计算
-            clearTimeout(tid);
-            tid = setTimeout(refreshRem, 300);
-        }
-    }, false);
-
-    if (doc.readyState === &quot;complete&quot;) {
-        doc.body.style.fontSize = &quot;16px&quot;;
-    } else {
-        doc.addEventListener(&quot;DOMContentLoaded&quot;, function(e) {
-            doc.body.style.fontSize = &quot;16px&quot;;
-        }, false);
-    }
-})(750, 750);
-</code></pre><hr>
-<pre><code>;(function(win, lib) {
-    var doc = win.document;
-    var docEl = doc.documentElement;
-    var metaEl = doc.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;);
-    var designEl = doc.querySelector(&apos;meta[name=&quot;design&quot;]&apos;);
-    var dpr = 0;
-    var scale = 0;
-    var dsw = 480;
-    var tid;
-    var flexible = lib.flexible || (lib.flexible = {});
-    var maxWidth = 640;
-
-    if (metaEl) {
-        console.warn(&apos;将根据已有的meta标签来设置缩放比例&apos;);
-        var match = metaEl.getAttribute(&apos;content&apos;).match(/initial\-scale=([\d\.]+)/);
-        if (match) {
-            scale = parseFloat(match[1]);
-            dpr = parseInt(1 / scale);
-        }
-    }
-    // 通过design设计稿
-    if (designEl) {
-        var content = designEl.getAttribute(&apos;content&apos;);
-        if (content) {
-            var designWidth = content.match(/design\-width=([\d\.]+)/);
-            maxWidth = content.match(/max\-width=([\d\.]+)/);
-            if (designWidth) {
-                dsw = parseFloat(designWidth[1]);
-            }
-            if (maxWidth) {
-                maxWidth = maxWidth[1];
-                var css = &apos;body { max-width:&apos; + maxWidth +&apos;px; }&apos;,
-                style = document.createElement(&apos;style&apos;);
-                style.type = &apos;text/css&apos;;
-                if (style.styleSheet){
-                  style.styleSheet.cssText = css;
-                } else {
-                  style.appendChild(document.createTextNode(css));
-                }
-                writeHead(style)
-            }
-        }
-    }
-    if (!dpr &amp;&amp; !scale) {
-        var isAndroid = win.navigator.appVersion.match(/android/gi);
-        var isIPhone = win.navigator.appVersion.match(/iphone/gi);
-        var devicePixelRatio = win.devicePixelRatio;
-        if (isIPhone) {
-            // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
-            if (devicePixelRatio &gt;= 3 &amp;&amp; (!dpr || dpr &gt;= 3)) {                
-                dpr = 3;
-            } else if (devicePixelRatio &gt;= 2 &amp;&amp; (!dpr || dpr &gt;= 2)){
-                dpr = 2;
-            } else {
-                dpr = 1;
-            }
-        } else {
-            // 其他设备下，仍旧使用1倍的方案
-            dpr = 1;
-        }
-        scale = 1 / dpr;
-    }
-    docEl.setAttribute(&apos;data-dpr&apos;, dpr);
-    if (!metaEl) {
-        metaEl = doc.createElement(&apos;meta&apos;);
-        metaEl.setAttribute(&apos;name&apos;, &apos;viewport&apos;);
-        metaEl.setAttribute(&apos;content&apos;, &apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);
-        writeHead(metaEl);
-    }
-    // 写入头部
-    function writeHead(el) {
-        if (docEl.firstElementChild) {
-            docEl.firstElementChild.appendChild(el);
-        } else {
-            var wrap = doc.createElement(&apos;div&apos;);
-            wrap.appendChild(el);
-            doc.write(wrap.innerHTML);
-        }
-    }
-    // 设置html的rem
-    function refreshRem(){
-        // docEl.clientWidth客户端宽度
-        // docEl.getBoundingClientRect().width 文档宽度
-        var width = docEl.clientWidth || docEl.getBoundingClientRect().width;
-        if (width / dpr &gt; maxWidth) {
-            width = maxWidth * dpr;
-        }
-        // var rem = width / 10;
-        var rem = 100 * (width / dsw);
-        docEl.style.fontSize = rem + &apos;px&apos;;
-        flexible.rem = win.rem = rem;
-    }
-    refreshRem();
-    win.addEventListener(&apos;resize&apos;, function() {
-        clearTimeout(tid);
-        tid = setTimeout(refreshRem, 300);
-    }, false);
-    win.addEventListener(&apos;pageshow&apos;, function(e) {
-        if (e.persisted) {
-            clearTimeout(tid);
-            tid = setTimeout(refreshRem, 300);
-        }
-    }, false);
-    // 设置body字体大小
-
-    flexible.dpr = win.dpr = dpr;
-    flexible.refreshRem = refreshRem;
-    flexible.rem2px = function(d) {
-        var val = parseFloat(d) * this.rem;
-        if (typeof d === &apos;string&apos; &amp;&amp; d.match(/rem$/)) {
-            val += &apos;px&apos;;
-        }
-        return val;
-    }
-    flexible.px2rem = function(d) {
-        var val = parseFloat(d) / this.rem;
-        if (typeof d === &apos;string&apos; &amp;&amp; d.match(/px$/)) {
-            val += &apos;rem&apos;;
-        }
-        return val;
-    }
-})(window, window[&apos;lib&apos;] || (window[&apos;lib&apos;] = {}));
-</code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/10/rem实现响应式布局/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -904,7 +779,7 @@ button{
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -969,52 +844,16 @@ button{
 
       
         
-          
-            <hr>
+          <hr>
 <p>　　本次在对接cp的时候，平台通过iframe嵌套cp页面，cp页面中又通过iframe嵌套其他页面，在这多个iframe之间需要进行交互，子页面和父页面都需要进行跨域通信,而在iframe中解决跨域通信的最佳方法是使用window对象下的postMessage方法。</p>
 <hr>
-<h3 id="一、postMessage使用方法"><a href="#一、postMessage使用方法" class="headerlink" title="一、postMessage使用方法"></a>一、postMessage使用方法</h3><pre><code>otherwindow.postMessage(message, targetOrigin, [transfer])
-</code></pre><p>　　otherwindow:<br>　　其他窗口的一个引用，比如iframe的contentWindow属性，执行window.open返回的窗口对象，或者是命名或或数值索引的window.frames<br>　　message：<br>　　将要发送到其他window的数据。它将会被结构化克隆算法序列化。这意味着你可以不受什么限制的将数据对象安全的传送给目标窗口而无需自己序列化<br>　　targetOrigin：<br>　　通过窗口的origin属性来指定哪些窗口能接收到消息事件，其值可以是字符串* （表示无限制）或者一个URI。在发送消息的时候，如果目标窗口的协议、主机地址或端口这三者的任意一项不匹配targetOrigin提供的值，那么消息就不会被发送；只有三者完全匹配，消息才会被发送。这个机制用来控制消息可以发送到哪些窗口；例如，当用postMessage传送密码时，这个参数就显得尤为重要，必须保证它的值与这条包含密码的信息的预期接受者的origin属性完全一致，来防止密码被恶意的第三方截获。如果你明确的知道消息应该发送到哪个窗口，那么请始终提供一个有确切值的targetOrigin，而不是*。不提供确切的目标将导致数据泄露到任何对数据感兴趣的恶意站点。<br>　　transfer（可选）：<br>　　是一串和message同时传递的Transferable对象.这些对象的所有权将被转移给消息的接收方，而发送一方将不再保有所有权。</p>
-<hr>
-<h3 id="二、监听message事件"><a href="#二、监听message事件" class="headerlink" title="二、监听message事件"></a>二、监听message事件</h3><p>　　执行如下代码，其他window可以监听派遣的message：</p>
-<pre><code>window.addEventListener(&quot;message&quot;, receiveMessage, false)
-function receiveMessage(event) {
-    var origin = event.origin
-    if(origin !== &quot;http://xxx.com&quot;) {
-        return
-    }
-    ...
-}
-</code></pre><hr>
-<h3 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h3><p>　　具体参考例子如下</p>
-<pre><code>&lt;!-- 父页面inddex.html --&gt;
-&lt;body&gt;
-    &lt;iframe src=&quot;./iframe.html&quot; id=&quot;iframe&quot;&gt;&lt;/iframe&gt;
-    &lt;script&gt;
-        // 获取iframe
-        iFrame = document.getElementById(iframe)
-        // iframe 加载完成立即发送一条消息
-        iFrame.onload = function() {
-            iFrame.contentWindow.postMessage(&apos;messageFromIndex&apos;, &apos;*&apos;)
-        }
-    &lt;/script&gt;
-&lt;/body&gt;    
-
-
-&lt;!-- 子页面 iframe.html --&gt;
-&lt;body&gt;
-    &lt;h1&gt;this is a test&lt;/h1&gt;
-    &lt;script&gt;
-        //回调函数
-        function receiveMessageFromIndex(event) {
-            console.log(&apos;receivemessage&apos;, event)
-        }
-        //监听message事件
-        window.addEventListener(&quot;message&quot;, receiveMessageFromIndex, false)
-    &lt;/script&gt;
-&lt;/body&gt;
-</code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/03/iframe跨域通信——postMessage/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1066,7 +905,7 @@ function receiveMessage(event) {
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1131,34 +970,15 @@ function receiveMessage(event) {
 
       
         
-          
-            <h2 id="1-promise-定义"><a href="#1-promise-定义" class="headerlink" title="1. promise 定义"></a>1. promise 定义</h2><blockquote>
-<p>　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。<br>　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。</p>
-</blockquote>
-<h2 id="2-promise基本用法"><a href="#2-promise基本用法" class="headerlink" title="2.promise基本用法"></a>2.promise基本用法</h2><h3 id="（1）生成promise实例"><a href="#（1）生成promise实例" class="headerlink" title="（1）生成promise实例"></a>（1）生成promise实例</h3><p>　　promise对象是一个构造函数，用来生成promise实例，因此可以使用new关键字来构造实例。</p>
-<pre><code>new promise(function(resolve, reject){
-    // code
-    if (/* 异步操作成功 */){
-        resolve(value);
-    } else {
-        reject(error);
-    }
-})
-</code></pre><h3 id="（2）promise的then方法-Promise-prototype-then"><a href="#（2）promise的then方法-Promise-prototype-then" class="headerlink" title="（2）promise的then方法[Promise.prototype.then()]"></a>（2）promise的then方法[Promise.prototype.then()]</h3><p>　　Promise 实例具有then方法，也就是说，then方法是定义在原型对象。promise的then方法可以指定resolved状态和rejected状态的回调函数。then方法可以接受两个回调函数作为参数。第一个回调函数是promise对象的状态变为resolved时调用，第二个回调函数是promise对象的状态变为rejected时调用。其中第二个参数可选，不一定需要提供。两个函数都接收promise对象传出的值作为参数。</p>
-<pre><code>promise.then(function(value) {
-  // success
-}, function(error) {
-  // failure
-});
-</code></pre><h3 id="（3）promise的catch方法-Promise-prototype-catch"><a href="#（3）promise的catch方法-Promise-prototype-catch" class="headerlink" title="（3）promise的catch方法[Promise.prototype.catch()]"></a>（3）promise的catch方法[Promise.prototype.catch()]</h3><p>　　pomise的catch方法也是定义在原型对象上。指定发生错误时的回调方法。</p>
-<pre><code>getJSON(&apos;/posts.json&apos;).then(function(posts) {
-  // ...
-}).catch(function(error) {
-  // 处理 getJSON 和 前一个回调函数运行时发生的错误
-  console.log(&apos;发生错误！&apos;, error);
-});
-</code></pre>
-          
+          <h2 id="1-promise-定义"><a href="#1-promise-定义" class="headerlink" title="1. promise 定义"></a>1. promise 定义</h2><blockquote>
+<p>　　promise是异步编程的一种解决方案，js传统的异步编程通常是通过“回调函数和事件”，ES6中将promise写进标准，提供原生的promise对象。<br>　　所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果。从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。Promise 提供统一的 API，各种异步操作都可以用同样的方法进行处理。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/27/promise详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1210,7 +1030,7 @@ function receiveMessage(event) {
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1275,8 +1095,7 @@ function receiveMessage(event) {
 
       
         
-          
-            <h4 id="1-async函数基本用法"><a href="#1-async函数基本用法" class="headerlink" title="1.async函数基本用法"></a>1.async函数基本用法</h4><blockquote>
+          <h4 id="1-async函数基本用法"><a href="#1-async函数基本用法" class="headerlink" title="1.async函数基本用法"></a>1.async函数基本用法</h4><blockquote>
 <p>async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：</p>
 </blockquote>
 <pre><code>async function getStockByName(name) {
@@ -1288,39 +1107,13 @@ getStockByName(&apos;gogle&apos;).then(function(result) {
     console.log(result)
 })
 </code></pre><hr>
-<h4 id="2-async函数特点"><a href="#2-async函数特点" class="headerlink" title="2.async函数特点"></a>2.async函数特点</h4><p>（1）、返回Promise对象<br>　async函数内部return返回的值，成为then方法回调的参数<br>　async函数内部平抛出错误会导致返回的Promise对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到<br>（2）、搭配await命令<br>　await命令后面返回一个Promise对象，返回该对象的结果，如果不是promise对象，就直接返回对应的值<br>（３）、async函数写法直观，相比于promise，generator的写法更简单易懂。</p>
-<pre><code>function login(urls) {
-    const textPromises = urls.map(url =&gt; {
-        return fetch(url).then(respose =&gt; respose.text());
-    })
-    textPromise.reduce((chain, textPromise) =&gt; {
-        return chain.then(() =&gt; textPromise)
-            .then(text =&gt; console.log(text))
-    }, Promise.resolve());
-} //  promise写法实现异步操作按顺序读取url，按顺序输出
-
-//上面代码使用fetch方法，同时远程读取一组 URL。每个fetch操作都返回一个 Promise
- 对象，放入textPromises数组。然后，reduce方法依次处理每个 Promise 
- 对象，然后使用then，将所有 Promise 对象连起来，因此就可以依次输出结果
-
-async function login(urls) {
-    for(const url of urls) {
-        const response = await fetch(url);
-        console.log(await respose.text());
-    }
-}// async 函数实现
-
-async function login() {
-    const textPromises = urls.map(async url =&gt; {
-        const respose = await fetch(url)
-        reurn respose.text();
-    })
-    for(const textpromise of textPromises) {
-        console.log(await texpromise)
-    }
-}// 多个await并发发出
-</code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/26/async函数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1372,7 +1165,7 @@ async function login() {
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1437,53 +1230,15 @@ async function login() {
 
       
         
-          
-            <h4 id="1-jQuery-ajaxPrefilter-dataTypes-handler"><a href="#1-jQuery-ajaxPrefilter-dataTypes-handler" class="headerlink" title="1. jQuery.ajaxPrefilter([dataTypes],handler)"></a>1. jQuery.ajaxPrefilter([dataTypes],handler)</h4><blockquote>
-<p>jquery的官网文档给出的api方法描述：<br>Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax().</p>
-</blockquote>
-<p>ajaxPrefilter()方法主要是在每次ajax发送send请求前处理请求的选项或者修改存在的一些设置。简单来讲就是调用send之前对HTTP头等进行修改和进一步处理。</p>
-<blockquote>
-<p>dataTypes 类型: String<br>一个可选的字符串，其中包含一个或多个空格分隔的数据类型<br>handler(options, originalOptions, jqXHR) 类型: Function()<br>一个处理程序程序，用于设置未来的Ajax请求的默认值。</p>
-</blockquote>
-<h4 id="2-ajaxPrefilter-方法的作用"><a href="#2-ajaxPrefilter-方法的作用" class="headerlink" title="2.ajaxPrefilter 方法的作用"></a>2.ajaxPrefilter 方法的作用</h4><blockquote>
-<p>参考：<a href="https://www.css88.com/jqapi-1.9/jQuery.ajaxPrefilter/" target="_blank" rel="noopener">https://www.css88.com/jqapi-1.9/jQuery.ajaxPrefilter/</a></p>
-</blockquote>
-<p>通过ajaxPrefilter方法可以取消重复发送的ajax请求,如下官网给的例子：</p>
-<blockquote>
-<p>当自定义选项，需要提前处理，预过滤器（Prefilters）是一个完美的选择。给定下面的代码， 例如，如果自定义abortOnRetry选项被设置为true，那么调用$.ajax()会自动中止请求相同的URL：</p>
-</blockquote>
-<pre><code>var currentRequests = {};
-$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
-  if ( options.abortOnRetry ) {
-    if ( currentRequests[ options.url ] ) {
-      currentRequests[ options.url ].abort();
-    }
-    currentRequests[ options.url ] = jqXHR;
-  }
-});
-</code></pre><p>通过ajaxPrefilter 还可以修改已经存在的选项，如下面例子：</p>
-<pre><code>$.ajaxPrefilter( function( options ) {
-  if ( options.crossDomain ) {
-    options.url = &quot;http://mydomain.net/proxy/&quot; + encodeURIComponent( options.url );
-    options.crossDomain = false;
-  }
-});
-</code></pre><p>通过ajaxPrefilter方法可以根据提供的dataTypes参数，指定处理特定的请求有效</p>
-<pre><code>//以下只针对 json和srcript 请求有效
-
-$.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jqXHR ) {
-  // Modify options, control originalOptions, store jqXHR, etc
-});
-</code></pre><p>通过ajaxPrefilter 可以将请求重定向到另一个类型，并且返回该数据类型。</p>
-<pre><code>//如下，如果url中函数isActuallyScript函数中设定的指定属性，就设置成script的请求
-
-    $.ajaxPrefilter(function( options ) {
-      if ( isActuallyScript( options.url ) ) {
-        return &quot;script&quot;;
-      }
-    });
-</code></pre>
-          
+          <h4 id="1-jQuery-ajaxPrefilter-dataTypes-handler"><a href="#1-jQuery-ajaxPrefilter-dataTypes-handler" class="headerlink" title="1. jQuery.ajaxPrefilter([dataTypes],handler)"></a>1. jQuery.ajaxPrefilter([dataTypes],handler)</h4><blockquote>
+<p>jquery的官网文档给出的api方法描述：<br>Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax().<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/20/ajaxPrefilter/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1535,7 +1290,7 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1600,56 +1355,15 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
 
       
         
-          
-            <blockquote>
-<p>在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。</p>
-</blockquote>
-<h4 id="1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"><a href="#1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法" class="headerlink" title="1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"></a>1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法</h4><pre><code>这四个方法是jquery提供的向某个元素内插入指定内容，当然指定的内容可以包括script标签
-插入的指定内容是不收限制，虽然这个方法可以向html页面中添加js文件但却会产生问题
-比如：
-    $(&apos;head&apos;).prepend(&apos;&lt;script src=&quot;xxx.js&quot;&gt;&lt;/script&gt;&apos;)
-    window.xxx.init() 
-    //xxx方法是xxx.js中定义的全局方法
-    //此时就会报错，提示xxx是undefined
-
-因为prepend的方法无法保证js文件的加载速度，在调用init方法的时候js文件还没有完全加载成功
-因此就会报错，所以不建议使用该方法去动态引入js文件。
-</code></pre><h4 id="2-动态加载js文件方法之二：document-createElement"><a href="#2-动态加载js文件方法之二：document-createElement" class="headerlink" title="2.动态加载js文件方法之二：document.createElement"></a>2.动态加载js文件方法之二：document.createElement</h4><pre><code>document.createElement(nodename) 是js原生方法，指定名称创建一个元素
-
-    var myScript= document.createElement(&quot;script&quot;);
-    myScript.type = &quot;text/javascript&quot;;
-    myScript.src=&quot;xxx.js&quot;;
-    document.body.appendChild(myScript);
-    //此处若立即执行xxx.js中的方法也会报错，因为没有加载完，这种方法脚本也是异步加载
-</code></pre><h4 id="3-动态加载js文件方法之三：document-write"><a href="#3-动态加载js文件方法之三：document-write" class="headerlink" title="3.动态加载js文件方法之三：document.write"></a>3.动态加载js文件方法之三：document.write</h4><pre><code>document.write是直接写入某一元素，也是异步加载的顺序，因此如果立即执行脚本也会出现问题
-
-    document.write(&apos;&lt;script src=&quot;xxx.js&quot;&gt;&lt;/script&gt;&apos;)//加载js脚本，异步
-    window.xxx.init() //找不到该方法，脚本异步加载没有完成
-</code></pre><h4 id="4-动态加载js文件解决异步方法：script的onload事件"><a href="#4-动态加载js文件解决异步方法：script的onload事件" class="headerlink" title="4.动态加载js文件解决异步方法：script的onload事件"></a>4.动态加载js文件解决异步方法：script的onload事件</h4><pre><code>上面的3中方法都是异步的，因此动态生成script标签后不能立即执行js文件中的函数，需要监听一下
-script标签加载完成事件，等js文件加载完成后再去调用js中的方法。
-这里就需要使用script的onload事件
-
-    var myScript = document.createElement(&apos;script&apos;)
-    myScript.src=&quot;xxx.js&quot;
-    document.body.appendChild(myScript)
-    myScript.onload =function(){
-        window.xxx.init() //保证在加载完xxx.js时执行init函数
-    }
-</code></pre><h4 id="5-可以使用jquery的-getScript-方法"><a href="#5-可以使用jquery的-getScript-方法" class="headerlink" title="5.可以使用jquery的$.getScript()方法"></a>5.可以使用jquery的$.getScript()方法</h4><blockquote>
-<p>   详细参看：<a href="https://api.jquery.com/jquery.getscript/" target="_blank" rel="noopener">https://api.jquery.com/jquery.getscript/</a></p>
-</blockquote>
-<pre><code>$.getScript()方法通过http get方法请求并执行js文件
-
-    jQuery.getScript(url,success(response,status))
-    等价于：
-    $.ajax({
-      url: url,
-      dataType: &quot;script&quot;,
-      success: success
-    });
-</code></pre><p>以上是对动态加载js方法的一个小小的总结，在项目开发中注意js的异步加载，在保证动态引入的js加载成功后再调用其中的方法。</p>
-
-          
+          <blockquote>
+<p>在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/15/动态加载js文件/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1701,7 +1415,7 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/header.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1766,142 +1480,14 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
 
       
         
-          
-            <p>第一次搭建的博客，使用github和hexo很简单，省去了使用服务器和后台编程的烦恼，给自己一个空间去记录发生的点点滴滴，当然还是以工作项目记录为主，为自己在工作中遇到的问题做个笔记，希望自己能一点点成长。将博客命名为星空也是希望自己虽然平凡如繁星中的一颗，但还是会努力去发光，努力去耀眼，努力去让你看见。此外我也坚信离开人世的爸爸就在那耀眼的星空中看着我。</p>
-<h4 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h4><pre><code>其中包括原生编程，es6，vue和react等框架
-</code></pre><h4 id="Html"><a href="#Html" class="headerlink" title="Html"></a>Html</h4><pre><code>基础知识和html5常用标签
-</code></pre><h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><pre><code>常用布局和css3动画
-</code></pre><p>这是自己现在主要涉猎的东西，自己在前端开发的道路上还有很多需要去努力学习的。所以加油吧，虽然已不是少年，但还是要有一个炽热的少年心。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/05/24/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liucheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星*空">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/24/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T17:53:53+08:00">
-                2018-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          <p>第一次搭建的博客，使用github和hexo很简单，省去了使用服务器和后台编程的烦恼，给自己一个空间去记录发生的点点滴滴，当然还是以工作项目记录为主，为自己在工作中遇到的问题做个笔记，希望自己能一点点成长。将博客命名为星空也是希望自己虽然平凡如繁星中的一颗，但还是会努力去发光，努力去耀眼，努力去让你看见。我也坚信离开人世的爸爸就在那耀眼的星空中看着我。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/31/我的第一个博客第一篇博文/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1938,6 +1524,10 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1970,6 +1560,10 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="Liucheng" />
+            
               <p class="site-author-name" itemprop="name">Liucheng</p>
               <p class="site-description motion-element" itemprop="description">记录点点滴滴的进步</p>
           </div>
@@ -1981,14 +1575,32 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -2011,6 +1623,13 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
       
 
       
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
 
     </div>
   </aside>
@@ -2032,20 +1651,34 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
 
 
 
@@ -2057,11 +1690,6 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -2086,6 +1714,8 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
 
   
 
+
+  
 
 
 
@@ -2125,6 +1755,11 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
   
   
     <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="vue," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。">
+<meta name="description" content="vue 开发笔记日常工作中某些业务逻辑不复杂页面交互多的页面我通常采用vue来开发，使用vue以及其相关框架技术，很好的整合代码，简单的h5活动页面可以将弹框，toast提示，header以及footer等实现组件化，方便使用和复用，很好的提高了开发效率。其中也有很多细节需要多总结。">
+<meta name="keywords" content="vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="动态加载js文件">
-<meta property="og:url" content="http://lccbupt.github.io/2018/11/15/动态加载js文件/index.html">
+<meta property="og:title" content="vue开发笔记">
+<meta property="og:url" content="http://lccbupt.github.io/2020/04/17/vue开发笔记/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。">
+<meta property="og:description" content="vue 开发笔记日常工作中某些业务逻辑不复杂页面交互多的页面我通常采用vue来开发，使用vue以及其相关框架技术，很好的整合代码，简单的h5活动页面可以将弹框，toast提示，header以及footer等实现组件化，方便使用和复用，很好的提高了开发效率。其中也有很多细节需要多总结。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-17T02:54:21.729Z">
+<meta property="og:updated_time" content="2020-04-17T02:53:31.188Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态加载js文件">
-<meta name="twitter:description" content="在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。">
+<meta name="twitter:title" content="vue开发笔记">
+<meta name="twitter:description" content="vue 开发笔记日常工作中某些业务逻辑不复杂页面交互多的页面我通常采用vue来开发，使用vue以及其相关框架技术，很好的整合代码，简单的h5活动页面可以将弹框，toast提示，header以及footer等实现组件化，方便使用和复用，很好的提高了开发效率。其中也有很多细节需要多总结。">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/11/15/动态加载js文件/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/04/17/vue开发笔记/"/>
 
 
 
 
 
-  <title>动态加载js文件 | 星*空</title>
+  <title>vue开发笔记 | 星*空</title>
   
 
 
@@ -252,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/15/动态加载js文件/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/04/17/vue开发笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -269,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">动态加载js文件</h1>
+          <h1 class="post-title" itemprop="name headline">vue开发笔记</h1>
         
 
         <div class="post-meta">
@@ -281,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T15:33:07+08:00">
-                2018-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T10:23:53+08:00">
+                2020-04-17
               </time>
             
 
@@ -291,6 +292,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -324,53 +347,37 @@
       
 
       
-        <blockquote>
-<p>在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。<br><a id="more"></a></p>
-</blockquote>
-<h4 id="1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"><a href="#1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法" class="headerlink" title="1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"></a>1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法</h4><pre><code>这四个方法是jquery提供的向某个元素内插入指定内容，当然指定的内容可以包括script标签
-插入的指定内容是不收限制，虽然这个方法可以向html页面中添加js文件但却会产生问题
-比如：
-    $(&apos;head&apos;).prepend(&apos;&lt;script src=&quot;xxx.js&quot;&gt;&lt;/script&gt;&apos;)
-    window.xxx.init() 
-    //xxx方法是xxx.js中定义的全局方法
-    //此时就会报错，提示xxx是undefined
-
-因为prepend的方法无法保证js文件的加载速度，在调用init方法的时候js文件还没有完全加载成功
-因此就会报错，所以不建议使用该方法去动态引入js文件。
-</code></pre><h4 id="2-动态加载js文件方法之二：document-createElement"><a href="#2-动态加载js文件方法之二：document-createElement" class="headerlink" title="2.动态加载js文件方法之二：document.createElement"></a>2.动态加载js文件方法之二：document.createElement</h4><pre><code>document.createElement(nodename) 是js原生方法，指定名称创建一个元素
-
-    var myScript= document.createElement(&quot;script&quot;);
-    myScript.type = &quot;text/javascript&quot;;
-    myScript.src=&quot;xxx.js&quot;;
-    document.body.appendChild(myScript);
-    //此处若立即执行xxx.js中的方法也会报错，因为没有加载完，这种方法脚本也是异步加载
-</code></pre><h4 id="3-动态加载js文件方法之三：document-write"><a href="#3-动态加载js文件方法之三：document-write" class="headerlink" title="3.动态加载js文件方法之三：document.write"></a>3.动态加载js文件方法之三：document.write</h4><pre><code>document.write是直接写入某一元素，也是异步加载的顺序，因此如果立即执行脚本也会出现问题
-
-    document.write(&apos;&lt;script src=&quot;xxx.js&quot;&gt;&lt;/script&gt;&apos;)//加载js脚本，异步
-    window.xxx.init() //找不到该方法，脚本异步加载没有完成
-</code></pre><h4 id="4-动态加载js文件解决异步方法：script的onload事件"><a href="#4-动态加载js文件解决异步方法：script的onload事件" class="headerlink" title="4.动态加载js文件解决异步方法：script的onload事件"></a>4.动态加载js文件解决异步方法：script的onload事件</h4><pre><code>上面的3中方法都是异步的，因此动态生成script标签后不能立即执行js文件中的函数，需要监听一下
-script标签加载完成事件，等js文件加载完成后再去调用js中的方法。
-这里就需要使用script的onload事件
-
-    var myScript = document.createElement(&apos;script&apos;)
-    myScript.src=&quot;xxx.js&quot;
-    document.body.appendChild(myScript)
-    myScript.onload =function(){
-        window.xxx.init() //保证在加载完xxx.js时执行init函数
-    }
-</code></pre><h4 id="5-可以使用jquery的-getScript-方法"><a href="#5-可以使用jquery的-getScript-方法" class="headerlink" title="5.可以使用jquery的$.getScript()方法"></a>5.可以使用jquery的$.getScript()方法</h4><blockquote>
-<p>   详细参看：<a href="https://api.jquery.com/jquery.getscript/" target="_blank" rel="noopener">https://api.jquery.com/jquery.getscript/</a></p>
-</blockquote>
-<pre><code>$.getScript()方法通过http get方法请求并执行js文件
-
-    jQuery.getScript(url,success(response,status))
-    等价于：
-    $.ajax({
-      url: url,
-      dataType: &quot;script&quot;,
-      success: success
-    });
-</code></pre><p>以上是对动态加载js方法的一个小小的总结，在项目开发中注意js的异步加载，在保证动态引入的js加载成功后再调用其中的方法。</p>
+        <h3 id="vue-开发笔记"><a href="#vue-开发笔记" class="headerlink" title="vue 开发笔记"></a>vue 开发笔记</h3><p>日常工作中某些业务逻辑不复杂页面交互多的页面我通常采用vue来开发，使用vue以及其相关框架技术，很好的整合代码，简单的h5活动页面可以将弹框，toast提示，header以及footer等实现组件化，方便使用和复用，很好的提高了开发效率。其中也有很多细节需要多总结。<br><a id="more"></a></p>
+<h4 id="一、vue中style标签中的scoped和module"><a href="#一、vue中style标签中的scoped和module" class="headerlink" title="一、vue中style标签中的scoped和module"></a>一、vue中style标签中的scoped和module</h4><p>在vue中每个组件都可以定义自己所属的样式，为了各个组件和页面之间的样式不互相影响，可以在style标签上定义两个参数：scoped 和module</p>
+<h4 id="1-关于scoped-css"><a href="#1-关于scoped-css" class="headerlink" title="1.关于scoped css"></a>1.关于scoped css</h4><ul>
+<li>当 style 标签中有scoped属性，则它的css样式仅对当前组件元素；</li>
+<li>通过postCss实现转换</li>
+<li>组件中可以既包含全局样式css也可以包括scoped css</li>
+<li>使用scoped时，父组件的样式不会关联到子组件中；但是子组件中的根节点将同时受到父组件的作用域CSS和子组件的作用域CSS的影响。这样父组件就可以为布局设计子组件根元素的样式。</li>
+<li>深度选择器：如果你想让某一个选择器样式影响子组件；你可以使用‘ &gt;&gt;&gt; ’此选择符；（一些css预处理器中，比如sass，可能不支持‘&gt;&gt;&gt;’该选择符，你可以使用/deep/ 或者::v-deep）</li>
+<li>通过v-html产生的Dom元素并不会受scoped css样式影响；但是仍然可以使用深度选择器来设置它们的样式。</li>
+</ul>
+<h4 id="2-关于css-modules"><a href="#2-关于css-modules" class="headerlink" title="2.关于css modules"></a>2.关于css modules</h4><p>css modules是比较流行的css处理系统模块；可以替代以上描述的scoped css；</p>
+<ul>
+<li><p>使用方法：首先 css modules 必须通过配置开启：modules: true -&gt; css-loader；然后style标签添加module</p>
+</li>
+<li><p>module属性可以将CSS模块局部变量对象作为名称为$style的计算属性注入到组件中。你可以在你的模板中使用动态类绑定:</p>
+<pre><code>&lt;template&gt;
+  &lt;p :class=&quot;$style.red&quot;&gt;
+    This should be red
+  &lt;/p&gt;
+&lt;/template&gt;
+</code></pre></li>
+<li><p>除此之外你也可以在javascript中获取到css modules属性</p>
+</li>
+</ul>
+<h4 id="二、vue-router中的路由模式：history和hash"><a href="#二、vue-router中的路由模式：history和hash" class="headerlink" title="二、vue-router中的路由模式：history和hash"></a>二、vue-router中的路由模式：history和hash</h4><p>在单页面应用中可以使用vue-router配置多个路由页面；但是在vue-router中的路由配置有一个选项mode用来指定路由模式；</p>
+<h5 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h5><ul>
+<li>类型： string</li>
+<li>参数值： hash | history | abstract</li>
+<li>hash：使用URL hash值来作路由。支持所有浏览器，包括不支持 HTML5 History Api 的浏览器；页面在任一路由刷新都不会报错；不用增加额外的服务端配置</li>
+<li>history：依赖 HTML5 History API 和服务器配置；在任一路由刷新页面时如果不增加服务端配置重新定向，会造成404；</li>
+</ul>
 
       
     </div>
@@ -386,6 +393,12 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
 
       
       
@@ -395,8 +408,8 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/31/我的第一个博客第一篇博文/" rel="next" title="我的第一个博客第一篇博文">
-                <i class="fa fa-chevron-left"></i> 我的第一个博客第一篇博文
+              <a href="/2020/03/24/20200324/" rel="next" title="javascript中的call、apply和bind">
+                <i class="fa fa-chevron-left"></i> javascript中的call、apply和bind
               </a>
             
           </div>
@@ -404,10 +417,6 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/20/ajaxPrefilter/" rel="prev" title="了解一下jQuery.ajaxPrefilter()">
-                了解一下jQuery.ajaxPrefilter() <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -543,7 +552,7 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"><span class="nav-number">1.</span> <span class="nav-text">1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-动态加载js文件方法之二：document-createElement"><span class="nav-number">2.</span> <span class="nav-text">2.动态加载js文件方法之二：document.createElement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-动态加载js文件方法之三：document-write"><span class="nav-number">3.</span> <span class="nav-text">3.动态加载js文件方法之三：document.write</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-动态加载js文件解决异步方法：script的onload事件"><span class="nav-number">4.</span> <span class="nav-text">4.动态加载js文件解决异步方法：script的onload事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-可以使用jquery的-getScript-方法"><span class="nav-number">5.</span> <span class="nav-text">5.可以使用jquery的$.getScript()方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-开发笔记"><span class="nav-number">1.</span> <span class="nav-text">vue 开发笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、vue中style标签中的scoped和module"><span class="nav-number">1.1.</span> <span class="nav-text">一、vue中style标签中的scoped和module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-关于scoped-css"><span class="nav-number">1.2.</span> <span class="nav-text">1.关于scoped css</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-关于css-modules"><span class="nav-number">1.3.</span> <span class="nav-text">2.关于css modules</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、vue-router中的路由模式：history和hash"><span class="nav-number">1.4.</span> <span class="nav-text">二、vue-router中的路由模式：history和hash</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#mode"><span class="nav-number">1.4.1.</span> <span class="nav-text">mode</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

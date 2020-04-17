@@ -79,17 +79,16 @@
 
 
 
-<meta name="description" content="在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="动态加载js文件">
-<meta property="og:url" content="http://lccbupt.github.io/2018/11/15/动态加载js文件/index.html">
+<meta name="description" content="记录点点滴滴的进步">
+<meta property="og:type" content="website">
+<meta property="og:title" content="星*空">
+<meta property="og:url" content="http://lccbupt.github.io/page/2/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。">
+<meta property="og:description" content="记录点点滴滴的进步">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-17T02:54:21.729Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="动态加载js文件">
-<meta name="twitter:description" content="在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。">
+<meta name="twitter:title" content="星*空">
+<meta name="twitter:description" content="记录点点滴滴的进步">
 
 
 
@@ -119,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/11/15/动态加载js文件/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/page/2/"/>
 
 
 
 
 
-  <title>动态加载js文件 | 星*空</title>
+  <title>星*空</title>
   
 
 
@@ -144,7 +143,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -237,9 +237,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/15/动态加载js文件/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/05/24/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -269,7 +269,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">动态加载js文件</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/24/hello-world/" itemprop="url">Hello World</a></h1>
         
 
         <div class="post-meta">
@@ -281,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T15:33:07+08:00">
-                2018-11-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-24T17:53:53+08:00">
+                2018-05-24
               </time>
             
 
@@ -300,11 +302,6 @@
           
           
 
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv">本文总阅读量
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-            </span>
           
 
           
@@ -324,54 +321,20 @@
       
 
       
-        <blockquote>
-<p>在某些复杂的项目中我们需要适配多个平台或者渠道，因此需要引入不同平台的js通用文件。所以我们需要根据不同的平台环境判断引入不同的js文件，此时就需要我们掌握动态加载js文件的常用方法以及遇到的常见问题。这里总结几种常用方法和各自的优缺点。<br><a id="more"></a></p>
-</blockquote>
-<h4 id="1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"><a href="#1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法" class="headerlink" title="1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"></a>1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法</h4><pre><code>这四个方法是jquery提供的向某个元素内插入指定内容，当然指定的内容可以包括script标签
-插入的指定内容是不收限制，虽然这个方法可以向html页面中添加js文件但却会产生问题
-比如：
-    $(&apos;head&apos;).prepend(&apos;&lt;script src=&quot;xxx.js&quot;&gt;&lt;/script&gt;&apos;)
-    window.xxx.init() 
-    //xxx方法是xxx.js中定义的全局方法
-    //此时就会报错，提示xxx是undefined
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
-因为prepend的方法无法保证js文件的加载速度，在调用init方法的时候js文件还没有完全加载成功
-因此就会报错，所以不建议使用该方法去动态引入js文件。
-</code></pre><h4 id="2-动态加载js文件方法之二：document-createElement"><a href="#2-动态加载js文件方法之二：document-createElement" class="headerlink" title="2.动态加载js文件方法之二：document.createElement"></a>2.动态加载js文件方法之二：document.createElement</h4><pre><code>document.createElement(nodename) 是js原生方法，指定名称创建一个元素
-
-    var myScript= document.createElement(&quot;script&quot;);
-    myScript.type = &quot;text/javascript&quot;;
-    myScript.src=&quot;xxx.js&quot;;
-    document.body.appendChild(myScript);
-    //此处若立即执行xxx.js中的方法也会报错，因为没有加载完，这种方法脚本也是异步加载
-</code></pre><h4 id="3-动态加载js文件方法之三：document-write"><a href="#3-动态加载js文件方法之三：document-write" class="headerlink" title="3.动态加载js文件方法之三：document.write"></a>3.动态加载js文件方法之三：document.write</h4><pre><code>document.write是直接写入某一元素，也是异步加载的顺序，因此如果立即执行脚本也会出现问题
-
-    document.write(&apos;&lt;script src=&quot;xxx.js&quot;&gt;&lt;/script&gt;&apos;)//加载js脚本，异步
-    window.xxx.init() //找不到该方法，脚本异步加载没有完成
-</code></pre><h4 id="4-动态加载js文件解决异步方法：script的onload事件"><a href="#4-动态加载js文件解决异步方法：script的onload事件" class="headerlink" title="4.动态加载js文件解决异步方法：script的onload事件"></a>4.动态加载js文件解决异步方法：script的onload事件</h4><pre><code>上面的3中方法都是异步的，因此动态生成script标签后不能立即执行js文件中的函数，需要监听一下
-script标签加载完成事件，等js文件加载完成后再去调用js中的方法。
-这里就需要使用script的onload事件
-
-    var myScript = document.createElement(&apos;script&apos;)
-    myScript.src=&quot;xxx.js&quot;
-    document.body.appendChild(myScript)
-    myScript.onload =function(){
-        window.xxx.init() //保证在加载完xxx.js时执行init函数
-    }
-</code></pre><h4 id="5-可以使用jquery的-getScript-方法"><a href="#5-可以使用jquery的-getScript-方法" class="headerlink" title="5.可以使用jquery的$.getScript()方法"></a>5.可以使用jquery的$.getScript()方法</h4><blockquote>
-<p>   详细参看：<a href="https://api.jquery.com/jquery.getscript/" target="_blank" rel="noopener">https://api.jquery.com/jquery.getscript/</a></p>
-</blockquote>
-<pre><code>$.getScript()方法通过http get方法请求并执行js文件
-
-    jQuery.getScript(url,success(response,status))
-    等价于：
-    $.ajax({
-      url: url,
-      dataType: &quot;script&quot;,
-      success: success
-    });
-</code></pre><p>以上是对动态加载js方法的一个小小的总结，在项目开发中注意js的异步加载，在保证动态引入的js加载成功后再调用其中的方法。</p>
-
+          
+        
       
     </div>
     
@@ -388,32 +351,12 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/05/31/我的第一个博客第一篇博文/" rel="next" title="我的第一个博客第一篇博文">
-                <i class="fa fa-chevron-left"></i> 我的第一个博客第一篇博文
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/20/ajaxPrefilter/" rel="prev" title="了解一下jQuery.ajaxPrefilter()">
-                了解一下jQuery.ajaxPrefilter() <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -423,11 +366,14 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -435,10 +381,6 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
 
 
           
-
-  
-
-
 
         </div>
         
@@ -459,17 +401,8 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -533,22 +466,6 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法"><span class="nav-number">1.</span> <span class="nav-text">1.动态加载js文件方法一：jquery的append，appendTo，prepend，prependTo方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-动态加载js文件方法之二：document-createElement"><span class="nav-number">2.</span> <span class="nav-text">2.动态加载js文件方法之二：document.createElement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-动态加载js文件方法之三：document-write"><span class="nav-number">3.</span> <span class="nav-text">3.动态加载js文件方法之三：document.write</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-动态加载js文件解决异步方法：script的onload事件"><span class="nav-number">4.</span> <span class="nav-text">4.动态加载js文件解决异步方法：script的onload事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-可以使用jquery的-getScript-方法"><span class="nav-number">5.</span> <span class="nav-text">5.可以使用jquery的$.getScript()方法</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -712,10 +629,6 @@ script标签加载完成事件，等js文件加载完成后再去调用js中的�
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
