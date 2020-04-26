@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Javascript,jQuery," />
+  <meta name="keywords" content="React," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="1. jQuery.ajaxPrefilter([dataTypes],handler) jquery的官网文档给出的api方法描述：Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.aja">
-<meta name="keywords" content="Javascript,jQuery">
+<meta name="description" content="React是现在很流行的前端框架，之前在项目中使用过几次，但没有系统的学习过；现在的前端框架很多，不仅要会使用，也需要多深入学习，了解其背后的奥秘；首先我先梳理react核心的基础知识，先打好基础。">
+<meta name="keywords" content="React">
 <meta property="og:type" content="article">
-<meta property="og:title" content="了解一下jQuery.ajaxPrefilter()">
-<meta property="og:url" content="http://lccbupt.github.io/2018/11/20/ajaxPrefilter/index.html">
+<meta property="og:title" content="React核心基础知识学习（一）">
+<meta property="og:url" content="http://lccbupt.github.io/2020/04/26/React核心基础知识学习（一）/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="1. jQuery.ajaxPrefilter([dataTypes],handler) jquery的官网文档给出的api方法描述：Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.aja">
+<meta property="og:description" content="React是现在很流行的前端框架，之前在项目中使用过几次，但没有系统的学习过；现在的前端框架很多，不仅要会使用，也需要多深入学习，了解其背后的奥秘；首先我先梳理react核心的基础知识，先打好基础。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-17T03:48:18.125Z">
+<meta property="og:image" content="http://lccbupt.github.io/2020/04/26/React核心基础知识学习（一）/React.png">
+<meta property="og:updated_time" content="2020-04-26T10:17:30.580Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="了解一下jQuery.ajaxPrefilter()">
-<meta name="twitter:description" content="1. jQuery.ajaxPrefilter([dataTypes],handler) jquery的官网文档给出的api方法描述：Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.aja">
+<meta name="twitter:title" content="React核心基础知识学习（一）">
+<meta name="twitter:description" content="React是现在很流行的前端框架，之前在项目中使用过几次，但没有系统的学习过；现在的前端框架很多，不仅要会使用，也需要多深入学习，了解其背后的奥秘；首先我先梳理react核心的基础知识，先打好基础。">
+<meta name="twitter:image" content="http://lccbupt.github.io/2020/04/26/React核心基础知识学习（一）/React.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/11/20/ajaxPrefilter/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/04/26/React核心基础知识学习（一）/"/>
 
 
 
 
 
-  <title>了解一下jQuery.ajaxPrefilter() | 星*空</title>
+  <title>React核心基础知识学习（一） | 星*空</title>
   
 
 
@@ -253,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/20/ajaxPrefilter/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/04/26/React核心基础知识学习（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">了解一下jQuery.ajaxPrefilter()</h1>
+          <h1 class="post-title" itemprop="name headline">React核心基础知识学习（一）</h1>
         
 
         <div class="post-meta">
@@ -282,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-20T15:58:39+08:00">
-                2018-11-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T17:34:22+08:00">
+                2020-04-26
               </time>
             
 
@@ -305,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
                   </a>
                 </span>
 
@@ -347,50 +349,34 @@
       
 
       
-        <h4 id="1-jQuery-ajaxPrefilter-dataTypes-handler"><a href="#1-jQuery-ajaxPrefilter-dataTypes-handler" class="headerlink" title="1. jQuery.ajaxPrefilter([dataTypes],handler)"></a>1. jQuery.ajaxPrefilter([dataTypes],handler)</h4><blockquote>
-<p>jquery的官网文档给出的api方法描述：<br>Description: Handle custom Ajax options or modify existing options before each request is sent and before they are processed by $.ajax().<br><a id="more"></a><br>ajaxPrefilter()方法主要是在每次ajax发送send请求前处理请求的选项或者修改存在的一些设置。简单来讲就是调用send之前对HTTP头等进行修改和进一步处理。</p>
-</blockquote>
-<blockquote>
-<p>dataTypes 类型: String<br>一个可选的字符串，其中包含一个或多个空格分隔的数据类型<br>handler(options, originalOptions, jqXHR) 类型: Function()<br>一个处理程序程序，用于设置未来的Ajax请求的默认值。</p>
-</blockquote>
-<h4 id="2-ajaxPrefilter-方法的作用"><a href="#2-ajaxPrefilter-方法的作用" class="headerlink" title="2.ajaxPrefilter 方法的作用"></a>2.ajaxPrefilter 方法的作用</h4><blockquote>
-<p>参考：<a href="https://www.css88.com/jqapi-1.9/jQuery.ajaxPrefilter/" target="_blank" rel="noopener">https://www.css88.com/jqapi-1.9/jQuery.ajaxPrefilter/</a></p>
-</blockquote>
-<p>通过ajaxPrefilter方法可以取消重复发送的ajax请求,如下官网给的例子：</p>
-<blockquote>
-<p>当自定义选项，需要提前处理，预过滤器（Prefilters）是一个完美的选择。给定下面的代码， 例如，如果自定义abortOnRetry选项被设置为true，那么调用$.ajax()会自动中止请求相同的URL：</p>
-</blockquote>
-<pre><code>var currentRequests = {};
-$.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
-  if ( options.abortOnRetry ) {
-    if ( currentRequests[ options.url ] ) {
-      currentRequests[ options.url ].abort();
-    }
-    currentRequests[ options.url ] = jqXHR;
-  }
-});
-</code></pre><p>通过ajaxPrefilter 还可以修改已经存在的选项，如下面例子：</p>
-<pre><code>$.ajaxPrefilter( function( options ) {
-  if ( options.crossDomain ) {
-    options.url = &quot;http://mydomain.net/proxy/&quot; + encodeURIComponent( options.url );
-    options.crossDomain = false;
-  }
-});
-</code></pre><p>通过ajaxPrefilter方法可以根据提供的dataTypes参数，指定处理特定的请求有效</p>
-<pre><code>//以下只针对 json和srcript 请求有效
+        <img src="/2020/04/26/React核心基础知识学习（一）/React.png" title="react学习思维导图一">
+<p>React是现在很流行的前端框架，之前在项目中使用过几次，但没有系统的学习过；现在的前端框架很多，不仅要会使用，也需要多深入学习，了解其背后的奥秘；首先我先梳理react核心的基础知识，先打好基础。<br><a id="more"></a></p>
+<h4 id="1-React中的元素渲染和条件渲染"><a href="#1-React中的元素渲染和条件渲染" class="headerlink" title="1.React中的元素渲染和条件渲染"></a>1.React中的元素渲染和条件渲染</h4><p>react中对于reactDom元素的描述，多采用jsx语法，jsx是一种javascript的扩展语法，其并不表示html标签，jsx可以嵌入一个表达式其本身也是一个表达式；在React中渲染元素使用ReactDom.render()方法。<br>在实际项目中会有不同情况下渲染不同的dom元素，这时就需要使用条件渲染；有三种方法可以实现条件渲染：元素变量、与运算符&amp;&amp;和三木运算符</p>
+<h4 id="2-React中的组件"><a href="#2-React中的组件" class="headerlink" title="2.React中的组件"></a>2.React中的组件</h4><p>React中实现组件可以有两种方式：</p>
+<ul>
+<li>函数组件</li>
+<li>class组件，继承React.Component</li>
+</ul>
+<p>组件名首字母必须为大写，小写的情况下React会默认为html标签元素；<br>组件实现为单一功能原则，一个组件原则上只负责一个功能，减少页面耦合性，提高代码复用</p>
+<h5 id="class组件中的事件处理注意项"><a href="#class组件中的事件处理注意项" class="headerlink" title="class组件中的事件处理注意项"></a>class组件中的事件处理注意项</h5><ul>
+<li>事件处理声明为class中的方法 function</li>
+<li>注意this的绑定 </li>
+</ul>
+<h4 id="3-React中的state和props"><a href="#3-React中的state和props" class="headerlink" title="3.React中的state和props"></a>3.React中的state和props</h4><h5 id="state"><a href="#state" class="headerlink" title="state"></a>state</h5><ul>
+<li>组件内私有的，完全受控于当前组件</li>
+<li>不能直接修改state，使用setState()</li>
+<li>state表示随时间产生变化的数据，仅在实现交互时使用</li>
+</ul>
+<h5 id="props"><a href="#props" class="headerlink" title="props"></a>props</h5><ul>
+<li>只读性，不能修改</li>
+<li>类似于函数的传参参数，子组件从父组件读取数据</li>
+</ul>
+<h4 id="4-React常用生命周期"><a href="#4-React常用生命周期" class="headerlink" title="4.React常用生命周期"></a>4.React常用生命周期</h4><ul>
+<li>componentDidMount() 会在组件挂载后（插入 DOM 树中）立即调用。</li>
+<li>componentDidUpdate() 会在更新后会被立即调用。首次渲染不会执行此方法。</li>
+<li>componentWillUnmount() 会在组件卸载及销毁之前直接调用。在此方法中执行必要的清理操作，例如，清除 timer，取消网络请求或清除在 componentDidMount() 中创建的订阅等。</li>
+</ul>
 
-$.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jqXHR ) {
-  // Modify options, control originalOptions, store jqXHR, etc
-});
-</code></pre><p>通过ajaxPrefilter 可以将请求重定向到另一个类型，并且返回该数据类型。</p>
-<pre><code>//如下，如果url中函数isActuallyScript函数中设定的指定属性，就设置成script的请求
-
-    $.ajaxPrefilter(function( options ) {
-      if ( isActuallyScript( options.url ) ) {
-        return &quot;script&quot;;
-      }
-    });
-</code></pre>
       
     </div>
     
@@ -407,9 +393,7 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
       
         <div class="post-tags">
           
-            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
-          
-            <a href="/tags/jQuery/" rel="tag"># jQuery</a>
+            <a href="/tags/React/" rel="tag"># React</a>
           
         </div>
       
@@ -422,8 +406,8 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/15/动态加载js文件/" rel="next" title="动态加载js文件">
-                <i class="fa fa-chevron-left"></i> 动态加载js文件
+              <a href="/2020/04/23/Seven-Times-Have-I-Despised-My-Soul/" rel="next" title="Seven Times Have I Despised My Soul">
+                <i class="fa fa-chevron-left"></i> Seven Times Have I Despised My Soul
               </a>
             
           </div>
@@ -431,10 +415,6 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/26/async函数/" rel="prev" title="async函数">
-                async函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -570,7 +550,7 @@ $.ajaxPrefilter( &quot;json script&quot;, function( options, originalOptions, jq
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-jQuery-ajaxPrefilter-dataTypes-handler"><span class="nav-number">1.</span> <span class="nav-text">1. jQuery.ajaxPrefilter([dataTypes],handler)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-ajaxPrefilter-方法的作用"><span class="nav-number">2.</span> <span class="nav-text">2.ajaxPrefilter 方法的作用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-React中的元素渲染和条件渲染"><span class="nav-number">1.</span> <span class="nav-text">1.React中的元素渲染和条件渲染</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-React中的组件"><span class="nav-number">2.</span> <span class="nav-text">2.React中的组件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#class组件中的事件处理注意项"><span class="nav-number">2.1.</span> <span class="nav-text">class组件中的事件处理注意项</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-React中的state和props"><span class="nav-number">3.</span> <span class="nav-text">3.React中的state和props</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#state"><span class="nav-number">3.1.</span> <span class="nav-text">state</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#props"><span class="nav-number">3.2.</span> <span class="nav-text">props</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-React常用生命周期"><span class="nav-number">4.</span> <span class="nav-text">4.React常用生命周期</span></a></li></ol></div>
             
 
           </div>
