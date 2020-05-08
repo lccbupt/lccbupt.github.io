@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Javascript," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
-<meta name="keywords" content="Javascript">
+<meta name="description" content="CORS 一个w3c标准，它允许浏览器向跨域服务器发出XMLHttpRequest请求，从而克服AJAX的同源策略限制。  一、简介 CORS需要浏览器和服务器同时支持，所有浏览器（ie10+）以上都支持, CORS通信过程是浏览器自动完成，通信与AJAX同源通信没有差别, CORS通信关键在于服务器，只要服务端实现了CORS接口，就可以跨域通信。">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="async函数">
-<meta property="og:url" content="http://lccbupt.github.io/2018/11/26/async函数/index.html">
+<meta property="og:title" content="跨域资源共享CORS">
+<meta property="og:url" content="http://lccbupt.github.io/2020/05/08/跨域资源共享CORS/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
+<meta property="og:description" content="CORS 一个w3c标准，它允许浏览器向跨域服务器发出XMLHttpRequest请求，从而克服AJAX的同源策略限制。  一、简介 CORS需要浏览器和服务器同时支持，所有浏览器（ie10+）以上都支持, CORS通信过程是浏览器自动完成，通信与AJAX同源通信没有差别, CORS通信关键在于服务器，只要服务端实现了CORS接口，就可以跨域通信。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-17T03:45:11.229Z">
+<meta property="og:updated_time" content="2020-05-08T08:30:52.859Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="async函数">
-<meta name="twitter:description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
+<meta name="twitter:title" content="跨域资源共享CORS">
+<meta name="twitter:description" content="CORS 一个w3c标准，它允许浏览器向跨域服务器发出XMLHttpRequest请求，从而克服AJAX的同源策略限制。  一、简介 CORS需要浏览器和服务器同时支持，所有浏览器（ie10+）以上都支持, CORS通信过程是浏览器自动完成，通信与AJAX同源通信没有差别, CORS通信关键在于服务器，只要服务端实现了CORS接口，就可以跨域通信。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/11/26/async函数/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/05/08/跨域资源共享CORS/"/>
 
 
 
 
 
-  <title>async函数 | 星*空</title>
+  <title>跨域资源共享CORS | 星*空</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/26/async函数/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/05/08/跨域资源共享CORS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">async函数</h1>
+          <h1 class="post-title" itemprop="name headline">跨域资源共享CORS</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-26T17:59:02+08:00">
-                2018-11-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T11:47:05+08:00">
+                2020-05-08
               </time>
             
 
@@ -325,51 +325,36 @@
       
 
       
-        <h4 id="1-async函数基本用法"><a href="#1-async函数基本用法" class="headerlink" title="1.async函数基本用法"></a>1.async函数基本用法</h4><blockquote>
-<p>async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：</p>
+        <blockquote>
+<p>CORS 一个w3c标准，它允许浏览器向跨域服务器发出XMLHttpRequest请求，从而克服AJAX的同源策略限制。</p>
 </blockquote>
-<pre><code>async function getStockByName(name) {
-    const symbol = await getStockSymbol(name);
-    const stockPrice = await getStockPrice(symbol)
-    return stcokPrice;
-}
-getStockByName(&apos;gogle&apos;).then(function(result) {
-    console.log(result)
-})
-</code></pre><hr>
-<a id="more"></a>
-<h4 id="2-async函数特点"><a href="#2-async函数特点" class="headerlink" title="2.async函数特点"></a>2.async函数特点</h4><p>（1）、返回Promise对象<br>　async函数内部return返回的值，成为then方法回调的参数<br>　async函数内部平抛出错误会导致返回的Promise对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到<br>（2）、搭配await命令<br>　await命令后面返回一个Promise对象，返回该对象的结果，如果不是promise对象，就直接返回对应的值<br>（３）、async函数写法直观，相比于promise，generator的写法更简单易懂。</p>
-<pre><code>function login(urls) {
-    const textPromises = urls.map(url =&gt; {
-        return fetch(url).then(respose =&gt; respose.text());
-    })
-    textPromise.reduce((chain, textPromise) =&gt; {
-        return chain.then(() =&gt; textPromise)
-            .then(text =&gt; console.log(text))
-    }, Promise.resolve());
-} //  promise写法实现异步操作按顺序读取url，按顺序输出
+<h4 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h4><ul>
+<li>CORS需要浏览器和服务器同时支持，所有浏览器（ie10+）以上都支持,</li>
+<li>CORS通信过程是浏览器自动完成，通信与AJAX同源通信没有差别,</li>
+<li>CORS通信关键在于服务器，只要服务端实现了CORS接口，就可以跨域通信。<a id="more"></a>
+</li>
+</ul>
+<h4 id="二、两种请求"><a href="#二、两种请求" class="headerlink" title="二、两种请求"></a>二、两种请求</h4><p>浏览器将CORS请求分为两类；简单请求 和 非简单请求</p>
+<h5 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h5><ul>
+<li>请求方法 HEAD,GET,POST</li>
+<li><p>HTTP头部信息不超出以下字段：<br>  Accept<br>  Accept-Language<br>  Content-Language<br>  Last-Event-ID<br>  Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain</p>
+</li>
+<li><p>简单请求流程：<br>  浏览器直接发出CORS请求，在头部信息中增加一个Origin字段<br>  如果Origin指定的源不在许可范围内，服务器返回正常的HTTP回应，浏览器发现回应的头信息中没有Access-Control-Allow-Origin字段就报错</p>
+</li>
+</ul>
+<h5 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h5><ul>
+<li>请求方法如PUT\DELETE等，对服务器有特殊要求</li>
+<li>或者Content-Type的字段是 application/json</li>
+<li>流程：<br>  正式通信之前，会增加一次HTTP查询请求，成为“预检”请求<br>  浏览器先询问服务器，当前页面是否在服务器可续名单内，之后才正式发出XMLHttpRequest</li>
+</ul>
+<h4 id="三、与jsonp方式跨域区别"><a href="#三、与jsonp方式跨域区别" class="headerlink" title="三、与jsonp方式跨域区别"></a>三、与jsonp方式跨域区别</h4><ul>
+<li>jsonp的跨域方式只支持Get方法；CORS支持所有类型的http请求</li>
+</ul>
+<hr>
+<blockquote>
+<p>参考资料： <a href="https://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">https://www.ruanyifeng.com/blog/2016/04/cors.html</a></p>
+</blockquote>
 
-//上面代码使用fetch方法，同时远程读取一组 URL。每个fetch操作都返回一个 Promise
- 对象，放入textPromises数组。然后，reduce方法依次处理每个 Promise 
- 对象，然后使用then，将所有 Promise 对象连起来，因此就可以依次输出结果
-
-async function login(urls) {
-    for(const url of urls) {
-        const response = await fetch(url);
-        console.log(await respose.text());
-    }
-}// async 函数实现
-
-async function login() {
-    const textPromises = urls.map(async url =&gt; {
-        const respose = await fetch(url)
-        reurn respose.text();
-    })
-    for(const textpromise of textPromises) {
-        console.log(await texpromise)
-    }
-}// 多个await并发发出
-</code></pre>
       
     </div>
     
@@ -386,7 +371,7 @@ async function login() {
       
         <div class="post-tags">
           
-            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -399,8 +384,8 @@ async function login() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/20/ajaxPrefilter/" rel="next" title="了解一下jQuery.ajaxPrefilter()">
-                <i class="fa fa-chevron-left"></i> 了解一下jQuery.ajaxPrefilter()
+              <a href="/2020/04/26/React核心基础知识学习（一）/" rel="next" title="React核心基础知识学习（一）">
+                <i class="fa fa-chevron-left"></i> React核心基础知识学习（一）
               </a>
             
           </div>
@@ -409,8 +394,8 @@ async function login() {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/27/promise详解/" rel="prev" title="promise对象">
-                promise对象 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/05/08/antd的Table组件使用/" rel="prev" title="Ant Design的Table组件实现点击行高亮提示">
+                Ant Design的Table组件实现点击行高亮提示 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -547,7 +532,7 @@ async function login() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-async函数基本用法"><span class="nav-number">1.</span> <span class="nav-text">1.async函数基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-async函数特点"><span class="nav-number">2.</span> <span class="nav-text">2.async函数特点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、简介"><span class="nav-number">1.</span> <span class="nav-text">一、简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、两种请求"><span class="nav-number">2.</span> <span class="nav-text">二、两种请求</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#简单请求"><span class="nav-number">2.1.</span> <span class="nav-text">简单请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#非简单请求"><span class="nav-number">2.2.</span> <span class="nav-text">非简单请求</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、与jsonp方式跨域区别"><span class="nav-number">3.</span> <span class="nav-text">三、与jsonp方式跨域区别</span></a></li></ol></div>
             
 
           </div>

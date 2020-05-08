@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Javascript," />
+  <meta name="keywords" content="Antd," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
-<meta name="keywords" content="Javascript">
+<meta name="description" content="一、Ant Design简介 antd 是蚂蚁金服出品的面向企业级的设计体系组件库，使用react封装，在后台项目中使用体验很好；官网地址：https://ant.design/index-cn  二、需求使用antd中的Table组件展示接口返回的表格数据；并且当点击表格的某一行时，需要当前行高亮显示 三、解决方法主要使用Table 组件的rowClassName 和 onRow 属性；  ro">
+<meta name="keywords" content="Antd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="async函数">
-<meta property="og:url" content="http://lccbupt.github.io/2018/11/26/async函数/index.html">
+<meta property="og:title" content="Ant Design的Table组件实现点击行高亮提示">
+<meta property="og:url" content="http://lccbupt.github.io/2020/05/08/antd的Table组件使用/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
+<meta property="og:description" content="一、Ant Design简介 antd 是蚂蚁金服出品的面向企业级的设计体系组件库，使用react封装，在后台项目中使用体验很好；官网地址：https://ant.design/index-cn  二、需求使用antd中的Table组件展示接口返回的表格数据；并且当点击表格的某一行时，需要当前行高亮显示 三、解决方法主要使用Table 组件的rowClassName 和 onRow 属性；  ro">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-17T03:45:11.229Z">
+<meta property="og:updated_time" content="2020-05-08T10:32:15.258Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="async函数">
-<meta name="twitter:description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
+<meta name="twitter:title" content="Ant Design的Table组件实现点击行高亮提示">
+<meta name="twitter:description" content="一、Ant Design简介 antd 是蚂蚁金服出品的面向企业级的设计体系组件库，使用react封装，在后台项目中使用体验很好；官网地址：https://ant.design/index-cn  二、需求使用antd中的Table组件展示接口返回的表格数据；并且当点击表格的某一行时，需要当前行高亮显示 三、解决方法主要使用Table 组件的rowClassName 和 onRow 属性；  ro">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/11/26/async函数/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/05/08/antd的Table组件使用/"/>
 
 
 
 
 
-  <title>async函数 | 星*空</title>
+  <title>Ant Design的Table组件实现点击行高亮提示 | 星*空</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/26/async函数/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/05/08/antd的Table组件使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">async函数</h1>
+          <h1 class="post-title" itemprop="name headline">Ant Design的Table组件实现点击行高亮提示</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-26T17:59:02+08:00">
-                2018-11-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T16:28:20+08:00">
+                2020-05-08
               </time>
             
 
@@ -325,51 +325,46 @@
       
 
       
-        <h4 id="1-async函数基本用法"><a href="#1-async函数基本用法" class="headerlink" title="1.async函数基本用法"></a>1.async函数基本用法</h4><blockquote>
-<p>async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：</p>
+        <h3 id="一、Ant-Design简介"><a href="#一、Ant-Design简介" class="headerlink" title="一、Ant Design简介"></a>一、Ant Design简介</h3><blockquote>
+<p>antd 是蚂蚁金服出品的面向企业级的设计体系组件库，使用react封装，在后台项目中使用体验很好；<br>官网地址：<a href="https://ant.design/index-cn" target="_blank" rel="noopener">https://ant.design/index-cn</a></p>
 </blockquote>
-<pre><code>async function getStockByName(name) {
-    const symbol = await getStockSymbol(name);
-    const stockPrice = await getStockPrice(symbol)
-    return stcokPrice;
+<h3 id="二、需求"><a href="#二、需求" class="headerlink" title="二、需求"></a>二、需求</h3><p>使用antd中的Table组件展示接口返回的表格数据；并且当点击表格的某一行时，需要当前行高亮显示</p>
+<h3 id="三、解决方法"><a href="#三、解决方法" class="headerlink" title="三、解决方法"></a>三、解决方法</h3><p>主要使用Table 组件的rowClassName 和 onRow 属性；</p>
+<ul>
+<li>rowClassName 表示行的类名</li>
+<li>onRow 设置行属性<a id="more"></a>
+</li>
+</ul>
+<p>具体实现代码如下：</p>
+<pre><code>import React, { useState } from &apos;react&apos;;
+import { Table } from &apos;antd&apos;
+
+const Demo = () =&gt; {
+    const [rowid, setRowId] = useState();
+
+    // 设置行的class类名
+    const setRowClassName = record =&gt; {
+        return record === rowid ? &apos;active&apos; : &apos;&apos;;
+    }
+
+    // 设置行的点击事件
+    const changeRow = record =&gt; {
+        setRowId(record.id) 
+    }
+
+    return (
+        &lt;Table 
+            onRow={ record =&gt; {
+                return {
+                    onClick: () =&gt; { changeRow(record) }
+                };
+            }}
+            rowClassName={setRowClassName}
+        /&gt;
+    )
 }
-getStockByName(&apos;gogle&apos;).then(function(result) {
-    console.log(result)
-})
-</code></pre><hr>
-<a id="more"></a>
-<h4 id="2-async函数特点"><a href="#2-async函数特点" class="headerlink" title="2.async函数特点"></a>2.async函数特点</h4><p>（1）、返回Promise对象<br>　async函数内部return返回的值，成为then方法回调的参数<br>　async函数内部平抛出错误会导致返回的Promise对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到<br>（2）、搭配await命令<br>　await命令后面返回一个Promise对象，返回该对象的结果，如果不是promise对象，就直接返回对应的值<br>（３）、async函数写法直观，相比于promise，generator的写法更简单易懂。</p>
-<pre><code>function login(urls) {
-    const textPromises = urls.map(url =&gt; {
-        return fetch(url).then(respose =&gt; respose.text());
-    })
-    textPromise.reduce((chain, textPromise) =&gt; {
-        return chain.then(() =&gt; textPromise)
-            .then(text =&gt; console.log(text))
-    }, Promise.resolve());
-} //  promise写法实现异步操作按顺序读取url，按顺序输出
+</code></pre><p>上述代码通过点击行事件，为该行添加active类名，从而修改改行的样式，比如添加高亮背景。</p>
 
-//上面代码使用fetch方法，同时远程读取一组 URL。每个fetch操作都返回一个 Promise
- 对象，放入textPromises数组。然后，reduce方法依次处理每个 Promise 
- 对象，然后使用then，将所有 Promise 对象连起来，因此就可以依次输出结果
-
-async function login(urls) {
-    for(const url of urls) {
-        const response = await fetch(url);
-        console.log(await respose.text());
-    }
-}// async 函数实现
-
-async function login() {
-    const textPromises = urls.map(async url =&gt; {
-        const respose = await fetch(url)
-        reurn respose.text();
-    })
-    for(const textpromise of textPromises) {
-        console.log(await texpromise)
-    }
-}// 多个await并发发出
-</code></pre>
       
     </div>
     
@@ -386,7 +381,7 @@ async function login() {
       
         <div class="post-tags">
           
-            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+            <a href="/tags/Antd/" rel="tag"># Antd</a>
           
         </div>
       
@@ -399,8 +394,8 @@ async function login() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/20/ajaxPrefilter/" rel="next" title="了解一下jQuery.ajaxPrefilter()">
-                <i class="fa fa-chevron-left"></i> 了解一下jQuery.ajaxPrefilter()
+              <a href="/2020/05/08/跨域资源共享CORS/" rel="next" title="跨域资源共享CORS">
+                <i class="fa fa-chevron-left"></i> 跨域资源共享CORS
               </a>
             
           </div>
@@ -408,10 +403,6 @@ async function login() {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/27/promise详解/" rel="prev" title="promise对象">
-                promise对象 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,7 +538,7 @@ async function login() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-async函数基本用法"><span class="nav-number">1.</span> <span class="nav-text">1.async函数基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-async函数特点"><span class="nav-number">2.</span> <span class="nav-text">2.async函数特点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Ant-Design简介"><span class="nav-number">1.</span> <span class="nav-text">一、Ant Design简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、需求"><span class="nav-number">2.</span> <span class="nav-text">二、需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、解决方法"><span class="nav-number">3.</span> <span class="nav-text">三、解决方法</span></a></li></ol></div>
             
 
           </div>
