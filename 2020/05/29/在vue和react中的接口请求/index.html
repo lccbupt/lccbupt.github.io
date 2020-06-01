@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Javascript,vue," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="vue 开发笔记日常工作中某些业务逻辑不复杂页面交互多的页面我通常采用vue来开发，使用vue以及其相关框架技术，很好的整合代码，简单的h5活动页面可以将弹框，toast提示，header以及footer等实现组件化，方便使用和复用，很好的提高了开发效率。其中也有很多细节需要多总结。">
-<meta name="keywords" content="Javascript,vue">
+<meta name="description" content="一、Ajax  Ajax（异步javascript 和 XML），其本身不是一种新技术，而是一种技术合集的新方法，用来处理浏览器与服务器之间的http通信，是一种异步请求的技术。其主要步骤如下：   创建XMLHttpRequest实例 发出HTTP请求 接收服务器传回的数据 更新网页数据  XMLHttpRequest对象是 AJAX 的主要接口，用于浏览器与服务器之间的通信，其本身是一个构造函">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue开发笔记">
-<meta property="og:url" content="http://lccbupt.github.io/2020/04/17/vue开发笔记/index.html">
+<meta property="og:title" content="搞懂ajax、axios和fetch">
+<meta property="og:url" content="http://lccbupt.github.io/2020/05/29/在vue和react中的接口请求/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="vue 开发笔记日常工作中某些业务逻辑不复杂页面交互多的页面我通常采用vue来开发，使用vue以及其相关框架技术，很好的整合代码，简单的h5活动页面可以将弹框，toast提示，header以及footer等实现组件化，方便使用和复用，很好的提高了开发效率。其中也有很多细节需要多总结。">
+<meta property="og:description" content="一、Ajax  Ajax（异步javascript 和 XML），其本身不是一种新技术，而是一种技术合集的新方法，用来处理浏览器与服务器之间的http通信，是一种异步请求的技术。其主要步骤如下：   创建XMLHttpRequest实例 发出HTTP请求 接收服务器传回的数据 更新网页数据  XMLHttpRequest对象是 AJAX 的主要接口，用于浏览器与服务器之间的通信，其本身是一个构造函">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-17T03:47:24.626Z">
+<meta property="og:updated_time" content="2020-06-01T06:36:24.893Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue开发笔记">
-<meta name="twitter:description" content="vue 开发笔记日常工作中某些业务逻辑不复杂页面交互多的页面我通常采用vue来开发，使用vue以及其相关框架技术，很好的整合代码，简单的h5活动页面可以将弹框，toast提示，header以及footer等实现组件化，方便使用和复用，很好的提高了开发效率。其中也有很多细节需要多总结。">
+<meta name="twitter:title" content="搞懂ajax、axios和fetch">
+<meta name="twitter:description" content="一、Ajax  Ajax（异步javascript 和 XML），其本身不是一种新技术，而是一种技术合集的新方法，用来处理浏览器与服务器之间的http通信，是一种异步请求的技术。其主要步骤如下：   创建XMLHttpRequest实例 发出HTTP请求 接收服务器传回的数据 更新网页数据  XMLHttpRequest对象是 AJAX 的主要接口，用于浏览器与服务器之间的通信，其本身是一个构造函">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2020/04/17/vue开发笔记/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/05/29/在vue和react中的接口请求/"/>
 
 
 
 
 
-  <title>vue开发笔记 | 星*空</title>
+  <title>搞懂ajax、axios和fetch | 星*空</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/04/17/vue开发笔记/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/05/29/在vue和react中的接口请求/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vue开发笔记</h1>
+          <h1 class="post-title" itemprop="name headline">搞懂ajax、axios和fetch</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-17T10:23:53+08:00">
-                2020-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-29T18:29:03+08:00">
+                2020-05-29
               </time>
             
 
@@ -292,28 +292,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -347,36 +325,186 @@
       
 
       
-        <h3 id="vue-开发笔记"><a href="#vue-开发笔记" class="headerlink" title="vue 开发笔记"></a>vue 开发笔记</h3><p>日常工作中某些业务逻辑不复杂页面交互多的页面我通常采用vue来开发，使用vue以及其相关框架技术，很好的整合代码，简单的h5活动页面可以将弹框，toast提示，header以及footer等实现组件化，方便使用和复用，很好的提高了开发效率。其中也有很多细节需要多总结。<br><a id="more"></a></p>
-<h4 id="一、vue中style标签中的scoped和module"><a href="#一、vue中style标签中的scoped和module" class="headerlink" title="一、vue中style标签中的scoped和module"></a>一、vue中style标签中的scoped和module</h4><p>在vue中每个组件都可以定义自己所属的样式，为了各个组件和页面之间的样式不互相影响，可以在style标签上定义两个参数：scoped 和module</p>
-<h4 id="1-关于scoped-css"><a href="#1-关于scoped-css" class="headerlink" title="1.关于scoped css"></a>1.关于scoped css</h4><ul>
-<li>当 style 标签中有scoped属性，则它的css样式仅对当前组件元素；</li>
-<li>通过postCss实现转换</li>
-<li>组件中可以既包含全局样式css也可以包括scoped css</li>
-<li>使用scoped时，父组件的样式不会关联到子组件中；但是子组件中的根节点将同时受到父组件的作用域CSS和子组件的作用域CSS的影响。这样父组件就可以为布局设计子组件根元素的样式。</li>
-<li>深度选择器：如果你想让某一个选择器样式影响子组件；你可以使用‘ &gt;&gt;&gt; ’此选择符；（一些css预处理器中，比如sass，可能不支持‘&gt;&gt;&gt;’该选择符，你可以使用/deep/ 或者::v-deep）</li>
-<li>通过v-html产生的Dom元素并不会受scoped css样式影响；但是仍然可以使用深度选择器来设置它们的样式。</li>
-</ul>
-<h4 id="2-关于css-modules"><a href="#2-关于css-modules" class="headerlink" title="2.关于css modules"></a>2.关于css modules</h4><p>css modules是比较流行的css处理系统模块；可以替代以上描述的scoped css；</p>
+        <p>一、Ajax</p>
+<blockquote>
+<p>Ajax（异步javascript 和 XML），其本身不是一种新技术，而是一种技术合集的新方法，用来处理浏览器与服务器之间的http通信，是一种异步请求的技术。其主要步骤如下：</p>
+</blockquote>
 <ul>
-<li><p>使用方法：首先 css modules 必须通过配置开启：modules: true -&gt; css-loader；然后style标签添加module</p>
-</li>
-<li><p>module属性可以将CSS模块局部变量对象作为名称为$style的计算属性注入到组件中。你可以在你的模板中使用动态类绑定:</p>
-<pre><code>&lt;template&gt;
-  &lt;p :class=&quot;$style.red&quot;&gt;
-    This should be red
-  &lt;/p&gt;
-&lt;/template&gt;
-</code></pre></li>
-<li><p>除此之外你也可以在javascript中获取到css modules属性</p>
-</li>
+<li>创建XMLHttpRequest实例</li>
+<li>发出HTTP请求</li>
+<li>接收服务器传回的数据</li>
+<li>更新网页数据</li>
 </ul>
-<h4 id="二、vue-router中的路由模式：history和hash"><a href="#二、vue-router中的路由模式：history和hash" class="headerlink" title="二、vue-router中的路由模式：history和hash"></a>二、vue-router中的路由模式：history和hash</h4><p>在单页面应用中可以使用vue-router配置多个路由页面；但是在vue-router中的路由配置有一个选项mode用来指定路由模式；</p>
-<h5 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h5><ul>
-<li>类型： string</li>
-<li>参数值： hash | history | abstract</li>
-<li>hash：使用URL hash值来作路由。支持所有浏览器，包括不支持 HTML5 History Api 的浏览器；页面在任一路由刷新都不会报错；不用增加额外的服务端配置</li>
-<li>history：依赖 HTML5 History API 和服务器配置；在任一路由刷新页面时如果不增加服务端配置重新定向，会造成404；</li>
+<p>XMLHttpRequest对象是 AJAX 的主要接口，用于浏览器与服务器之间的通信，其本身是一个构造函数，可以通过new命令生成实例，新建实例后就可以调用open()方法发出http请求；但是在平时工作中如何用原生js实现http请求代码比较多，因此会使用很多封装好的ajax方法库，如jquery中可以使用$.ajax()发出http请求，但是jquery库比较庞大，如果仅仅是使用ajax请求，可以考虑只专注http请求的库，比如axios<br><a id="more"></a><br>二、axios<br>axios是基于Promise的http库，适用于浏览器和nodejs；Axios通过Promise实现XHR封装，其中Promise是控制手段，XHR是实际发送Http请求的客户端；axois可以看成是ajax技术的一种具体实现方法；其主要特点是：</p>
+<ul>
+<li>浏览器端发起XMLHttpRequests请求</li>
+<li>node端发起http请求</li>
+<li>支持Promise API</li>
+<li>拦截请求和返回</li>
+<li>转化请求和返回（数据）</li>
+<li>取消请求</li>
+<li>自动转化json数据</li>
+<li>客户端支持抵御XSRF（跨站请求伪造）</li>
+</ul>
+<p>axios处理http请求提供了很多功能，但是其作者觉得jsonp的方式并不友好，所以并不支持jsonp的请求，因此在vue或react中需要再引入jsonp库来支持jsonp请求<br>具体使用文档可参考：<a href="https://github.com/axios/axios" target="_blank" rel="noopener">https://github.com/axios/axios</a><br>三、fetch API<br>fetch API提供获取资源的接口，它类似于XHR，但提供了更强大灵活的功能，fetch不是ajax的进一步封装，而是原生的js API，并基于promise设计。<br>fetch 是一个html5的API，因此在兼容性上会有一些问题。fetch使用的例子如下：</p>
+<pre><code>fetch(url).then(function(response) {
+  return response.json();
+}).then(function(data) {
+  console.log(data);
+}).catch(function(e) {
+  console.log(&quot;Oops, error&quot;);
+});
+</code></pre><p>因为支持率不高，可以引入polyfill：</p>
+<ul>
+<li>由于 IE8 是 ES3，需要引入 ES5 的 polyfill: es5-shim, es5-sham</li>
+<li>引入 Promise 的 polyfill: es6-promise</li>
+<li>引入 fetch 探测库：fetch-detector</li>
+<li>引入 fetch 的 polyfill: fetch-ie8</li>
+<li>可选：如果你还使用了 jsonp，引入 fetch-jsonp</li>
+<li>可选：开启 Babel 的 runtime 模式，现在就使用 async/await</li>
+</ul>
+<p>四、关于发送http请求的封装<br>在vue和react项目中可以将http请求封装管理，会使代码结构更清晰，主要从以下几个方面进行封装request.js</p>
+<ul>
+<li>与服务端约定状态码，请求头，请求超时等</li>
+<li>增加错误提示信息如toast或者弹框提示，不同状态码提示不是的响应（异常处理程序）</li>
+<li>设置请求参数，根据业务必须携带不同参数</li>
+<li>请求拦截器：根据请求头设定，哪些请求处理可以访问</li>
+<li>响应拦截器：根据服务端状态码执行不同业务</li>
+</ul>
+<p>下面是在使用umi开发时封装的http请求示例：</p>
+<pre><code>/**
+ * 异常处理程序
+ */
+const errorHandler = (error: { response: Response }): Response =&gt; {
+  const { response } = error;
+
+  if (response &amp;&amp; response.status) {
+    const errorText = codeMessage[response.status] || response.statusText;
+    const { status, url } = response;
+
+    notification.error({
+      key: &apos;api-request&apos;,
+      message: `请求错误 ${status}: ${url}`,
+      description: errorText,
+    });
+  } else if (!response) {
+    notification.error({
+      key: &apos;api-request&apos;,
+      message: &apos;网络异常&apos;,
+      description: &apos;您的网络发生异常，无法连接服务器&apos;,
+    });
+  }
+  return response;
+};
+
+/**
+ * 配置request请求时的默认参数
+ */
+const request = extend({
+  errorHandler, // 默认错误处理
+  credentials: &apos;include&apos;, // 默认请求是否带上cookie
+  headers: { &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded; charset=UTF-8&apos; },
+  requestType: &apos;form&apos;,
+  params: {
+    _: Date.now(),
+    _format: &apos;json&apos;,
+  },
+  paramsSerializer(params) {
+    return stringify(params);
+  },
+});
+// 请求拦截器
+request.interceptors.request.use((url, { extraOptions, ...options }: RequestOptions) =&gt; {
+  const state = getState();
+
+  const { href } = window.location;
+  const isSamePage = prevHref === href;
+
+  const uriName = extraOptions?.paramName ?? url;
+  const prevRequest =
+    extraOptions?.usePrevQuery &amp;&amp; isSamePage ? state.request?.[uriName] ?? {} : {};
+
+  delay(500).then(() =&gt; {
+    prevHref = href;
+  });
+
+  extraOptions!.url = url;
+  extraOptions!.uriName = uriName;
+
+  options.data = { ...prevRequest.data, ...options.data, ...extradata };
+
+  if (options.requestType === &apos;form&apos; &amp;&amp; options.data) {
+    options.data = stringify(options.data);
+  }
+
+  return {
+    url: (extraOptions?.isServeApi ? proxyPrefix + apiPrefix : apiPrefix) + url,
+    options: { extraOptions, ...options },
+  };
+});
+
+// 响应拦截器
+request.interceptors.response.use(
+  async (response, { params, data, extraOptions }: RequestOptions) =&gt; {
+    const dispatch = getDispatch();
+    const { errno, errmsg } = await response?.clone().json?.();
+
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    if (errno === API_CODE.NO_LOGIN) {
+      // 登录态失效同步到state
+      dispatch({
+        type: &apos;user/updateCurrentUser&apos;,
+        payload: {
+          isLogin: false,
+          currentUser: {},
+        },
+      });
+    }
+
+    if (!extraOptions?.ignoreErr &amp;&amp; errno === API_CODE.JUMP) {
+      const query = qsParse() as IParams;
+      const pathname = &apos;/work/task&apos;;
+      const key = query.dpkey;
+      router.push({
+        pathname,
+        query: {
+          dpkey: key,
+        },
+      });
+      return;
+    }
+
+    if (!extraOptions?.ignoreErr &amp;&amp; errno !== API_CODE.OK) {
+      notification.error({
+        key: &apos;api-request&apos;,
+        message: &apos;警告&apos;,
+        description: errmsg,
+      });
+    }
+
+    // 请求参数写入store
+    dispatch({
+      type: &apos;request/updateUri&apos;,
+      payload: {
+        [extraOptions!.uriName!]: {
+          url: extraOptions!.url,
+          page: getPathname(),
+          params,
+          data: parse(data),
+          status: response.status,
+          errno,
+        },
+      },
+    });
+
+    return response;
+  },
+);
+</code></pre><p>参考文章：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API</a></li>
+<li><a href="https://aotu.io/notes/2017/04/10/fetch-API/index.html" target="_blank" rel="noopener">https://aotu.io/notes/2017/04/10/fetch-API/index.html</a></li>
+<li><a href="https://github.com/camsong/blog/issues/2" target="_blank" rel="noopener">https://github.com/camsong/blog/issues/2</a></li>
 </ul>
 
       
@@ -395,9 +523,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
-          
-            <a href="/tags/vue/" rel="tag"># vue</a>
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -410,8 +536,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/24/20200324/" rel="next" title="javascript中的call、apply和bind">
-                <i class="fa fa-chevron-left"></i> javascript中的call、apply和bind
+              <a href="/2020/05/22/在vue框架中实现九宫格抽奖/" rel="next" title="在vue框架中实现九宫格抽奖">
+                <i class="fa fa-chevron-left"></i> 在vue框架中实现九宫格抽奖
               </a>
             
           </div>
@@ -419,10 +545,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/23/Seven-Times-Have-I-Despised-My-Soul/" rel="prev" title="Seven Times Have I Despised My Soul">
-                Seven Times Have I Despised My Soul <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -474,17 +596,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -548,22 +661,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-开发笔记"><span class="nav-number">1.</span> <span class="nav-text">vue 开发笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、vue中style标签中的scoped和module"><span class="nav-number">1.1.</span> <span class="nav-text">一、vue中style标签中的scoped和module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-关于scoped-css"><span class="nav-number">1.2.</span> <span class="nav-text">1.关于scoped css</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-关于css-modules"><span class="nav-number">1.3.</span> <span class="nav-text">2.关于css modules</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、vue-router中的路由模式：history和hash"><span class="nav-number">1.4.</span> <span class="nav-text">二、vue-router中的路由模式：history和hash</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#mode"><span class="nav-number">1.4.1.</span> <span class="nav-text">mode</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
