@@ -252,6 +252,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/06/11/前端实现跨域方法总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/11/前端实现跨域方法总结/" itemprop="url">前端实现跨域方法总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-11T18:47:22+08:00">
+                2020-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、同源策略"><a href="#一、同源策略" class="headerlink" title="一、同源策略"></a>一、同源策略</h3><h5 id="1、同源"><a href="#1、同源" class="headerlink" title="1、同源"></a>1、同源</h5><blockquote>
+<p>指两个页面的协议、端口和域名都相同，则两个页面是具有相同的源</p>
+</blockquote>
+<h5 id="2、同源策略"><a href="#2、同源策略" class="headerlink" title="2、同源策略"></a>2、同源策略</h5><blockquote>
+<p>同源策略是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。</p>
+</blockquote>
+<h5 id="3、不受同源策略限制的有哪些"><a href="#3、不受同源策略限制的有哪些" class="headerlink" title="3、不受同源策略限制的有哪些"></a>3、不受同源策略限制的有哪些</h5><ul>
+<li><script src="..."></script> 标签嵌入跨域脚本。语法错误信息只能被同源脚本中捕捉到。</li>
+<li><link rel="stylesheet" href="..."> 标签嵌入CSS。由于CSS的松散的语法规则，CSS的跨域需要一个设置正确的 HTTP 头部 Content-Type 。不同浏览器有不同的限制： IE, Firefox, Chrome, Safari (跳至CVE-2010-0051)部分 和 Opera。</li>
+<li>通过 <img> 展示的图片。支持的图片格式包括PNG,JPEG,GIF,BMP,SVG,…</li>
+<li>通过 <video> 和 <audio> 播放的多媒体资源。</audio></video></li>
+<li>通过 <object>、 <embed> 和 <applet> 嵌入的插件。</applet></object></li>
+<li>通过 @font-face 引入的字体。一些浏览器允许跨域字体（ cross-origin fonts），一些需要同源字体（same-origin fonts）。</li>
+<li>通过 <iframe> 载入的任何资源。站点可以使用 X-Frame-Options 消息头来阻止这种形式的跨域交互</iframe></li>
+</ul>
+<h3 id="二、前端跨域方法"><a href="#二、前端跨域方法" class="headerlink" title="二、前端跨域方法"></a>二、前端跨域方法</h3><p>1、iframe + document.domain<br>使用ducument.domain实现跨域必须满足以下几点：</p>
+<ul>
+<li>这两个域名必须属于同一个基础域名</li>
+<li>所用的协议，端口都要一致</li>
+</ul>
+<p>在a页面中 xxx.test.com中嵌套b页面（yy.xx.test.com）<br>此时a和b页面不是同源的，iframe中的b页面如果想取a页面中的某个参数是涉及到跨域问题，因此可以将两个页面的domain都设置成test.com<br>即：a和b页面都添加：document.domain = ‘test.com’</p>
+<p>2、jsonp实现跨域请求<br>原理：因为script标签不受同源策略的限制，因此在访问接口时服务端可以返回一个script标签内嵌入内容，但是常用的jquery的jsonp来实现跨域请求，jquery将JSONP方法进行了封装，使用JQuery提供的方法变得非常简单</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    $.ajax({ 
+     type: &quot;get&quot;,
+     async: false, 
+     url: &quot;http://localhost:8546/Service.ashx&quot;, 
+     dataType: &quot;jsonp&quot;, 
+    success: function (data) { 
+       alert(data);
+      }, 
+    error: function () { 
+       alert(&apos;fail&apos;);
+     } 
+   }); 
+&lt;/script&gt;
+</code></pre><p>3、iframe + postMessage</p>
+<blockquote>
+<p>postMessage方法允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递。其是h5特性，可以安全地实现跨源通信</p>
+</blockquote>
+<p>语法：<br>        otherWindow.postMessage(message, targetOrigin, [transfer])// 向指定的窗口发送消息</p>
+<pre><code>- otherWindow：他窗口的一个引用，比如iframe的contentWindow属性、执行window.open返回的窗口对象、或者是命名过或数值索引的window.frames。
+- message：将要发送到其他 window的数据
+- targetOrigin：通过窗口的origin属性来指定哪些窗口能接收到消息事件，其值可以是字符串&quot;*&quot;（表示无限制）或者一个URI
+
+window.addEventListener(&quot;message&quot;, receiveMessage, false); // 其他窗口可以监听分发的message
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/06/01/深拷贝与浅拷贝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1491,155 +1656,6 @@ console.log(num2) // 3
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/03/24/20200324/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liucheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星*空">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/24/20200324/" itemprop="url">javascript中的call、apply和bind</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-24T14:28:17+08:00">
-                2020-03-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><blockquote>
-<p>在工作中会经常碰到或者使用到call，apply以及bind，之前只是简单了解这三个原型链上的函数，并没有很深入的搞懂，所以今天看了一些文章总结，觉得写的很好，对自己也有所启发，我自己也总结记录一下。</p>
-</blockquote>
-<hr>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/03/24/20200324/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1694,7 +1710,7 @@ console.log(num2) // 3
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
