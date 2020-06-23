@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="React," />
 
 
 
@@ -79,19 +79,20 @@
 
 
 
-<meta name="description" content="一、关于webpackwebpack是前端常用的打包工具，用来组织和管理模块包括html，css，js，图片等资源；其核心就是解决模块之间的依赖，把各个模块按照特定的规则和顺序组织在一起，最终合并成一个js文件或多个js文件，webpack可以理解为一个模块处理工厂。核心概念：  入口（entry） 输出（output） loader 插件（plugins）">
+<meta name="description" content="一、什么是react Hook？React可以分为两种，一种是继承React.Component的class组件，另一种是函数组件；在class组件中有生命周期以及当前组件的state，react为了能在函数组件中使用state和react特性，在react16.8之后增加了Hook特性；所谓的Hook就是一种特殊函数，可以使函数组件“钩入”react特性。">
+<meta name="keywords" content="React">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack实战-读书笔记">
-<meta property="og:url" content="http://lccbupt.github.io/2020/05/15/webpack实战读书笔记/index.html">
+<meta property="og:title" content="react Hook学习笔记">
+<meta property="og:url" content="http://lccbupt.github.io/2020/06/19/react-Hook学习笔记/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="一、关于webpackwebpack是前端常用的打包工具，用来组织和管理模块包括html，css，js，图片等资源；其核心就是解决模块之间的依赖，把各个模块按照特定的规则和顺序组织在一起，最终合并成一个js文件或多个js文件，webpack可以理解为一个模块处理工厂。核心概念：  入口（entry） 输出（output） loader 插件（plugins）">
+<meta property="og:description" content="一、什么是react Hook？React可以分为两种，一种是继承React.Component的class组件，另一种是函数组件；在class组件中有生命周期以及当前组件的state，react为了能在函数组件中使用state和react特性，在react16.8之后增加了Hook特性；所谓的Hook就是一种特殊函数，可以使函数组件“钩入”react特性。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://lccbupt.github.io/2020/05/15/webpack实战读书笔记/header.png">
-<meta property="og:updated_time" content="2020-05-15T07:52:03.178Z">
+<meta property="og:image" content="http://lccbupt.github.io/2020/06/19/react-Hook学习笔记/react.png">
+<meta property="og:updated_time" content="2020-06-23T02:33:08.217Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack实战-读书笔记">
-<meta name="twitter:description" content="一、关于webpackwebpack是前端常用的打包工具，用来组织和管理模块包括html，css，js，图片等资源；其核心就是解决模块之间的依赖，把各个模块按照特定的规则和顺序组织在一起，最终合并成一个js文件或多个js文件，webpack可以理解为一个模块处理工厂。核心概念：  入口（entry） 输出（output） loader 插件（plugins）">
-<meta name="twitter:image" content="http://lccbupt.github.io/2020/05/15/webpack实战读书笔记/header.png">
+<meta name="twitter:title" content="react Hook学习笔记">
+<meta name="twitter:description" content="一、什么是react Hook？React可以分为两种，一种是继承React.Component的class组件，另一种是函数组件；在class组件中有生命周期以及当前组件的state，react为了能在函数组件中使用state和react特性，在react16.8之后增加了Hook特性；所谓的Hook就是一种特殊函数，可以使函数组件“钩入”react特性。">
+<meta name="twitter:image" content="http://lccbupt.github.io/2020/06/19/react-Hook学习笔记/react.png">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2020/05/15/webpack实战读书笔记/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/06/19/react-Hook学习笔记/"/>
 
 
 
 
 
-  <title>webpack实战-读书笔记 | 星*空</title>
+  <title>react Hook学习笔记 | 星*空</title>
   
 
 
@@ -254,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/05/15/webpack实战读书笔记/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/06/19/react-Hook学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -271,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">webpack实战-读书笔记</h1>
+          <h1 class="post-title" itemprop="name headline">react Hook学习笔记</h1>
         
 
         <div class="post-meta">
@@ -283,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-15T11:51:49+08:00">
-                2020-05-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-19T11:01:11+08:00">
+                2020-06-19
               </time>
             
 
@@ -293,6 +294,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -326,59 +349,138 @@
       
 
       
-        <img src="/2020/05/15/webpack实战读书笔记/header.png" title="webpack">
-<h3 id="一、关于webpack"><a href="#一、关于webpack" class="headerlink" title="一、关于webpack"></a>一、关于webpack</h3><p>webpack是前端常用的打包工具，用来组织和管理模块包括html，css，js，图片等资源；其核心就是解决模块之间的依赖，把各个模块按照特定的规则和顺序组织在一起，最终合并成一个js文件或多个js文件，webpack可以理解为一个模块处理工厂。<br>核心概念：</p>
-<ul>
-<li>入口（entry）</li>
-<li>输出（output）</li>
-<li>loader</li>
-<li>插件（plugins）<a id="more"></a>
-</li>
+        <img src="/2020/06/19/react-Hook学习笔记/react.png" title="React Hook 学习">
+<h3 id="一、什么是react-Hook？"><a href="#一、什么是react-Hook？" class="headerlink" title="一、什么是react Hook？"></a>一、什么是react Hook？</h3><p>React可以分为两种，一种是继承React.Component的class组件，另一种是函数组件；在class组件中有生命周期以及当前组件的state，react为了能在函数组件中使用state和react特性，在react16.8之后增加了Hook特性；所谓的Hook就是一种特殊函数，可以使函数组件“钩入”react特性。<br><a id="more"></a></p>
+<h3 id="二、Hook-API"><a href="#二、Hook-API" class="headerlink" title="二、Hook API"></a>二、Hook API</h3><h4 id="1-useState-Hook"><a href="#1-useState-Hook" class="headerlink" title="1.useState Hook"></a>1.useState Hook</h4><p>之前的函数组件是无状态的，但是引入了useState Hook后该函数组件就可以是有状态的，简单的例子如下：</p>
+<pre><code>import React, { useState } from &apos;react&apos;
+
+function Example() {
+    // 声明一个count变量
+    const [count, setCount] = useState(0)
+
+    return (
+        &lt;div&gt;
+            &lt;p&gt;你点击了{count}次&lt;/p&gt;
+            &lt;button onClick={ () =&gt; setCount(count+1) }&gt;点击&lt;/button&gt;
+        &lt;/div&gt;
+    )
+}
+</code></pre><ul>
+<li>引入useState Hook，在函数组件中存储内部state</li>
+<li>可读取state值，并通过setState改变state值</li>
+<li>当调用setState改变state值是，会重新渲染组件</li>
+<li>组件中可以设置多个state，多次使用useState Hook</li>
 </ul>
-<h3 id="二、模块打包"><a href="#二、模块打包" class="headerlink" title="二、模块打包"></a>二、模块打包</h3><h4 id="1-不同模块的标准"><a href="#1-不同模块的标准" class="headerlink" title="1.不同模块的标准"></a>1.不同模块的标准</h4><h5 id="CommonJs"><a href="#CommonJs" class="headerlink" title="CommonJs:"></a>CommonJs:</h5><ul>
-<li>每个文件即一个模块；每个模块拥有各自的作用域；</li>
-<li>导出：module.exports</li>
-<li>导入：require（1、require模块是第一次加载，这时首先执行该模块，然后到处内容；2、require模块曾被加载过，这时该代码不会再次执行，而是直接导出）</li>
-<li>多模块的依赖动态的，导入模块是获取一份导出值的拷贝；可以对导入的值进行更改；</li>
+<h4 id="2-Effect-Hook-useEffect"><a href="#2-Effect-Hook-useEffect" class="headerlink" title="2.Effect Hook(useEffect)"></a>2.Effect Hook(useEffect)</h4><p>Effect Hook 可以让你在函数组件中执行副作用操作（数据获取，设置订阅以及手动更改 React 组件中的 DOM 都属于副作用）<br>可以把useEffect Hook 看做class组件中的 componentDidMount，componentDidUpdate 和 componentWillUnmount 这三个函数的组合<br>（1）无需清除的effect<br>在react更新Dom 之后运行一些额外的代码，比如发送网络请求，记录日志，这些都是无需清除的，操作之后可以忽略。</p>
+<pre><code>import React, { useState, useEffect } from &apos;react&apos;;
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() =&gt; {
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre><ul>
+<li>在组件内部调用 useEffect，effect中可以直接访问state变量</li>
+<li>在默认的情况下 useEffect会每次渲染后都执行</li>
 </ul>
-<h5 id="ES6-module"><a href="#ES6-module" class="headerlink" title="ES6 module"></a>ES6 module</h5><ul>
-<li>同样的是每个文件即一个模块；每个模块拥有各自的作用域</li>
-<li>导出：export（命名导出 和 默认导出）</li>
-<li>导入：import；导入的变量都是只读的不可更改；</li>
-<li>自动采取严格模式</li>
-<li>对模块的依赖是静态的，导入的是变量是对原有值的映射，不可以对导入的变量进行更改；</li>
+<p>（2）需要清除的effect<br>如订阅外部数据源，这种情况下要清除，防止内存泄漏，在class组件中componentDidMount设置订阅，在componentWillUnmount 中进行清除；</p>
+<pre><code>import React, { useState, useEffect } from &apos;react&apos;;
+
+function FriendStatus(props) {
+  const [isOnline, setIsOnline] = useState(null);
+
+  useEffect(() =&gt; {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    // Specify how to clean up after this effect:
+    return function cleanup() {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+
+  if (isOnline === null) {
+    return &apos;Loading...&apos;;
+  }
+  return isOnline ? &apos;Online&apos; : &apos;Offline&apos;;
+}
+</code></pre><ul>
+<li>effect 可选的清除机制，可以返回一个清除函数。</li>
+<li>react会在组件卸载的时候执行清除操作</li>
+<li><p>effect的第二个参数，控制effect中的副作用执行次数</p>
+<pre><code>useEffect(() =&gt; {
+  document.title = `You clicked ${count} times`;
+}, [count]); // 仅在 count 更改时更新
+
+useEffect(() =&gt; {
+  document.title = `You clicked ${count} times`;
+}, []); 传入空数组时，只运行一次effect（仅在组件挂载和卸载时执行）
+</code></pre></li>
 </ul>
-<h4 id="2-模块打包原理"><a href="#2-模块打包原理" class="headerlink" title="2.模块打包原理"></a>2.模块打包原理</h4><p>打包后的bundle包括：</p>
-<ul>
-<li>最外层的立即执行函数</li>
-<li>installedModules对象，存储导出的值</li>
-<li><strong>webpack_require</strong>函数，堆魔抗进行加载完成模块的导入</li>
-<li>modules对象，存储依赖关系的模块</li>
+<h4 id="3-useContext"><a href="#3-useContext" class="headerlink" title="3.useContext"></a>3.useContext</h4><blockquote>
+<p>接收一个 context 对象（React.createContext 的返回值）并返回该 context 的当前值。当前的 context 值由上层组件中距离当前组件最近的 &lt;MyContext.Provider&gt; 的 value prop 决定</p>
+</blockquote>
+<pre><code>const themes = {
+  light: {
+    foreground: &quot;#000000&quot;,
+    background: &quot;#eeeeee&quot;
+  },
+  dark: {
+    foreground: &quot;#ffffff&quot;,
+    background: &quot;#222222&quot;
+  }
+};
+
+const ThemeContext = React.createContext(themes.light);
+
+function App() {
+  return (
+    &lt;ThemeContext.Provider value={themes.dark}&gt;
+      &lt;Toolbar /&gt;
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+
+function Toolbar(props) {
+  return (
+    &lt;div&gt;
+      &lt;ThemedButton /&gt;
+    &lt;/div&gt;
+  );
+}
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+  return (
+    &lt;button style={{ background: theme.background, color: theme.foreground }}&gt;
+      I am styled by theme context!
+    &lt;/button&gt;
+  );
+}
+</code></pre><h4 id="4-其他额外的Hook"><a href="#4-其他额外的Hook" class="headerlink" title="4.其他额外的Hook"></a>4.其他额外的Hook</h4><ul>
+<li>useReducer</li>
+<li>useCallback</li>
+<li>useMemo</li>
+<li>useRef</li>
+<li>useImperativeHandle</li>
+<li>useLayoutEffect</li>
+<li>useDebugValue</li>
 </ul>
-<h3 id="三、资源输入输出"><a href="#三、资源输入输出" class="headerlink" title="三、资源输入输出"></a>三、资源输入输出</h3><p>webopack会从入口文件开始检索，并将具有依赖关系的模块生成一颗依赖书，最终得到一个chunk。有这个chunk得到的打包产物则为bundle。</p>
-<h4 id="1-配置资源入口"><a href="#1-配置资源入口" class="headerlink" title="1.配置资源入口"></a>1.配置资源入口</h4><ul>
-<li>entry和context，entry：配置支持多种类型，字符串，数组，对象和函数；context入口路径前缀可省略</li>
-<li>确定入口模块位置</li>
-<li>定义chunk name</li>
-</ul>
-<h4 id="2-配置资源出口"><a href="#2-配置资源出口" class="headerlink" title="2.配置资源出口"></a>2.配置资源出口</h4><ul>
-<li>output</li>
-</ul>
-<h3 id="四、预处理器（一切皆模块）"><a href="#四、预处理器（一切皆模块）" class="headerlink" title="四、预处理器（一切皆模块）"></a>四、预处理器（一切皆模块）</h3><p>loader的本质是函数，对接收到的内容进行转换；在module.rules可配置多个loader</p>
-<h3 id="五、样式处理"><a href="#五、样式处理" class="headerlink" title="五、样式处理"></a>五、样式处理</h3><ul>
-<li>分离样式文件：extract-text-webpack-plugin(webpack4之前) 和mini-css-extract-plugin(weboack4后)</li>
-<li>样式预处理： 如scss、less 需sass-loader、less-loader</li>
-<li>PostCSS:编译插件的容器</li>
-<li>css module:css模块化</li>
-</ul>
-<h3 id="六、代码分片"><a href="#六、代码分片" class="headerlink" title="六、代码分片"></a>六、代码分片</h3><ul>
-<li>提取公共模块，通过入口划分代码</li>
-</ul>
-<h3 id="七、其他打包工具"><a href="#七、其他打包工具" class="headerlink" title="七、其他打包工具"></a>七、其他打包工具</h3><p>webpack是目前比较全面的打包工具，出webpack之外也有很多性能比较好的打包工具，但通用性不高；</p>
-<ul>
-<li>Rollup：更专注于javascript的打包，自身附加代码少，适合应用于打包javascript库</li>
-<li>Parcel：打包速度快，支持零配置</li>
-</ul>
+<p>这些api都是在特殊情况下使用，可查阅官网</p>
 
       
     </div>
@@ -394,6 +496,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+        </div>
+      
 
       
       
@@ -403,8 +511,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/08/antd的Table组件使用/" rel="next" title="Ant Design的Table组件实现点击行高亮提示">
-                <i class="fa fa-chevron-left"></i> Ant Design的Table组件实现点击行高亮提示
+              <a href="/2020/06/11/前端实现跨域方法总结/" rel="next" title="前端实现跨域方法总结">
+                <i class="fa fa-chevron-left"></i> 前端实现跨域方法总结
               </a>
             
           </div>
@@ -412,10 +520,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/22/在vue框架中实现九宫格抽奖/" rel="prev" title="在vue框架中实现九宫格抽奖">
-                在vue框架中实现九宫格抽奖 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、关于webpack"><span class="nav-number">1.</span> <span class="nav-text">一、关于webpack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、模块打包"><span class="nav-number">2.</span> <span class="nav-text">二、模块打包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-不同模块的标准"><span class="nav-number">2.1.</span> <span class="nav-text">1.不同模块的标准</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CommonJs"><span class="nav-number">2.1.1.</span> <span class="nav-text">CommonJs:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ES6-module"><span class="nav-number">2.1.2.</span> <span class="nav-text">ES6 module</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-模块打包原理"><span class="nav-number">2.2.</span> <span class="nav-text">2.模块打包原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、资源输入输出"><span class="nav-number">3.</span> <span class="nav-text">三、资源输入输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-配置资源入口"><span class="nav-number">3.1.</span> <span class="nav-text">1.配置资源入口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-配置资源出口"><span class="nav-number">3.2.</span> <span class="nav-text">2.配置资源出口</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、预处理器（一切皆模块）"><span class="nav-number">4.</span> <span class="nav-text">四、预处理器（一切皆模块）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、样式处理"><span class="nav-number">5.</span> <span class="nav-text">五、样式处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、代码分片"><span class="nav-number">6.</span> <span class="nav-text">六、代码分片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#七、其他打包工具"><span class="nav-number">7.</span> <span class="nav-text">七、其他打包工具</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是react-Hook？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是react Hook？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Hook-API"><span class="nav-number">2.</span> <span class="nav-text">二、Hook API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-useState-Hook"><span class="nav-number">2.1.</span> <span class="nav-text">1.useState Hook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Effect-Hook-useEffect"><span class="nav-number">2.2.</span> <span class="nav-text">2.Effect Hook(useEffect)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-useContext"><span class="nav-number">2.3.</span> <span class="nav-text">3.useContext</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-其他额外的Hook"><span class="nav-number">2.4.</span> <span class="nav-text">4.其他额外的Hook</span></a></li></ol></li></ol></div>
             
 
           </div>
