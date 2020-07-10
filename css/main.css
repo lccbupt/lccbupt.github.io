@@ -275,6 +275,7 @@ h6 {
 }
 p {
   margin: 0 0 20px 0;
+  text-indent: 30px;
 }
 a {
   color: #555;

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="antd," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="一、同源策略1、同源 指两个页面的协议、端口和域名都相同，则两个页面是具有相同的源  2、同源策略 同源策略是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。  3、不受同源策略限制的有哪些 script标签嵌入跨域脚本。语法错误信息只能被同源脚本中捕捉到。 link 标签嵌入CSS。由于CSS的松散的语法规则，CSS的跨域需要一个设置正确的 HTTP 头部 Co">
+<meta name="description" content="一、antd介绍antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品，有蚂蚁金服出品，本篇文章记录使用antd中upload组件与服务端配合实现文件的上传，本文中使用的antd版本是3.x版本。官网：https://ant.design/index-cn 二、antd中使用upload、Form组件实现文件上传1.具体功能在一个服务记录的表单中">
+<meta name="keywords" content="antd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端实现跨域方法总结">
-<meta property="og:url" content="http://lccbupt.github.io/2020/06/11/前端实现跨域方法总结/index.html">
+<meta property="og:title" content="使用antd实现上传图片的表单操作">
+<meta property="og:url" content="http://lccbupt.github.io/2020/06/23/使用antd实现上传图片的表单操作/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="一、同源策略1、同源 指两个页面的协议、端口和域名都相同，则两个页面是具有相同的源  2、同源策略 同源策略是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。  3、不受同源策略限制的有哪些 script标签嵌入跨域脚本。语法错误信息只能被同源脚本中捕捉到。 link 标签嵌入CSS。由于CSS的松散的语法规则，CSS的跨域需要一个设置正确的 HTTP 头部 Co">
+<meta property="og:description" content="一、antd介绍antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品，有蚂蚁金服出品，本篇文章记录使用antd中upload组件与服务端配合实现文件的上传，本文中使用的antd版本是3.x版本。官网：https://ant.design/index-cn 二、antd中使用upload、Form组件实现文件上传1.具体功能在一个服务记录的表单中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-15T11:09:42.970Z">
+<meta property="og:image" content="http://lccbupt.github.io/2020/06/23/使用antd实现上传图片的表单操作/效果图.png">
+<meta property="og:updated_time" content="2020-06-30T09:06:41.334Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端实现跨域方法总结">
-<meta name="twitter:description" content="一、同源策略1、同源 指两个页面的协议、端口和域名都相同，则两个页面是具有相同的源  2、同源策略 同源策略是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。  3、不受同源策略限制的有哪些 script标签嵌入跨域脚本。语法错误信息只能被同源脚本中捕捉到。 link 标签嵌入CSS。由于CSS的松散的语法规则，CSS的跨域需要一个设置正确的 HTTP 头部 Co">
+<meta name="twitter:title" content="使用antd实现上传图片的表单操作">
+<meta name="twitter:description" content="一、antd介绍antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品，有蚂蚁金服出品，本篇文章记录使用antd中upload组件与服务端配合实现文件的上传，本文中使用的antd版本是3.x版本。官网：https://ant.design/index-cn 二、antd中使用upload、Form组件实现文件上传1.具体功能在一个服务记录的表单中">
+<meta name="twitter:image" content="http://lccbupt.github.io/2020/06/23/使用antd实现上传图片的表单操作/效果图.png">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2020/06/11/前端实现跨域方法总结/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/06/23/使用antd实现上传图片的表单操作/"/>
 
 
 
 
 
-  <title>前端实现跨域方法总结 | 星*空</title>
+  <title>使用antd实现上传图片的表单操作 | 星*空</title>
   
 
 
@@ -252,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/06/11/前端实现跨域方法总结/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/06/23/使用antd实现上传图片的表单操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -269,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">前端实现跨域方法总结</h1>
+          <h1 class="post-title" itemprop="name headline">使用antd实现上传图片的表单操作</h1>
         
 
         <div class="post-meta">
@@ -281,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-11T18:47:22+08:00">
-                2020-06-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-23T18:29:41+08:00">
+                2020-06-23
               </time>
             
 
@@ -324,53 +327,91 @@
       
 
       
-        <h3 id="一、同源策略"><a href="#一、同源策略" class="headerlink" title="一、同源策略"></a>一、同源策略</h3><h5 id="1、同源"><a href="#1、同源" class="headerlink" title="1、同源"></a>1、同源</h5><blockquote>
-<p>指两个页面的协议、端口和域名都相同，则两个页面是具有相同的源</p>
-</blockquote>
-<h5 id="2、同源策略"><a href="#2、同源策略" class="headerlink" title="2、同源策略"></a>2、同源策略</h5><blockquote>
-<p>同源策略是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。</p>
-</blockquote>
-<h5 id="3、不受同源策略限制的有哪些"><a href="#3、不受同源策略限制的有哪些" class="headerlink" title="3、不受同源策略限制的有哪些"></a>3、不受同源策略限制的有哪些</h5><ul>
-<li>script标签嵌入跨域脚本。语法错误信息只能被同源脚本中捕捉到。</li>
-<li>link 标签嵌入CSS。由于CSS的松散的语法规则，CSS的跨域需要一个设置正确的 HTTP 头部 Content-Type 。不同浏览器有不同的限制： IE, Firefox, Chrome, Safari (跳至CVE-2010-0051)部分 和 Opera。</li>
-<li>通过 img 展示的图片。支持的图片格式包括PNG,JPEG,GIF,BMP,SVG,…</li>
-<li>通过 video 和 audio 播放的多媒体资源。</li>
-<li>通过 object、 embed 和 applet 嵌入的插件。</li>
-<li>通过 font-face 引入的字体。一些浏览器允许跨域字体（ cross-origin fonts），一些需要同源字体（same-origin fonts）。</li>
-<li>通过 iframe 载入的任何资源。站点可以使用 X-Frame-Options 消息头来阻止这种形式的跨域交互<a id="more"></a>
-<h3 id="二、前端跨域方法"><a href="#二、前端跨域方法" class="headerlink" title="二、前端跨域方法"></a>二、前端跨域方法</h3>1、iframe + document.domain<br>使用ducument.domain实现跨域必须满足以下几点：</li>
-<li>这两个域名必须属于同一个基础域名</li>
-<li>所用的协议，端口都要一致</li>
+        <h3 id="一、antd介绍"><a href="#一、antd介绍" class="headerlink" title="一、antd介绍"></a>一、antd介绍</h3><p>antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品，有蚂蚁金服出品，本篇文章记录使用antd中upload组件与服务端配合实现文件的上传，本文中使用的antd版本是3.x版本。<br>官网：<a href="https://ant.design/index-cn" target="_blank" rel="noopener">https://ant.design/index-cn</a></p>
+<h3 id="二、antd中使用upload、Form组件实现文件上传"><a href="#二、antd中使用upload、Form组件实现文件上传" class="headerlink" title="二、antd中使用upload、Form组件实现文件上传"></a>二、antd中使用upload、Form组件实现文件上传</h3><p>1.具体功能<br>在一个服务记录的表单中，有一项是上传图片，需在保存表单的时候提交已经上传的图片地址<br>2.实现流程</p>
+<ul>
+<li>点击上传按钮，将图片上传到服务端指定的api接口</li>
+<li>服务端接口返回上传图片的地址链接</li>
+<li>将图片的地址链接绑定到表单的对应项</li>
+<li><p>点击保存按钮，提交表单</p>
+<a id="more"></a>
+<img src="/2020/06/23/使用antd实现上传图片的表单操作/效果图.png" title="表单结构图">
+<p>3.具体代码实现</p>
+<pre><code>// 代码有省略...
+import { Form, Upload } from &apos;antd&apos;;
+
+const Demo = () =&gt; {
+    const { getFieldDecorator } = this.props.form;
+    // 处理上传按钮每次触发事件
+    const handleChange = info =&gt; {
+        let filelist = info.fileList;
+        const curFile = info.file;
+        if (curFile.response &amp;&amp; curFile.response.errno === 0) {
+          message.success(&apos;上传成功&apos;)
+        }
+        if (curFile.response &amp;&amp; curFile.response.errno !== 0) {
+          message.error(curFile.response.errmsg)
+        }
+        // 向fileList中增加url字段来记录每次上传成功后服务端返回的图片地址
+        filelist = filelist.map((file: { response: { errno: number; data: any; }; url: any; }) =&gt; {
+          if (file.response &amp;&amp; file.response.errno === 0) {
+            file.url = file.response.data
+          } else {
+            file.url = 0
+          }
+          return file;
+        });
+      }
+    const uploadImgConfig = {
+        action: &apos;/servicerecord/upload&apos;,
+        name: &apos;service_img&apos;,
+        withCredentials: true,
+    }
+    // 点击保存处理service_img项对应的fileList对象
+    const saveServiceInfo: IFetchApi = async () =&gt; {
+        formdata?.validateFields(async (err, values) =&gt; {
+          if (err) return;
+          const imageIprops = values?.service_img.map((item: { url: any; }) =&gt; item.url)
+          values.service_img = imageIprops
+
+          const [result] = await fetchSaveApi(values);
+          if (result.errno === 0) {
+            message.success(&apos;保存成功&apos;);
+            formdata.resetFields();
+          }
+        });
+      };
+    return (
+        &lt;Form&gt;
+            &lt;Form.Item label=&quot;上传图片&quot;&gt;
+                {form!.getFieldDecorator(&apos;service_img&apos;, {
+                  valuePropName: &apos;fileList&apos;,
+                  getValueFromEvent: e =&gt; {
+                    if (Array.isArray(e)) {
+                      return e;
+                    }
+                    return e &amp;&amp; e.fileList;
+                  },
+                })(
+                  &lt;Upload
+                    {...uploadImgConfig}
+                    listType=&quot;picture-card&quot;
+                    onChange={handleChange}
+                  &gt;
+                    &lt;div&gt;
+                      &lt;Icon type=&quot;plus&quot; /&gt;
+                      &lt;div className=&quot;ant-upload-text&quot;&gt;上传&lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/Upload&gt;,
+                )}
+              &lt;/Form.Item&gt;
+        &lt;/Form&gt;
+    )
+} 
+</code></pre></li>
 </ul>
-<p>在a页面中 xxx.test.com中嵌套b页面（yy.xx.test.com）<br>此时a和b页面不是同源的，iframe中的b页面如果想取a页面中的某个参数是涉及到跨域问题，因此可以将两个页面的domain都设置成test.com<br>即：a和b页面都添加：document.domain = ‘test.com’</p>
-<p>2、jsonp实现跨域请求<br>原理：因为script标签不受同源策略的限制，因此在访问接口时服务端可以返回一个script标签内嵌入内容，但是常用的jquery的jsonp来实现跨域请求，jquery将JSONP方法进行了封装，使用JQuery提供的方法变得非常简单</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-    $.ajax({ 
-     type: &quot;get&quot;,
-     async: false, 
-     url: &quot;http://localhost:8546/Service.ashx&quot;, 
-     dataType: &quot;jsonp&quot;, 
-    success: function (data) { 
-       alert(data);
-      }, 
-    error: function () { 
-       alert(&apos;fail&apos;);
-     } 
-   }); 
-&lt;/script&gt;
-</code></pre><p>3、iframe + postMessage</p>
-<blockquote>
-<p>postMessage方法允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递。其是h5特性，可以安全地实现跨源通信</p>
-</blockquote>
-<p>语法：</p>
-<pre><code>otherWindow.postMessage(message, targetOrigin, [transfer])// 向指定的窗口发送消息
+<p>4.总结valuePropName &amp; getValueFromEvent<br>valuePropName：子节点的值的属性，如上代码中，对应子节点Upload的属性fileList<br>getValueFromEvent：可以把 onChange 的参数（如 event）转化为控件的值，如上面代码中绑定子节点Upload的fileList属性后，每次onChange将子节点Upload的属性fileList转化为service_img表单项的值。<br>因此通过以上两个参数就可以实现表单内图片的上传功能。记得在提交表单时，将fileList处理成自己想要的数据格式。</p>
 
-- otherWindow：他窗口的一个引用，比如iframe的contentWindow属性、执行window.open返回的窗口对象、或者是命名过或数值索引的window.frames。
-- message：将要发送到其他 window的数据
-- targetOrigin：通过窗口的origin属性来指定哪些窗口能接收到消息事件，其值可以是字符串&quot;*&quot;（表示无限制）或者一个URI
-
-window.addEventListener(&quot;message&quot;, receiveMessage, false); // 其他窗口可以监听分发的message
-</code></pre>
       
     </div>
     
@@ -385,6 +426,12 @@ window.addEventListener(&quot;message&quot;, receiveMessage, false); // 其他�
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/antd/" rel="tag"># antd</a>
+          
+        </div>
+      
 
       
       
@@ -394,8 +441,8 @@ window.addEventListener(&quot;message&quot;, receiveMessage, false); // 其他�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/01/深拷贝与浅拷贝/" rel="next" title="深拷贝与浅拷贝">
-                <i class="fa fa-chevron-left"></i> 深拷贝与浅拷贝
+              <a href="/2020/06/19/react-Hook学习笔记/" rel="next" title="react Hook学习笔记">
+                <i class="fa fa-chevron-left"></i> react Hook学习笔记
               </a>
             
           </div>
@@ -404,8 +451,8 @@ window.addEventListener(&quot;message&quot;, receiveMessage, false); // 其他�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/06/19/react-Hook学习笔记/" rel="prev" title="react Hook学习笔记">
-                react Hook学习笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/07/10/React-Hooks-的常见错误写法/" rel="prev" title="React Hooks 的常见错误写法">
+                React Hooks 的常见错误写法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -542,7 +589,7 @@ window.addEventListener(&quot;message&quot;, receiveMessage, false); // 其他�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、同源策略"><span class="nav-number">1.</span> <span class="nav-text">一、同源策略</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、同源"><span class="nav-number">1.0.1.</span> <span class="nav-text">1、同源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、同源策略"><span class="nav-number">1.0.2.</span> <span class="nav-text">2、同源策略</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、不受同源策略限制的有哪些"><span class="nav-number">1.0.3.</span> <span class="nav-text">3、不受同源策略限制的有哪些</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、前端跨域方法"><span class="nav-number">2.</span> <span class="nav-text">二、前端跨域方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、antd介绍"><span class="nav-number">1.</span> <span class="nav-text">一、antd介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、antd中使用upload、Form组件实现文件上传"><span class="nav-number">2.</span> <span class="nav-text">二、antd中使用upload、Form组件实现文件上传</span></a></li></ol></div>
             
 
           </div>
