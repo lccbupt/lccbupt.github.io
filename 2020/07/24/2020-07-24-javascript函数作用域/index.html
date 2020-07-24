@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="一、Javascript对象、基本类型和字面值之间的关系　　字面值：表示某种特定类型的一个值　　基本类型：字符串，数值，布尔值，null，undefined（5个）　　对象：使用new操作生成的javascript对象实例">
+<meta name="description" content="一、Quiz Time如下的代码执行后输出什么呢？为什么？ function jerry() {     console.log(name) }  function tom() {     var name = &amp;apos;tom&amp;apos;;     jerry(); }  var name = &amp;apos;cartoon&amp;apos;; tom(); 上面的代码执行后是会输出 cartoon、t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript 经典实例 —— 读书笔记">
-<meta property="og:url" content="http://lccbupt.github.io/2019/01/24/JavaScript-经典实例-——-读书笔记/index.html">
+<meta property="og:title" content="【翻译】关于javascript函数作用域解释">
+<meta property="og:url" content="http://lccbupt.github.io/2020/07/24/2020-07-24-javascript函数作用域/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="一、Javascript对象、基本类型和字面值之间的关系　　字面值：表示某种特定类型的一个值　　基本类型：字符串，数值，布尔值，null，undefined（5个）　　对象：使用new操作生成的javascript对象实例">
+<meta property="og:description" content="一、Quiz Time如下的代码执行后输出什么呢？为什么？ function jerry() {     console.log(name) }  function tom() {     var name = &amp;apos;tom&amp;apos;;     jerry(); }  var name = &amp;apos;cartoon&amp;apos;; tom(); 上面的代码执行后是会输出 cartoon、t">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-17T02:53:20.668Z">
+<meta property="og:updated_time" content="2020-07-24T09:58:12.970Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript 经典实例 —— 读书笔记">
-<meta name="twitter:description" content="一、Javascript对象、基本类型和字面值之间的关系　　字面值：表示某种特定类型的一个值　　基本类型：字符串，数值，布尔值，null，undefined（5个）　　对象：使用new操作生成的javascript对象实例">
+<meta name="twitter:title" content="【翻译】关于javascript函数作用域解释">
+<meta name="twitter:description" content="一、Quiz Time如下的代码执行后输出什么呢？为什么？ function jerry() {     console.log(name) }  function tom() {     var name = &amp;apos;tom&amp;apos;;     jerry(); }  var name = &amp;apos;cartoon&amp;apos;; tom(); 上面的代码执行后是会输出 cartoon、t">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2019/01/24/JavaScript-经典实例-——-读书笔记/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/07/24/2020-07-24-javascript函数作用域/"/>
 
 
 
 
 
-  <title>JavaScript 经典实例 —— 读书笔记 | 星*空</title>
+  <title>【翻译】关于javascript函数作用域解释 | 星*空</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2019/01/24/JavaScript-经典实例-——-读书笔记/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/07/24/2020-07-24-javascript函数作用域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript 经典实例 —— 读书笔记</h1>
+          <h1 class="post-title" itemprop="name headline">【翻译】关于javascript函数作用域解释</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T10:41:21+08:00">
-                2019-01-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-24T10:20:14+08:00">
+                2020-07-24
               </time>
             
 
@@ -324,22 +324,70 @@
       
 
       
-        <h3 id="一、Javascript对象、基本类型和字面值之间的关系"><a href="#一、Javascript对象、基本类型和字面值之间的关系" class="headerlink" title="一、Javascript对象、基本类型和字面值之间的关系"></a>一、Javascript对象、基本类型和字面值之间的关系</h3><p>　　字面值：表示某种特定类型的一个值<br>　　基本类型：字符串，数值，布尔值，null，undefined（5个）<br>　　对象：使用new操作生成的javascript对象实例<br><a id="more"></a></p>
-<pre><code>var str1 = &quot;string&quot; // &quot;string&quot;引号内容为字面值
-var str2 = String(&quot;string&quot;) // 生成基本类型
-var str3 = new String(&quot;string&quot;) // 生成对象实例
-str1 === &quot;string&quot; // true
-str2 === &quot;string&quot; // true
-str3 == &quot;string&quot; // true
-str3 === &quot;string&quot; // false 
-// 基本类型严格等于字面值，对象实例则不会严格等于字面值
-</code></pre><p>　　从字符串提取一个列表：使用方法——indexOf/substr/split/substring/trim</p>
-<pre><code>indexOf(str, start) // 返回字符串中从start开始第一个str的位置索引，start可不传，默认从头开始
-substring(start, end) //返回字符串中从start开始到end结束的字符串提取
-substr(start, end-start) //返回字符串中从start开始到end结束的字符串提取,第二参数传的为提取字符串长度
-split(val) //返回一个以val分隔开的数组
-trim() //去掉字符串中的空格 
-</code></pre>
+        <h3 id="一、Quiz-Time"><a href="#一、Quiz-Time" class="headerlink" title="一、Quiz Time"></a>一、Quiz Time</h3><p>如下的代码执行后输出什么呢？为什么？</p>
+<pre><code>function jerry() {
+    console.log(name)
+}
+
+function tom() {
+    var name = &apos;tom&apos;;
+    jerry();
+}
+
+var name = &apos;cartoon&apos;;
+tom();
+</code></pre><p>上面的代码执行后是会输出 cartoon、tom或者undefined？但更重要的是，你是如何决定答案的呢?你是按Scope吗?还是执行上下文execution context呢?</p>
+<h3 id="二、Scope-作用域"><a href="#二、Scope-作用域" class="headerlink" title="二、Scope(作用域)"></a>二、Scope(作用域)</h3><p>上面代码执行的答案是 cartoon，让我们来探讨深入理解一下。</p>
+<blockquote>
+<p>In JavaScript, Scope is the mechanism to determine the accessibility of variables throughout its existence. It could be inside or outside of a function call.<br>在JavaScript中，作用域是在整个过程中确定变量可访问性的机制。它可以在函数调用的内部或外部。</p>
+</blockquote>
+<p>我们来拆分一下上面的代码，去理解变量的可访问性随着变量的声明和函数的创建如何改变。<br><a id="more"></a></p>
+<h4 id="1、Recap（概述）"><a href="#1、Recap（概述）" class="headerlink" title="1、Recap（概述）"></a>1、Recap（概述）</h4><p>下面是理解关于javascript执行上下文的几个关键点</p>
+<ul>
+<li>There is something called, Global Execution Context and Function Execution Context.（有全局执行上下文和函数执行上下文。）</li>
+<li>Each execution context has a special thing called, this and the reference to the Outer Environment.（每个执行上下文都有一个特殊的东西，this和对外部环境的引用。）</li>
+<li>When we invoke a function, the JavaScript engine creates an outer reference for the current Function Execution Context.（当我们调用一个函数时，JavaScript引擎为当前函数执行上下文创建一个外部引用。）</li>
+<li>The function has access to the variables defined in the Outer reference and JavaScript engine does a look-up when it is unable to find it in the current execution context.（函数可以访问在外部引用中定义的变量，如果在当前执行上下文中找不到它，JavaScript引擎会进行查找。）</li>
+</ul>
+<h4 id="2-Scope-and-Scope-chain"><a href="#2-Scope-and-Scope-chain" class="headerlink" title="2.Scope and Scope chain"></a>2.Scope and Scope chain</h4><p>在上面的示例中，有两个函数调用，tom()和jerry()。因此，将创建两个不同的函数执行上下文。<br>记住，在关键字this等于Window对象时，总会创建一个全局执行上下文，因此示例中我们总共有三个执行上下文，一个是全局执行上下文和两个函数执行上下文tom（）和jerry（）；</p>
+<ul>
+<li>变量 name在全局执行上下文中创建，并赋值cartoon；</li>
+<li>当调用tom()函数时，JavaScript引擎为tom()创建了一个执行上下文和一个对外部环境(全局执行上下文)的引用。</li>
+<li>当tom调用jerry时，JavaScript引擎识别jerry()的词法位置并执行相同的操作。它创建了jerry()的执行上下文和对外部环境的引用。</li>
+</ul>
+<p>等等，谁是jerry的外部环境呢？是tom的执行上下文还是全局的执行上下文呢？这取决于另一个问题的答案。</p>
+<blockquote>
+<p>Who created jerry()? Where is it sitting lexically? 是谁创造了杰里()?它的词法在哪里?</p>
+</blockquote>
+<p>jerry是全局上下文创建的，虽然它在tom的执行上下文中被调用；我们发现，jerry()在词法上位于全局执行上下文并由它创建。按照这个理论，jerry()有一个指向全局执行上下文的指针。</p>
+<p>我们还发现，jerry()中没有声明名为name的变量。在执行阶段，它尝试记录name变量。<br>在执行阶段，JavaScript引擎根据jerry()的外部引用启动查找过程，并在全局执行上下文中查找带有值cartoon的变量name。</p>
+<p>在当前执行上下文中查找变量和外部引用的整个过程形成了一个称为作用域链的链。我们还可以得出结论，变量名在函数jerry()的作用域内，因为它在作用域链中被成功找到。</p>
+<h3 id="3-Change-in-the-Chain"><a href="#3-Change-in-the-Chain" class="headerlink" title="3.Change in the Chain"></a>3.Change in the Chain</h3><p>再一次Quiz time，下面代码执行输出什么呢？</p>
+<pre><code>function tom() {
+    var name = &apos;tom&apos;;
+    function jerry() {
+        console.log(name);
+    }
+    jerry();
+}
+var name = &apos;cartoon&apos;;
+tom();
+</code></pre><p>我们将之前的例子稍作调整，现在函数jerry在tom函数内被创建。jerry执行上下文的外部环境参考会指向tom函数的执行上下文。因此变量name会在作用域链中找到并且在tom函数内定义，因此上面的实例答案是 输出tom。</p>
+<h3 id="4-Block-Scope"><a href="#4-Block-Scope" class="headerlink" title="4.Block Scope"></a>4.Block Scope</h3><p>当我们了解了作用域的基本原理后，让我们来理解块作用域是什么。代码块由这些大括号{…}定义。如果在代码块中使用关键字let声明变量，则仅在该代码块中可见。</p>
+<pre><code>{
+    let name = &quot;tom&quot;;
+    console.log(name); // tom
+}
+console.log(name) // Error: name is not defined
+
+// 如果我们用var而不是let来创建变量名，就不会存在这个块作用域的限制
+</code></pre><p>甚至对于if，for，while等等，变量在块级作用域内声明都只能在块级作用域内可见，下面的例子针对for循环；</p>
+<pre><code>for (let counter = 0; counter&lt;10; counter++) {
+    console.log(counter);
+}
+console.log(counter): Error,counter is not defined
+</code></pre><h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h3><p>理解作用域的基本概念，如执行上下文、外部引用、词汇定位等，将有助于轻松调试复杂的bug。</p>
+
       
     </div>
     
@@ -363,8 +411,8 @@ trim() //去掉字符串中的空格
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/10/rem实现响应式布局/" rel="next" title="rem实现自适应布局">
-                <i class="fa fa-chevron-left"></i> rem实现自适应布局
+              <a href="/2020/07/10/React-Hooks-的常见错误写法/" rel="next" title="React Hooks 的常见错误写法">
+                <i class="fa fa-chevron-left"></i> React Hooks 的常见错误写法
               </a>
             
           </div>
@@ -372,10 +420,6 @@ trim() //去掉字符串中的空格
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/03/24/20200324/" rel="prev" title="javascript中的call、apply和bind">
-                javascript中的call、apply和bind <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -511,7 +555,7 @@ trim() //去掉字符串中的空格
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Javascript对象、基本类型和字面值之间的关系"><span class="nav-number">1.</span> <span class="nav-text">一、Javascript对象、基本类型和字面值之间的关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Quiz-Time"><span class="nav-number">1.</span> <span class="nav-text">一、Quiz Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Scope-作用域"><span class="nav-number">2.</span> <span class="nav-text">二、Scope(作用域)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、Recap（概述）"><span class="nav-number">2.1.</span> <span class="nav-text">1、Recap（概述）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Scope-and-Scope-chain"><span class="nav-number">2.2.</span> <span class="nav-text">2.Scope and Scope chain</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Change-in-the-Chain"><span class="nav-number">3.</span> <span class="nav-text">3.Change in the Chain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Block-Scope"><span class="nav-number">4.</span> <span class="nav-text">4.Block Scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-总结"><span class="nav-number">5.</span> <span class="nav-text">5.总结</span></a></li></ol></div>
             
 
           </div>

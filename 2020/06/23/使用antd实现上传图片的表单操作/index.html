@@ -88,7 +88,7 @@
 <meta property="og:description" content="一、antd介绍antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品，有蚂蚁金服出品，本篇文章记录使用antd中upload组件与服务端配合实现文件的上传，本文中使用的antd版本是3.x版本。官网：https://ant.design/index-cn 二、antd中使用upload、Form组件实现文件上传1.具体功能在一个服务记录的表单中">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://lccbupt.github.io/2020/06/23/使用antd实现上传图片的表单操作/效果图.png">
-<meta property="og:updated_time" content="2020-06-30T09:06:41.334Z">
+<meta property="og:updated_time" content="2020-07-10T08:20:19.165Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用antd实现上传图片的表单操作">
 <meta name="twitter:description" content="一、antd介绍antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品，有蚂蚁金服出品，本篇文章记录使用antd中upload组件与服务端配合实现文件的上传，本文中使用的antd版本是3.x版本。官网：https://ant.design/index-cn 二、antd中使用upload、Form组件实现文件上传1.具体功能在一个服务记录的表单中">
@@ -333,14 +333,12 @@
 <li>点击上传按钮，将图片上传到服务端指定的api接口</li>
 <li>服务端接口返回上传图片的地址链接</li>
 <li>将图片的地址链接绑定到表单的对应项</li>
-<li><p>点击保存按钮，提交表单</p>
+<li>点击保存按钮，提交表单</li>
+</ul>
 <a id="more"></a>
 <img src="/2020/06/23/使用antd实现上传图片的表单操作/效果图.png" title="表单结构图">
-<p>3.具体代码实现</p>
-<pre><code>// 代码有省略...
-import { Form, Upload } from &apos;antd&apos;;
-
-const Demo = () =&gt; {
+<p>3.具体代码实现<br>        // 代码有省略…<br>        import { Form, Upload } from ‘antd’;</p>
+<pre><code>const Demo = () =&gt; {
     const { getFieldDecorator } = this.props.form;
     // 处理上传按钮每次触发事件
     const handleChange = info =&gt; {
@@ -408,9 +406,7 @@ const Demo = () =&gt; {
         &lt;/Form&gt;
     )
 } 
-</code></pre></li>
-</ul>
-<p>4.总结valuePropName &amp; getValueFromEvent<br>valuePropName：子节点的值的属性，如上代码中，对应子节点Upload的属性fileList<br>getValueFromEvent：可以把 onChange 的参数（如 event）转化为控件的值，如上面代码中绑定子节点Upload的fileList属性后，每次onChange将子节点Upload的属性fileList转化为service_img表单项的值。<br>因此通过以上两个参数就可以实现表单内图片的上传功能。记得在提交表单时，将fileList处理成自己想要的数据格式。</p>
+</code></pre><p>4.总结valuePropName &amp; getValueFromEvent<br>valuePropName：子节点的值的属性，如上代码中，对应子节点Upload的属性fileList<br>getValueFromEvent：可以把 onChange 的参数（如 event）转化为控件的值，如上面代码中绑定子节点Upload的fileList属性后，每次onChange将子节点Upload的属性fileList转化为service_img表单项的值。<br>因此通过以上两个参数就可以实现表单内图片的上传功能。记得在提交表单时，将fileList处理成自己想要的数据格式。</p>
 
       
     </div>
@@ -534,7 +530,7 @@ const Demo = () =&gt; {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
