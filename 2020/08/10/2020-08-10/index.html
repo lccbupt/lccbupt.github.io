@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="一、Quiz Time如下的代码执行后输出什么呢？为什么？ function jerry() {     console.log(name) }  function tom() {     var name = &amp;apos;tom&amp;apos;;     jerry(); }  var name = &amp;apos;cartoon&amp;apos;; tom(); 上面的代码执行后是会输出 cartoon、t">
+<meta name="description" content="原文：https://zellwk.com/blog/polymorphism-javascript/  一、什么是多态性多态性来自单词Polymorph。  Poly: 许多。 Morph: 从一种形态变为另一种形态  所以多态是指具有多种形式的能力； 编程中有三种多态性1、特定多态性（仅支持有限数量的不同类型）2、参数多态性3、子类型多态性大部分面向对象编程的文章只解释第三种多态类型，很少提">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【翻译】关于javascript函数作用域解释">
-<meta property="og:url" content="http://lccbupt.github.io/2020/07/24/2020-07-24-javascript函数作用域/index.html">
+<meta property="og:title" content="[翻译]javascript的多态性问题">
+<meta property="og:url" content="http://lccbupt.github.io/2020/08/10/2020-08-10/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="一、Quiz Time如下的代码执行后输出什么呢？为什么？ function jerry() {     console.log(name) }  function tom() {     var name = &amp;apos;tom&amp;apos;;     jerry(); }  var name = &amp;apos;cartoon&amp;apos;; tom(); 上面的代码执行后是会输出 cartoon、t">
+<meta property="og:description" content="原文：https://zellwk.com/blog/polymorphism-javascript/  一、什么是多态性多态性来自单词Polymorph。  Poly: 许多。 Morph: 从一种形态变为另一种形态  所以多态是指具有多种形式的能力； 编程中有三种多态性1、特定多态性（仅支持有限数量的不同类型）2、参数多态性3、子类型多态性大部分面向对象编程的文章只解释第三种多态类型，很少提">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-24T09:58:12.970Z">
+<meta property="og:updated_time" content="2020-08-12T02:10:59.551Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【翻译】关于javascript函数作用域解释">
-<meta name="twitter:description" content="一、Quiz Time如下的代码执行后输出什么呢？为什么？ function jerry() {     console.log(name) }  function tom() {     var name = &amp;apos;tom&amp;apos;;     jerry(); }  var name = &amp;apos;cartoon&amp;apos;; tom(); 上面的代码执行后是会输出 cartoon、t">
+<meta name="twitter:title" content="[翻译]javascript的多态性问题">
+<meta name="twitter:description" content="原文：https://zellwk.com/blog/polymorphism-javascript/  一、什么是多态性多态性来自单词Polymorph。  Poly: 许多。 Morph: 从一种形态变为另一种形态  所以多态是指具有多种形式的能力； 编程中有三种多态性1、特定多态性（仅支持有限数量的不同类型）2、参数多态性3、子类型多态性大部分面向对象编程的文章只解释第三种多态类型，很少提">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2020/07/24/2020-07-24-javascript函数作用域/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/08/10/2020-08-10/"/>
 
 
 
 
 
-  <title>【翻译】关于javascript函数作用域解释 | 星*空</title>
+  <title>[翻译]javascript的多态性问题 | 星*空</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/07/24/2020-07-24-javascript函数作用域/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/08/10/2020-08-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【翻译】关于javascript函数作用域解释</h1>
+          <h1 class="post-title" itemprop="name headline">[翻译]javascript的多态性问题</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-24T10:20:14+08:00">
-                2020-07-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-10T16:58:29+08:00">
+                2020-08-10
               </time>
             
 
@@ -324,69 +324,121 @@
       
 
       
-        <h3 id="一、Quiz-Time"><a href="#一、Quiz-Time" class="headerlink" title="一、Quiz Time"></a>一、Quiz Time</h3><p>如下的代码执行后输出什么呢？为什么？</p>
-<pre><code>function jerry() {
-    console.log(name)
-}
-
-function tom() {
-    var name = &apos;tom&apos;;
-    jerry();
-}
-
-var name = &apos;cartoon&apos;;
-tom();
-</code></pre><p>上面的代码执行后是会输出 cartoon、tom或者undefined？但更重要的是，你是如何决定答案的呢?你是按Scope吗?还是执行上下文execution context呢?</p>
-<h3 id="二、Scope-作用域"><a href="#二、Scope-作用域" class="headerlink" title="二、Scope(作用域)"></a>二、Scope(作用域)</h3><p>上面代码执行的答案是 cartoon，让我们来探讨深入理解一下。</p>
-<blockquote>
-<p>In JavaScript, Scope is the mechanism to determine the accessibility of variables throughout its existence. It could be inside or outside of a function call.<br>在JavaScript中，作用域是在整个过程中确定变量可访问性的机制。它可以在函数调用的内部或外部。</p>
+        <blockquote>
+<p>原文：<a href="https://zellwk.com/blog/polymorphism-javascript/" target="_blank" rel="noopener">https://zellwk.com/blog/polymorphism-javascript/</a></p>
 </blockquote>
-<p>我们来拆分一下上面的代码，去理解变量的可访问性随着变量的声明和函数的创建如何改变。<br><a id="more"></a></p>
-<h4 id="1、Recap（概述）"><a href="#1、Recap（概述）" class="headerlink" title="1、Recap（概述）"></a>1、Recap（概述）</h4><p>下面是理解关于javascript执行上下文的几个关键点</p>
+<h3 id="一、什么是多态性"><a href="#一、什么是多态性" class="headerlink" title="一、什么是多态性"></a>一、什么是多态性</h3><p>多态性来自单词Polymorph。</p>
 <ul>
-<li>There is something called, Global Execution Context and Function Execution Context.（有全局执行上下文和函数执行上下文。）</li>
-<li>Each execution context has a special thing called, this and the reference to the Outer Environment.（每个执行上下文都有一个特殊的东西，this和对外部环境的引用。）</li>
-<li>When we invoke a function, the JavaScript engine creates an outer reference for the current Function Execution Context.（当我们调用一个函数时，JavaScript引擎为当前函数执行上下文创建一个外部引用。）</li>
-<li>The function has access to the variables defined in the Outer reference and JavaScript engine does a look-up when it is unable to find it in the current execution context.（函数可以访问在外部引用中定义的变量，如果在当前执行上下文中找不到它，JavaScript引擎会进行查找。）</li>
+<li>Poly: 许多。</li>
+<li>Morph: 从一种形态变为另一种形态</li>
 </ul>
-<h4 id="2-Scope-and-Scope-chain"><a href="#2-Scope-and-Scope-chain" class="headerlink" title="2.Scope and Scope chain"></a>2.Scope and Scope chain</h4><p>在上面的示例中，有两个函数调用，tom()和jerry()。因此，将创建两个不同的函数执行上下文。<br>记住，在关键字this等于Window对象时，总会创建一个全局执行上下文，因此示例中我们总共有三个执行上下文，一个是全局执行上下文和两个函数执行上下文tom（）和jerry（）；</p>
+<p>所以多态是指具有多种形式的能力；</p>
+<p>编程中有三种多态性<br>1、特定多态性（仅支持有限数量的不同类型）<br>2、参数多态性<br>3、子类型多态性<br>大部分面向对象编程的文章只解释第三种多态类型，很少提到另外两种。<br><a id="more"></a></p>
+<h3 id="二、特定多态（Adhoc-polymorphism）"><a href="#二、特定多态（Adhoc-polymorphism）" class="headerlink" title="二、特定多态（Adhoc polymorphism）"></a>二、特定多态（Adhoc polymorphism）</h3><p>特定Adhoc用来描述在没有事先计划的情况下做某事。换句话说，Adhoc polymorphism意味着当场将某物从一种形式改变为另一种形式；有很多Adhoc polymorphism的类型：<br>1、Operator Overloading 操作符重载<br>2、Function Overloading 函数重载<br>3、Coercion Polymorphism 强制多态</p>
+<p>（一）、Operator Overloading<br>重载意味着能够做不止一件事。<br>比如：<br>‘+’运算符在javascript中可以做很多事情。你可以用它来加数字，也可以用它来连接字符串。</p>
+<pre><code>1 + 1 // 2
+&apos;hello&apos; + &apos; &apos; + &apos;world&apos;  // hello world
+</code></pre><p>结果的类型取决于加运算的类型</p>
 <ul>
-<li>变量 name在全局执行上下文中创建，并赋值cartoon；</li>
-<li>当调用tom()函数时，JavaScript引擎为tom()创建了一个执行上下文和一个对外部环境(全局执行上下文)的引用。</li>
-<li>当tom调用jerry时，JavaScript引擎识别jerry()的词法位置并执行相同的操作。它创建了jerry()的执行上下文和对外部环境的引用。</li>
+<li>number + number = number</li>
+<li>number + string = string<br>所以+运算操作允许将值从一种类型 （如number）转换成另一种类型（如string）</li>
 </ul>
-<p>等等，谁是jerry的外部环境呢？是tom的执行上下文还是全局的执行上下文呢？这取决于另一个问题的答案。</p>
-<blockquote>
-<p>Who created jerry()? Where is it sitting lexically? 是谁创造了杰里()?它的词法在哪里?</p>
-</blockquote>
-<p>jerry是全局上下文创建的，虽然它在tom的执行上下文中被调用；我们发现，jerry()在词法上位于全局执行上下文并由它创建。按照这个理论，jerry()有一个指向全局执行上下文的指针。</p>
-<p>我们还发现，jerry()中没有声明名为name的变量。在执行阶段，它尝试记录name变量。<br>在执行阶段，JavaScript引擎根据jerry()的外部引用启动查找过程，并在全局执行上下文中查找带有值cartoon的变量name。</p>
-<p>在当前执行上下文中查找变量和外部引用的整个过程形成了一个称为作用域链的链。我们还可以得出结论，变量名在函数jerry()的作用域内，因为它在作用域链中被成功找到。</p>
-<h3 id="3-Change-in-the-Chain"><a href="#3-Change-in-the-Chain" class="headerlink" title="3.Change in the Chain"></a>3.Change in the Chain</h3><p>再一次Quiz time，下面代码执行输出什么呢？</p>
-<pre><code>function tom() {
-    var name = &apos;tom&apos;;
-    function jerry() {
-        console.log(name);
-    }
-    jerry();
+<p>（二）、Function Overloading<br>在某些编程语言中，函数重载意味着创建两个(或多个)具有相同名称的函数。每个函数根据给定的参数执行不同的操作。<br>比如c++中的例子：</p>
+<pre><code>// Volume of a Cube.
+int Volume(int s) {
+  return s * s * s;
 }
-var name = &apos;cartoon&apos;;
-tom();
-</code></pre><p>我们将之前的例子稍作调整，现在函数jerry在tom函数内被创建。jerry执行上下文的外部环境参考会指向tom函数的执行上下文。因此变量name会在作用域链中找到并且在tom函数内定义，因此上面的实例答案是 输出tom。</p>
-<h3 id="4-Block-Scope"><a href="#4-Block-Scope" class="headerlink" title="4.Block Scope"></a>4.Block Scope</h3><p>当我们了解了作用域的基本原理后，让我们来理解块作用域是什么。代码块由这些大括号{…}定义。如果在代码块中使用关键字let声明变量，则仅在该代码块中可见。</p>
-<pre><code>{
-    let name = &quot;tom&quot;;
-    console.log(name); // tom
-}
-console.log(name) // Error: name is not defined
 
-// 如果我们用var而不是let来创建变量名，就不会存在这个块作用域的限制
-</code></pre><p>甚至对于if，for，while等等，变量在块级作用域内声明都只能在块级作用域内可见，下面的例子针对for循环；</p>
-<pre><code>for (let counter = 0; counter&lt;10; counter++) {
-    console.log(counter);
+// Volume of a Cuboid.
+long Volume(long l, int b, int h) {
+  return l * b * h;
 }
-console.log(counter): Error,counter is not defined
-</code></pre><h3 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h3><p>理解作用域的基本概念，如执行上下文、外部引用、词汇定位等，将有助于轻松调试复杂的bug。</p>
+</code></pre><p>但是在javascript中的函数重载稍微不同因为我们不可以声明两个名字相同的不同函数；我们使用一个函数，但是我们可以根据接收到的参数不同改变返回的结果。上面的例子可以用javascript写成如下：</p>
+<pre><code>function volumeCuboid (length, breadth, height) {
+  return length * breadth * height
+}
+
+function volumeCube (length) {
+  return volumeCuboid(length, length, length)
+}
+
+
+// 这里实现函数重载
+function calculateVolume (...args) {
+  if (args.length === 3) return volumeCuboid(...args)
+  return volumeCube(args[0])
+}
+</code></pre><p>我们不需要依赖于参数的数量。我们还可以根据每个参数的值改变结果；如下面的函数例子：</p>
+<pre><code>function createShape (size, shape) {
+  if (shape === &apos;triangle&apos;) return new Triangle(/* ... */)
+  if (shape === &apos;rectangle&apos;) return new Rectangle(/* ... */)
+  if (shape === &apos;square&apos;) return new Square(/* ... */)
+}
+</code></pre><blockquote>
+<p>作者的想法来自：Martin Fowler 的书Improving the Design of Existing Code</p>
+</blockquote>
+<p>如果我们进一步提取这个理论，所有的If和switch语句都会导致函数重载。</p>
+<p>（三）、Coercion Polymorphism<br>JavaScript具有类型强制。在求值时将值从一种类型转换为另一种类型。<br>例如在if语句中的表达式，js可以将表达式转换成true 或者 false。</p>
+<pre><code>const string = &apos;hello&apos;
+if (string) {
+  console.log(string)
+}
+</code></pre><p>另一个例子:您可以用==比较字符串和数字(尽管通常不推荐这样做)</p>
+<pre><code>22 == &apos;22&apos; // true
+</code></pre><p>因为类型强制是当场发生的，所以它是特定多态性的一种形式</p>
+<p>（四）、Variable overloading? 变量重载？</p>
+<blockquote>
+<p>“Use a single symbol to represent different types” feels like Variable overloading to me. (Variable Overloading is not an actual term. It’s something I came up with).<br>We already overload variables in JavaScript since each variable can represent any value.</p>
+</blockquote>
+<h3 id="三、参数多态性"><a href="#三、参数多态性" class="headerlink" title="三、参数多态性"></a>三、参数多态性</h3><p>参数多态性是与参数相关的多态性……但这不是很有用，所以让我们来描述一下它是关于什么的。<br>1.可以包含多种数据类型的数据<br>2.可以处理多种类型数据的函数（Functions that can work with many types of data）</p>
+<h4 id="（一）可以包含多种数据类型的数据"><a href="#（一）可以包含多种数据类型的数据" class="headerlink" title="（一）可以包含多种数据类型的数据"></a>（一）可以包含多种数据类型的数据</h4><p>JavaScript中的一切都是对象。所以Objects是参数化的。它可以被转换成其他类型的数据。<br>对象还可以存储多种类型。它不关心存储的值是什么。数组也是同样的。</p>
+<pre><code>const object = {
+  str: &apos;hello&apos;,
+  num: 123,
+  bool: true
+}
+</code></pre><h4 id="（二）可以处理多种类型数据的函数"><a href="#（二）可以处理多种类型数据的函数" class="headerlink" title="（二）可以处理多种类型数据的函数"></a>（二）可以处理多种类型数据的函数</h4><p>可以处理多种类型数据的函数称为多态函数。他们不关心传进来的是什么。它们会应用已知的变换，然后得到一个结果。<br>map就是一个很好的例子。它接收一个数组并输出另一个数组。它不关心中间是什么。Object.assign 也是同样的，接收一个对象并输出一个对象。</p>
+<pre><code>const doubled = [1, 2, 3].map(num =&gt; num * 2)
+</code></pre><h3 id="四、子类型多态性"><a href="#四、子类型多态性" class="headerlink" title="四、子类型多态性"></a>四、子类型多态性</h3><p>子类型多态性涉及从父对象创建派生对象。它可以被称为包含多态、子类化或继承。<br>派生对象可以覆盖父对象的方法，它仍然可以工作。<br>比如：</p>
+<pre><code>1、有一个sayhi方法的human类
+class Human {
+  constructor(name) {
+    this.name = name
+  }
+
+  sayHi() {
+    console.log(`Hi! My name is ${name}`)
+  }
+}
+2、你可以创建子类Developer 、Designer
+class Developer extends Human {/* ... */}
+class Designer extends Human {/* ... */}
+3、这两个子类说自己比较多，所以我们重写sayhi方法
+class Developer extends Human () {
+  sayHi() {
+    console.log(`Hi! My name is ${name}. I am a developer.`)
+  }
+}
+
+class Designer extends Human () {
+  sayHi() {
+    console.log(`Hi! My name is ${name}. I am a designer.`)
+  }
+}
+4、现在你有三个不同的类，每一个类都有一个sayhi方法，你可以正常使用sayhi而且都是正常工作，但是他们却可以输出不同的结果
+const zell = new Human(&apos;Zell&apos;)
+const vincy = new Developer(&apos;Vincy&apos;)
+const tim = new Designer(&apos;Tim&apos;)
+
+zell.sayHi() // Hi! My name is Zell.
+vincy.sayHi() // Hi! My name is Vincy. I am a developer.
+tim.sayHi() // Hi! My name is Tim. I am a designer.
+</code></pre><h3 id="四、总结（Wrapping-up）"><a href="#四、总结（Wrapping-up）" class="headerlink" title="四、总结（Wrapping up）"></a>四、总结（Wrapping up）</h3><p>有三种多态性。</p>
+<ul>
+<li>特别的多态性</li>
+<li>参数多态性</li>
+<li>子类型多态性<br>实际上是你已经在不知情的情况下使用多态~希望你更能理解多态~</li>
+</ul>
 
       
     </div>
@@ -411,8 +463,8 @@ console.log(counter): Error,counter is not defined
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/10/React-Hooks-的常见错误写法/" rel="next" title="React Hooks 的常见错误写法">
-                <i class="fa fa-chevron-left"></i> React Hooks 的常见错误写法
+              <a href="/2020/07/31/2020-07-31-async函数的一个注意点/" rel="next" title="【翻译】async函数的一个注意点">
+                <i class="fa fa-chevron-left"></i> 【翻译】async函数的一个注意点
               </a>
             
           </div>
@@ -420,10 +472,6 @@ console.log(counter): Error,counter is not defined
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/31/2020-07-31-async函数的一个注意点/" rel="prev" title="【翻译】async函数的一个注意点">
-                【翻译】async函数的一个注意点 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -559,7 +607,7 @@ console.log(counter): Error,counter is not defined
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Quiz-Time"><span class="nav-number">1.</span> <span class="nav-text">一、Quiz Time</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Scope-作用域"><span class="nav-number">2.</span> <span class="nav-text">二、Scope(作用域)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、Recap（概述）"><span class="nav-number">2.1.</span> <span class="nav-text">1、Recap（概述）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Scope-and-Scope-chain"><span class="nav-number">2.2.</span> <span class="nav-text">2.Scope and Scope chain</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Change-in-the-Chain"><span class="nav-number">3.</span> <span class="nav-text">3.Change in the Chain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Block-Scope"><span class="nav-number">4.</span> <span class="nav-text">4.Block Scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-总结"><span class="nav-number">5.</span> <span class="nav-text">5.总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、什么是多态性"><span class="nav-number">1.</span> <span class="nav-text">一、什么是多态性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、特定多态（Adhoc-polymorphism）"><span class="nav-number">2.</span> <span class="nav-text">二、特定多态（Adhoc polymorphism）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、参数多态性"><span class="nav-number">3.</span> <span class="nav-text">三、参数多态性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（一）可以包含多种数据类型的数据"><span class="nav-number">3.1.</span> <span class="nav-text">（一）可以包含多种数据类型的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（二）可以处理多种类型数据的函数"><span class="nav-number">3.2.</span> <span class="nav-text">（二）可以处理多种类型数据的函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、子类型多态性"><span class="nav-number">4.</span> <span class="nav-text">四、子类型多态性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、总结（Wrapping-up）"><span class="nav-number">5.</span> <span class="nav-text">四、总结（Wrapping up）</span></a></li></ol></div>
             
 
           </div>
