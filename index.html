@@ -252,6 +252,334 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/09/03/2020-09-03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/03/2020-09-03/" itemprop="url">Javascript中的 Map 和 Set</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-03T16:24:28+08:00">
+                2020-09-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>参考文献 <a href="https://juejin.im/post/6844903589920374792" target="_blank" rel="noopener">ES6的Set和Map数据结构，由你制造</a></p>
+</blockquote>
+<p>Map和Set是ES6规范引入的新特性作为新的内置对象，这次在项目中刚好使用了Set数据结构，就整理关于这两个新特性的知识。<br>Map的主要应用场景是数据存储，而Set的主要作用是数组的去重。<br>Set是一种叫做集合的数据结构，Map是一种叫做字典的数据结构</p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>Map 对象保存键值对，并且能够记住键的原始插入顺序。任何值(对象或者原始值) 都可以作为一个键或一个值。具有极快的查找速度。（Map对象是键值唯一不重复）<br>Map的主要作用就是用来存储数据的，相对于object只提供“字符串-值”的对应，Map提供了“值-值”的对应。<br>Map的基本使用方法：</p>
+<pre><code>const m = new Map();
+const o = {p: &apos;test1&apos;};
+m.set(o, &apos;content&apos;);
+m.get(o) // &apos;content&apos;
+
+m.has(o) // true
+m.delete(o) 
+m.has(o) // false
+</code></pre><p>1.构造函数<br>    Map()<br>2.属性<br>    Map.prototype.size  返回Map对象的键/值对的数量。<br>3.方法<br>    set(key, val): 向字典中添加新元素<br>    get(key):通过键值查找特定的数值并返回<br>    has(key):如果键存在字典中返回true,否则false<br>    delete(key): 通过键值从字典中移除对应的数据<br>    clear():将这个字典中的所有元素删除</p>
+<p>4.使用 for..of 方法迭代 Map</p>
+<pre><code>let myMap = new Map();
+myMap.set(0, &apos;zero&apos;);
+myMap.set(1, &apos;one&apos;);
+for(let [key, value] of myMap) {
+    console.log(key + &quot;=&quot; + value);
+}
+// 两个log &quot;0=zero&quot; &quot;1=one&quot;
+for (let key of myMap.keys()) {
+    console.log(key)
+} 0, 1 两个log
+</code></pre><p>5.使用 forEach() 方法迭代 Map</p>
+<pre><code>myMap.forEach(function(value, key) {
+  console.log(key + &quot; = &quot; + value);
+})
+// 将会显示两个logs。 一个是 &quot;0 = zero&quot; 另一个是 &quot;1 = one&quot;
+</code></pre><p>6.Map 与数组的关系</p>
+<ul>
+<li>一个二维键值对数组可以通过Map构造函数转成一个Map对象</li>
+<li><p>一个Map对象可通过Array.from函数转换成一个二维键值对数组、或者使用展开运算符转换成一个二维数组</p>
+<pre><code>let kvArray = [[&quot;key1&quot;, &quot;value1&quot;], [&quot;key2&quot;, &quot;value2&quot;]];
+
+let myMap = new Map(kvArray);
+
+myMap.get(&quot;key1&quot;); // 返回值为 &quot;value1&quot;
+
+console.log(Array.from(myMap)); // 输出和kvArray相同的数组
+
+console.log([...myMap]);  // 输出和kvArray相同的数组
+</code></pre></li>
+</ul>
+<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set是一种集合的数据结构，集合具有 无序 且 唯一的特点，因此Set类似数组，但是其中没有重复的值。<br>Set的基本用法：</p>
+<pre><code>const s = new Set();
+
+[2, 3, 5, 4, 5, 2, 2].forEach(x =&gt; s.add(x));
+
+for (let i of s) {
+  console.log(i);   // 2 3 5 4
+}
+
+// 去除数组的重复成员
+let array = [1,2,1,4,5,3];
+[...new Set(array)]     // [1, 2, 4, 5, 3]
+</code></pre><p>1.构造函数<br>new Set()<br>2.属性<br>size：返回集合所包含元素的数量<br>3.操作方法</p>
+<p>add(value)：向集合添加一个新的项<br>delete(value)：从集合中移除一个值<br>has(value)：如果值在集合中存在，返回true,否则false<br>clear(): 移除集合里所有的项</p>
+<p>4.遍历方法</p>
+<p>keys()：返回一个包含集合中所有键的数组<br>values()：返回一个包含集合中所有值的数组<br>entries：返回一个包含集合中所有键值对的数组(感觉没什么用就不实现了)<br>forEach()：用于对集合成员执行某种操作，没有返回值<br>5.应用<br>Set的主要作用是实现数组的去重</p>
+<pre><code>let myArray = [&quot;val1&quot;, &quot;val2&quot;, &quot;val3&quot;];
+// 用Set构造器可以将数组Array转换成Set
+let mySet = new Set(myArray);
+
+mySet.has(&quot;val1&quot;) // true
+//用...(展开操作符)可以将Set转换成Array
+console.log([...mySet]) // 与myArray完全一致
+
+//数组去重
+const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,32,3,4,5]
+console.log([...new Set(numbers)]) 
+// [2, 3, 4, 5, 6, 7, 32]
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/08/27/2020-08-27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/27/2020-08-27/" itemprop="url">前端工程化（一）—— 打包工具webpack篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-27T15:54:49+08:00">
+                2020-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>随着技术的进步，现在的前端开发工作对开发者提出了更为严格的要求，不仅仅是简单的制作页面，而是需要考虑各方面的问题，比如性能的优化，代码的可维护性和健壮性等问题，因此现在前端越来越工程化，工程化就需要从模块化、组件化、规范化和自动化多方面考虑。</p>
+</blockquote>
+<p>参考链接：<a href="https://www.valentinog.com/blog/webpack/" target="_blank" rel="noopener">A mostly complete guide to webpack (2020)</a></p>
+<h2 id="一、什么是webpack？"><a href="#一、什么是webpack？" class="headerlink" title="一、什么是webpack？"></a>一、什么是webpack？</h2><p>本篇文章主要分享前端工程化中模块化必不可少的打包工具webpack，对于webpack来说模块包括以下：</p>
+<ul>
+<li>Common JS modules</li>
+<li>AMD modules</li>
+<li>CSS import</li>
+<li>Images url</li>
+<li>ES modules</li>
+</ul>
+<p>也就是说，webpack能够从以上模块源中获取依赖项。webpack中主要包括以下配置项目：<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/08/27/2020-08-27/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/08/17/2020-08-17/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -271,7 +599,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/08/17/2020-08-17/" itemprop="url">javascript中的reduce方法</a></h1>
+                <a class="post-title-link" href="/2020/08/17/2020-08-17/" itemprop="url">javascript中的Array.reduce方法</a></h1>
         
 
         <div class="post-meta">
@@ -293,6 +621,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -431,6 +781,28 @@ console.log(result) // 10
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1327,278 +1699,6 @@ tom();
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/06/11/前端实现跨域方法总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liucheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星*空">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/11/前端实现跨域方法总结/" itemprop="url">前端实现跨域方法总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-11T18:47:22+08:00">
-                2020-06-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一、同源策略"><a href="#一、同源策略" class="headerlink" title="一、同源策略"></a>一、同源策略</h3><h5 id="1、同源"><a href="#1、同源" class="headerlink" title="1、同源"></a>1、同源</h5><blockquote>
-<p>指两个页面的协议、端口和域名都相同，则两个页面是具有相同的源</p>
-</blockquote>
-<h5 id="2、同源策略"><a href="#2、同源策略" class="headerlink" title="2、同源策略"></a>2、同源策略</h5><blockquote>
-<p>同源策略是浏览器的一个安全功能，不同源的客户端脚本在没有明确授权的情况下，不能读写对方资源。</p>
-</blockquote>
-<h5 id="3、不受同源策略限制的有哪些"><a href="#3、不受同源策略限制的有哪些" class="headerlink" title="3、不受同源策略限制的有哪些"></a>3、不受同源策略限制的有哪些</h5><ul>
-<li>script标签嵌入跨域脚本。语法错误信息只能被同源脚本中捕捉到。</li>
-<li>link 标签嵌入CSS。由于CSS的松散的语法规则，CSS的跨域需要一个设置正确的 HTTP 头部 Content-Type 。不同浏览器有不同的限制： IE, Firefox, Chrome, Safari (跳至CVE-2010-0051)部分 和 Opera。</li>
-<li>通过 img 展示的图片。支持的图片格式包括PNG,JPEG,GIF,BMP,SVG,…</li>
-<li>通过 video 和 audio 播放的多媒体资源。</li>
-<li>通过 object、 embed 和 applet 嵌入的插件。</li>
-<li>通过 font-face 引入的字体。一些浏览器允许跨域字体（ cross-origin fonts），一些需要同源字体（same-origin fonts）。</li>
-<li>通过 iframe 载入的任何资源。站点可以使用 X-Frame-Options 消息头来阻止这种形式的跨域交互
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/11/前端实现跨域方法总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/06/01/深拷贝与浅拷贝/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liucheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星*空">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/01/深拷贝与浅拷贝/" itemprop="url">深拷贝与浅拷贝</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-01T17:14:38+08:00">
-                2020-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>一、问题背景</p>
-<blockquote>
-<p>在刷一道比较简单的题目时，遇到一个容易忽略的问题，js对象的浅拷贝和深拷贝的问题，从而导致的输出结果不对；所以总结一下js中深拷贝和浅拷贝的问题。</p>
-</blockquote>
-<p>二、浅拷贝<br>在javascript中数据类型有两种</p>
-<h4 id="基本数据类型：number，boolean，string，null，undefined；"><a href="#基本数据类型：number，boolean，string，null，undefined；" class="headerlink" title="基本数据类型：number，boolean，string，null，undefined；"></a>基本数据类型：number，boolean，string，null，undefined；</h4><p>该类型数据的赋值操作就是值的赋值，前后两者不相互影响</p>
-<pre><code>var num1 = 1;
-var num2 = num1;
-num2 = 3;
-console.log(num1) // 1
-console.log(num2) // 3
-</code></pre><h4 id="引用数据类型：object、array、function；"><a href="#引用数据类型：object、array、function；" class="headerlink" title="引用数据类型：object、array、function；"></a>引用数据类型：object、array、function；</h4>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/01/深拷贝与浅拷贝/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1653,7 +1753,7 @@ console.log(num2) // 3
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1664,7 +1764,7 @@ console.log(num2) // 3
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

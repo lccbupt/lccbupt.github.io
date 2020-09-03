@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Javascript," />
 
 
 
@@ -80,15 +80,16 @@
 
 
 <meta name="description" content="一、概述 参考：-MDN web docs  Array.prototype.reduce()reduce() 方法对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值。reduce是ES5中新增的又一个数组逐项处理方法 const arr = [1, 2, 3, 4]; const result = arr.reduce((accumulator, cur">
+<meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript中的reduce方法">
+<meta property="og:title" content="javascript中的Array.reduce方法">
 <meta property="og:url" content="http://lccbupt.github.io/2020/08/17/2020-08-17/index.html">
 <meta property="og:site_name" content="星*空">
 <meta property="og:description" content="一、概述 参考：-MDN web docs  Array.prototype.reduce()reduce() 方法对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值。reduce是ES5中新增的又一个数组逐项处理方法 const arr = [1, 2, 3, 4]; const result = arr.reduce((accumulator, cur">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-08-17T08:05:10.158Z">
+<meta property="og:updated_time" content="2020-08-27T07:51:47.232Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript中的reduce方法">
+<meta name="twitter:title" content="javascript中的Array.reduce方法">
 <meta name="twitter:description" content="一、概述 参考：-MDN web docs  Array.prototype.reduce()reduce() 方法对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值。reduce是ES5中新增的又一个数组逐项处理方法 const arr = [1, 2, 3, 4]; const result = arr.reduce((accumulator, cur">
 
 
@@ -125,7 +126,7 @@
 
 
 
-  <title>javascript中的reduce方法 | 星*空</title>
+  <title>javascript中的Array.reduce方法 | 星*空</title>
   
 
 
@@ -269,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">javascript中的reduce方法</h1>
+          <h1 class="post-title" itemprop="name headline">javascript中的Array.reduce方法</h1>
         
 
         <div class="post-meta">
@@ -291,6 +292,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">Javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -521,6 +544,41 @@ function p4(a) {
 const promiseArr = [p1, p2, f3, p4];
 runPromiseInSequence(promiseArr, 10)
   .then(console.log);
+</code></pre><h2 id="六、Polyfill"><a href="#六、Polyfill" class="headerlink" title="六、Polyfill"></a>六、Polyfill</h2><pre><code>if(!Array.prototype.reduce) {
+  Object.defineProperty(Array.prototype, &apos;reduce&apos;, {
+    value: function(callback) {
+      if(this === null) {
+        throw new TypeError(&apos;null can not call&apos;)
+      }
+      if(typeof callback !== &apos;function&apos;) {
+        throw new TypeError(&apos;callback is not a function&apos;)
+      }
+      var o = Object(this);
+
+      var len = o.length &gt;&gt;&gt; 0;
+      var k = 0;
+      var value;
+      if(arguments.length &gt;= 2) {
+        value = arguments[1]
+      } else {
+        while(k &lt; len &amp;&amp; !(k in o)) {
+          k++
+        }
+        if(k &gt;= len) {
+          throw new TypeError(&apos;empt array&apos;)
+        }
+        value = o[k++];
+      }
+      while(k &lt; len) {
+        if(k in o) {
+          value = callback(value, o[k], k, o);
+        }
+        k++
+      }
+      return value;
+    }
+  })
+}
 </code></pre>
       
     </div>
@@ -535,6 +593,12 @@ runPromiseInSequence(promiseArr, 10)
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
       
 
       
@@ -554,6 +618,10 @@ runPromiseInSequence(promiseArr, 10)
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/27/2020-08-27/" rel="prev" title="前端工程化（一）—— 打包工具webpack篇">
+                前端工程化（一）—— 打包工具webpack篇 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -634,7 +702,7 @@ runPromiseInSequence(promiseArr, 10)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -645,7 +713,7 @@ runPromiseInSequence(promiseArr, 10)
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -689,7 +757,7 @@ runPromiseInSequence(promiseArr, 10)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、概述"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-reduce"><span class="nav-number">1.1.</span> <span class="nav-text">Array.prototype.reduce()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、语法"><span class="nav-number">2.</span> <span class="nav-text">二、语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、reduce如何运行"><span class="nav-number">3.</span> <span class="nav-text">三、reduce如何运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、reduce与map和forEach的区别"><span class="nav-number">4.</span> <span class="nav-text">四、reduce与map和forEach的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、使用例子"><span class="nav-number">5.</span> <span class="nav-text">五、使用例子</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、概述"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-reduce"><span class="nav-number">1.1.</span> <span class="nav-text">Array.prototype.reduce()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、语法"><span class="nav-number">2.</span> <span class="nav-text">二、语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、reduce如何运行"><span class="nav-number">3.</span> <span class="nav-text">三、reduce如何运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、reduce与map和forEach的区别"><span class="nav-number">4.</span> <span class="nav-text">四、reduce与map和forEach的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、使用例子"><span class="nav-number">5.</span> <span class="nav-text">五、使用例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、Polyfill"><span class="nav-number">6.</span> <span class="nav-text">六、Polyfill</span></a></li></ol></div>
             
 
           </div>

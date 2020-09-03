@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Antd," />
+  <meta name="keywords" content="webpack," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="一、Ant Design简介 antd 是蚂蚁金服出品的面向企业级的设计体系组件库，使用react封装，在后台项目中使用体验很好；官网地址：https://ant.design/index-cn  二、需求使用antd中的Table组件展示接口返回的表格数据；并且当点击表格的某一行时，需要当前行高亮显示 三、解决方法主要使用Table 组件的rowClassName 和 onRow 属性；  ro">
-<meta name="keywords" content="Antd">
+<meta name="description" content="随着技术的进步，现在的前端开发工作对开发者提出了更为严格的要求，不仅仅是简单的制作页面，而是需要考虑各方面的问题，比如性能的优化，代码的可维护性和健壮性等问题，因此现在前端越来越工程化，工程化就需要从模块化、组件化、规范化和自动化多方面考虑。  参考链接：A mostly complete guide to webpack (2020) 一、什么是webpack？本篇文章主要分享前端工程化中模块">
+<meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ant Design的Table组件实现点击行高亮提示">
-<meta property="og:url" content="http://lccbupt.github.io/2020/05/08/antd的Table组件使用/index.html">
+<meta property="og:title" content="前端工程化（一）—— 打包工具webpack篇">
+<meta property="og:url" content="http://lccbupt.github.io/2020/08/27/2020-08-27/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="一、Ant Design简介 antd 是蚂蚁金服出品的面向企业级的设计体系组件库，使用react封装，在后台项目中使用体验很好；官网地址：https://ant.design/index-cn  二、需求使用antd中的Table组件展示接口返回的表格数据；并且当点击表格的某一行时，需要当前行高亮显示 三、解决方法主要使用Table 组件的rowClassName 和 onRow 属性；  ro">
+<meta property="og:description" content="随着技术的进步，现在的前端开发工作对开发者提出了更为严格的要求，不仅仅是简单的制作页面，而是需要考虑各方面的问题，比如性能的优化，代码的可维护性和健壮性等问题，因此现在前端越来越工程化，工程化就需要从模块化、组件化、规范化和自动化多方面考虑。  参考链接：A mostly complete guide to webpack (2020) 一、什么是webpack？本篇文章主要分享前端工程化中模块">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-08T10:32:15.258Z">
+<meta property="og:updated_time" content="2020-09-03T08:21:18.577Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ant Design的Table组件实现点击行高亮提示">
-<meta name="twitter:description" content="一、Ant Design简介 antd 是蚂蚁金服出品的面向企业级的设计体系组件库，使用react封装，在后台项目中使用体验很好；官网地址：https://ant.design/index-cn  二、需求使用antd中的Table组件展示接口返回的表格数据；并且当点击表格的某一行时，需要当前行高亮显示 三、解决方法主要使用Table 组件的rowClassName 和 onRow 属性；  ro">
+<meta name="twitter:title" content="前端工程化（一）—— 打包工具webpack篇">
+<meta name="twitter:description" content="随着技术的进步，现在的前端开发工作对开发者提出了更为严格的要求，不仅仅是简单的制作页面，而是需要考虑各方面的问题，比如性能的优化，代码的可维护性和健壮性等问题，因此现在前端越来越工程化，工程化就需要从模块化、组件化、规范化和自动化多方面考虑。  参考链接：A mostly complete guide to webpack (2020) 一、什么是webpack？本篇文章主要分享前端工程化中模块">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2020/05/08/antd的Table组件使用/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2020/08/27/2020-08-27/"/>
 
 
 
 
 
-  <title>Ant Design的Table组件实现点击行高亮提示 | 星*空</title>
+  <title>前端工程化（一）—— 打包工具webpack篇 | 星*空</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/05/08/antd的Table组件使用/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/08/27/2020-08-27/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ant Design的Table组件实现点击行高亮提示</h1>
+          <h1 class="post-title" itemprop="name headline">前端工程化（一）—— 打包工具webpack篇</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T16:28:20+08:00">
-                2020-05-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-27T15:54:49+08:00">
+                2020-08-27
               </time>
             
 
@@ -325,45 +325,49 @@
       
 
       
-        <h3 id="一、Ant-Design简介"><a href="#一、Ant-Design简介" class="headerlink" title="一、Ant Design简介"></a>一、Ant Design简介</h3><blockquote>
-<p>antd 是蚂蚁金服出品的面向企业级的设计体系组件库，使用react封装，在后台项目中使用体验很好；<br>官网地址：<a href="https://ant.design/index-cn" target="_blank" rel="noopener">https://ant.design/index-cn</a></p>
+        <blockquote>
+<p>随着技术的进步，现在的前端开发工作对开发者提出了更为严格的要求，不仅仅是简单的制作页面，而是需要考虑各方面的问题，比如性能的优化，代码的可维护性和健壮性等问题，因此现在前端越来越工程化，工程化就需要从模块化、组件化、规范化和自动化多方面考虑。</p>
 </blockquote>
-<h3 id="二、需求"><a href="#二、需求" class="headerlink" title="二、需求"></a>二、需求</h3><p>使用antd中的Table组件展示接口返回的表格数据；并且当点击表格的某一行时，需要当前行高亮显示</p>
-<h3 id="三、解决方法"><a href="#三、解决方法" class="headerlink" title="三、解决方法"></a>三、解决方法</h3><p>主要使用Table 组件的rowClassName 和 onRow 属性；</p>
+<p>参考链接：<a href="https://www.valentinog.com/blog/webpack/" target="_blank" rel="noopener">A mostly complete guide to webpack (2020)</a></p>
+<h2 id="一、什么是webpack？"><a href="#一、什么是webpack？" class="headerlink" title="一、什么是webpack？"></a>一、什么是webpack？</h2><p>本篇文章主要分享前端工程化中模块化必不可少的打包工具webpack，对于webpack来说模块包括以下：</p>
 <ul>
-<li>rowClassName 表示行的类名</li>
-<li>onRow 设置行属性<a id="more"></a>
-</li>
+<li>Common JS modules</li>
+<li>AMD modules</li>
+<li>CSS import</li>
+<li>Images url</li>
+<li>ES modules</li>
 </ul>
-<p>具体实现代码如下：</p>
-<pre><code>import React, { useState } from &apos;react&apos;;
-import { Table } from &apos;antd&apos;
+<p>也就是说，webpack能够从以上模块源中获取依赖项。webpack中主要包括以下配置项目：<br><a id="more"></a></p>
+<h3 id="Entry-point"><a href="#Entry-point" class="headerlink" title="Entry point"></a>Entry point</h3><p>webpack的入口点是收集前端项目所有依赖项的起点。实际上，它是一个简单的JavaScript文件。这些依赖关系形成一个依赖关系图。webpack的默认入口点(自版本4以来)是src/index。它是可配置的。webpack可以有多个入口点。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>输出是生成的JavaScript和静态文件在构建过程中收集的地方。webpack的默认输出文件夹(自版本4以来)是dist/，也是可配置的。产生的JavaScript文件是所谓包的一部分。</p>
+<h3 id="Loaders"><a href="#Loaders" class="headerlink" title="Loaders"></a>Loaders</h3><p>加载器是帮助webpack处理各种文件扩展的第三方扩展。例如，有用于CSS、图像或txt文件的加载器。<br>加载器的目标是在模块中转换文件(而不是JavaScript)。一旦该文件成为模块，webpack就可以将其作为项目中的依赖项使用。</p>
+<h3 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h3><p>插件是可以改变webpack工作方式的第三方扩展。例如，有用于提取HTML、CSS或设置环境变量的插件。</p>
+<h3 id="Mode"><a href="#Mode" class="headerlink" title="Mode"></a>Mode</h3><p>webpack有两种操作模式:开发和生产。它们之间的主要区别是生产模式会自动神奇般地对JavaScript代码应用缩小和其他优化。</p>
+<h3 id="Code-splitting"><a href="#Code-splitting" class="headerlink" title="Code splitting"></a>Code splitting</h3><p>代码分割或延迟加载是一种避免更大bundle的优化技术。<br>通过代码分割，开发人员可以决定仅在响应某些用户交互时加载整个JavaScript块，比如单击或路由更改(或其他条件)。一段代码被分解成一个chunk。</p>
+<h2 id="二、webpack运行流程"><a href="#二、webpack运行流程" class="headerlink" title="二、webpack运行流程"></a>二、webpack运行流程</h2><p>Webpack 的运行流程是一个串行的过程，从启动到结束会依次执行以下流程：<br>1、初始化参数：从配置文件和 Shell 语句中读取与合并参数，得出最终的参数；<br>2、开始编译：用上一步得到的参数初始化 Compiler 对象，加载所有配置的插件，执行对象的 run 方法开始执行编译；<br>3、确定入口：根据配置中的 entry 找出所有的入口文件；<br>4、编译模块：从入口文件出发，调用所有配置的 Loader 对模块进行翻译，再找出该模块依赖的模块，再递归本步骤直到所有入口依赖的文件都经过了本步骤的处理；<br>5、完成模块编译：在经过第4步使用 Loader 翻译完所有模块后，得到了每个模块被翻译后的最终内容以及它们之间的依赖关系；<br>6、输出资源：根据入口和模块之间的依赖关系，组装成一个个包含多个模块的 Chunk，再把每个 Chunk转换成一个单独的文件加入到输出列表，这步是可以修改输出内容的最后机会；<br>7、输出完成：在确定好输出内容后，根据配置确定输出的路径和文件名，把文件内容写入到文件系统。</p>
+<h2 id="三、配置webpack"><a href="#三、配置webpack" class="headerlink" title="三、配置webpack"></a>三、配置webpack</h2><p>1、创建webpack.config.js文件<br>2、在webpack.config.js文件中必须要有module.exports;并且可以修改如下选项：</p>
+<ul>
+<li>entry point</li>
+<li>output</li>
+<li>loaders</li>
+<li>plugins</li>
+<li><p>code splitting</p>
+<pre><code>const path = require(&quot;path&quot;);
 
-const Demo = () =&gt; {
-    const [rowid, setRowId] = useState();
-
-    // 设置行的class类名
-    const setRowClassName = record =&gt; {
-        return record === rowid ? &apos;active&apos; : &apos;&apos;;
-    }
-
-    // 设置行的点击事件
-    const changeRow = record =&gt; {
-        setRowId(record.id) 
-    }
-
-    return (
-        &lt;Table 
-            onRow={ record =&gt; {
-                return {
-                    onClick: () =&gt; { changeRow(record) }
-                };
-            }}
-            rowClassName={setRowClassName}
-        /&gt;
-    )
+module.exports = {
+    entry: { index: path.resolve(__dirname, &quot;source&quot;, &quot;index.js&quot;)}
 }
-</code></pre><p>上述代码通过点击行事件，为该行添加active类名，从而修改改行的样式，比如添加高亮背景。</p>
+// 现在webpack会在入口source/index.js加载文件
+// 修改output
+module.exports = {
+    entry: { index: path.resolve(__dirname, &quot;source&quot;, &quot;index.js&quot;)},
+    output: {
+        path: path.resolve(__dirname, &quot;build&quot;)
+    }
+}
+</code></pre></li>
+</ul>
+<p>3、处理HTML，需安装plugin：html-webpack-plugin<br>处理不同的css文件等，根据上面类似需要安装对应的plugin，然后增加配置项。</p>
 
       
     </div>
@@ -381,7 +385,7 @@ const Demo = () =&gt; {
       
         <div class="post-tags">
           
-            <a href="/tags/Antd/" rel="tag"># Antd</a>
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
           
         </div>
       
@@ -394,8 +398,8 @@ const Demo = () =&gt; {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/08/跨域资源共享CORS/" rel="next" title="跨域资源共享CORS">
-                <i class="fa fa-chevron-left"></i> 跨域资源共享CORS
+              <a href="/2020/08/17/2020-08-17/" rel="next" title="javascript中的Array.reduce方法">
+                <i class="fa fa-chevron-left"></i> javascript中的Array.reduce方法
               </a>
             
           </div>
@@ -404,8 +408,8 @@ const Demo = () =&gt; {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/05/15/webpack实战读书笔记/" rel="prev" title="webpack实战-读书笔记">
-                webpack实战-读书笔记 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/09/03/2020-09-03/" rel="prev" title="Javascript中的 Map 和 Set">
+                Javascript中的 Map 和 Set <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -542,7 +546,7 @@ const Demo = () =&gt; {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、Ant-Design简介"><span class="nav-number">1.</span> <span class="nav-text">一、Ant Design简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、需求"><span class="nav-number">2.</span> <span class="nav-text">二、需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、解决方法"><span class="nav-number">3.</span> <span class="nav-text">三、解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是webpack？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是webpack？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Entry-point"><span class="nav-number">1.1.</span> <span class="nav-text">Entry point</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loaders"><span class="nav-number">1.3.</span> <span class="nav-text">Loaders</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Plugins"><span class="nav-number">1.4.</span> <span class="nav-text">Plugins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mode"><span class="nav-number">1.5.</span> <span class="nav-text">Mode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-splitting"><span class="nav-number">1.6.</span> <span class="nav-text">Code splitting</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、webpack运行流程"><span class="nav-number">2.</span> <span class="nav-text">二、webpack运行流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、配置webpack"><span class="nav-number">3.</span> <span class="nav-text">三、配置webpack</span></a></li></ol></div>
             
 
           </div>
