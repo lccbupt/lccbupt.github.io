@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Javascript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考：https://juejin.cn/post/6844904158273765384  一、概述在日常开发中我们都会遇见一些拖拽DOM元素的需求，本文总结了如何实现DOM元素拖拽功能的方法；主要分为两种；  一是通过监听鼠标mouse事件 二是使用Html5的拖拽的API drag &amp;amp; drop">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript实现元素的拖拽效果">
+<meta property="og:url" content="http://lccbupt.github.io/2020/12/17/2020-12-17/index.html">
+<meta property="og:site_name" content="星*空">
+<meta property="og:description" content="参考：https://juejin.cn/post/6844904158273765384  一、概述在日常开发中我们都会遇见一些拖拽DOM元素的需求，本文总结了如何实现DOM元素拖拽功能的方法；主要分为两种；  一是通过监听鼠标mouse事件 二是使用Html5的拖拽的API drag &amp;amp; drop">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-12-17T10:51:58.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript实现元素的拖拽效果">
+<meta name="twitter:description" content="参考：https://juejin.cn/post/6844904158273765384  一、概述在日常开发中我们都会遇见一些拖拽DOM元素的需求，本文总结了如何实现DOM元素拖拽功能的方法；主要分为两种；  一是通过监听鼠标mouse事件 二是使用Html5的拖拽的API drag &amp;amp; drop">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lccbupt.github.io/2020/12/17/2020-12-17/"/>
+
+
+
+
+
+  <title>Javascript实现元素的拖拽效果 | 星*空</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">星*空</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live beautifully,Dream passionately,Love completely</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/12/17/2020-12-17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Javascript实现元素的拖拽效果</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-17T15:04:17+08:00">
+                2020-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>参考：<a href="https://juejin.cn/post/6844904158273765384" target="_blank" rel="noopener">https://juejin.cn/post/6844904158273765384</a></p>
+</blockquote>
+<h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p>在日常开发中我们都会遇见一些拖拽DOM元素的需求，本文总结了如何实现DOM元素拖拽功能的方法；主要分为两种；</p>
+<ul>
+<li>一是通过监听鼠标mouse事件</li>
+<li>二是使用Html5的拖拽的API drag &amp; drop</li>
+</ul>
+<a id="more"></a>
+<h3 id="二、使用原生js实现拖拽功能"><a href="#二、使用原生js实现拖拽功能" class="headerlink" title="二、使用原生js实现拖拽功能"></a>二、使用原生js实现拖拽功能</h3><p>使用该方法时，被拖拽的元素必须为绝对定位；<br>主要监听鼠标的三个事件：mousedown, onmousemove, onmouseup</p>
+<pre><code>// html结构
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
+  &lt;style&gt;
+  .box {
+    position: absolute;
+    background: blue;
+  }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;box&quot; style=&quot;left:0;top:0;width:100px;height:100px&quot;&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+// js方法
+&lt;script&gt;
+    let dragDiv = document.getElementsByClassName(&quot;box&quot;)[0];
+    // 鼠标按下事件 处理程序
+    let putDown = function (event) {
+      dragDiv.style.cursor = &quot;pointer&quot;;
+      let offsetX = parseInt(dragDiv.style.left); // 获取当前的x轴距离
+      let offsetY = parseInt(dragDiv.style.top); // 获取当前的y轴距离
+      let innerX = event.clientX - offsetX; // 获取鼠标在方块内的x轴距
+      let innerY = event.clientY - offsetY; // 获取鼠标在方块内的y轴距
+      // 按住鼠标时为div添加一个border
+      dragDiv.style.borderStyle = &quot;solid&quot;;
+      dragDiv.style.borderColor = &quot;red&quot;;
+      dragDiv.style.borderWidth = &quot;3px&quot;;
+      // 鼠标移动的时候不停的修改div的left和top值
+      document.onmousemove = function (event) {
+          dragDiv.style.left = event.clientX - innerX + &quot;px&quot;;
+          dragDiv.style.top = event.clientY - innerY + &quot;px&quot;;
+          // 边界判断
+          if (parseInt(dragDiv.style.left) &lt;= 0) {
+              dragDiv.style.left = &quot;0px&quot;;
+          }
+          if (parseInt(dragDiv.style.top) &lt;= 0) {
+              dragDiv.style.top = &quot;0px&quot;;
+          }
+          if (parseInt(dragDiv.style.left) &gt;= window.innerWidth - parseInt(dragDiv.style.width)) {
+              dragDiv.style.left = window.innerWidth - parseInt(dragDiv.style.width) + &quot;px&quot;;
+          }
+          if (parseInt(dragDiv.style.top) &gt;= window.innerHeight - parseInt(dragDiv.style.height)) {
+              dragDiv.style.top = window.innerHeight - parseInt(dragDiv.style.height) + &quot;px&quot;;
+          }
+      }
+      // 鼠标抬起时，清除绑定在文档上的mousemove和mouseup事件
+      // 否则鼠标抬起后还可以继续拖拽方块
+      document.onmouseup = function () {
+          document.onmousemove = null;
+          document.onmouseup = null;
+          // 清除border
+          dragDiv.style.borderStyle = &quot;&quot;;
+          dragDiv.style.borderColor = &quot;&quot;;
+          dragDiv.style.borderWidth = &quot;&quot;;
+      }
+  }
+  // 绑定鼠标按下事件
+  dragDiv.addEventListener(&quot;mousedown&quot;, putDown, false);
+&lt;/script&gt;
+
+
+// 参考代码，封装拖拽函数
+
+var funDrag = function(element, callback) {
+    callback = callback || function() {};
+    var params = {
+        left: 0,
+        top: 0,
+        currentX: 0,
+        currentY: 0,
+        flag: false
+    };
+    //获取相关CSS属性
+    var getCss = function(o,key){
+        return o.currentStyle? o.currentStyle[key] : document.defaultView.getComputedStyle(o,false)[key];     
+    };
+
+    //拖拽的实现
+    if(getCss(element, &quot;left&quot;) !== &quot;auto&quot;){
+        params.left = getCss(element, &quot;left&quot;);
+    }
+    if(getCss(element, &quot;top&quot;) !== &quot;auto&quot;){
+        params.top = getCss(element, &quot;top&quot;);
+    }
+    //o是移动对象
+    element.onmousedown = function(event){
+        params.flag = true;
+        event = event || window.event;
+        params.currentX = event.clientX;
+        params.currentY = event.clientY;
+    };
+    document.onmouseup = function(){
+        params.flag = false;    
+        if(getCss(element, &quot;left&quot;) !== &quot;auto&quot;){
+            params.left = getCss(element, &quot;left&quot;);
+        }
+        if(getCss(element, &quot;top&quot;) !== &quot;auto&quot;){
+            params.top = getCss(element, &quot;top&quot;);
+        }
+        callback();
+    };
+    document.onmousemove = function(event){
+        event = event || window.event;
+        if(params.flag){
+            var nowX = event.clientX, nowY = event.clientY;
+            var disX = nowX - params.currentX, disY = nowY - params.currentY;
+            element.style.left = parseInt(params.left) + disX + &quot;px&quot;;
+            element.style.top = parseInt(params.top) + disY + &quot;px&quot;;
+        }
+    }    
+};
+</code></pre><p>三、使用Html5的特性实现</p>
+<blockquote>
+<p>HTML 的 drag &amp; drop 使用了 DOM event model 以及从mouse events 继承而来的 drag events 。一个典型的drag操作是这样开始的：用户用鼠标选中一个可拖动的（draggable）元素，移动鼠标到一个可放置的（droppable）元素，然后释放鼠标。 在操作期间，会触发一些事件类型，有一些事件类型可能会被多次触发（比如drag 和 dragover 事件类型）</p>
+</blockquote>
+<p>相关重点：<br>1.DataTransfer 对象：退拽对象用来传递的媒介，使用一般为Event.dataTransfer。<br>2.draggable 属性：就是标签元素要设置draggable=true，否则不会有效果，例如：</p>
+<pre><code>&lt;div title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表1&lt;/div&gt;
+</code></pre><p>3.ondragstart事件：当拖拽元素开始被拖拽的时候触发的事件，此事件作用在被拖曳元素上<br>4.ondragenter事件：当拖曳元素进入目标元素的时候触发的事件，此事件作用在目标元素上<br>5.ondragover事件：拖拽元素在目标元素上移动的时候触发的事件，此事件作用在目标元素上<br>6.ondrop事件：被拖拽的元素在目标元素上同时鼠标放开触发的事件，此事件作用在目标元素上<br>7.ondragend 事件：当拖拽完成后触发的事件，此事件作用在被拖曳元素上<br>8.Event.preventDefault()方法：阻止默认的些事件方法等执行。在ondragover中一定要执行preventDefault()，否则ondrop事件不会被触发。另外，如果是从其他应用软件或是文件中拖东西进来，尤其是图片的时候，默认的动作是显示这个图片或是相关信息，并不是真的执行drop。此时需要用用document的ondragover事件把它直接干掉。<br>9.Event.effectAllowed 属性：就是拖拽的效果。</p>
+<pre><code>// html结构
+&lt;div class=&quot;dustbin&quot;&gt;&lt;br /&gt;垃&lt;br /&gt;圾&lt;br /&gt;箱&lt;/div&gt;
+&lt;div class=&quot;dragbox&quot;&gt;
+    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表1&lt;/div&gt;
+    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表2&lt;/div&gt;
+    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表3&lt;/div&gt;
+    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表4&lt;/div&gt;
+    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表5&lt;/div&gt;
+    &lt;div class=&quot;draglist&quot; title=&quot;拖拽我&quot; draggable=&quot;true&quot;&gt;列表6&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;dragremind&quot;&gt;&lt;/div&gt;
+
+// js代码
+var eleDustbin = $(&quot;.dustbin&quot;)[0], eleDrags = $(&quot;.draglist&quot;), lDrags = eleDrags.length, eleRemind = $(&quot;.dragremind&quot;)[0], eleDrag = null;
+for (var i=0; i&lt;lDrags; i+=1) {
+    eleDrags[i].onselectstart = function() {
+        return false;
+    };
+    eleDrags[i].ondragstart = function(ev) {
+        /*拖拽开始*/
+        //拖拽效果
+        ev.dataTransfer.effectAllowed = &quot;move&quot;;
+        ev.dataTransfer.setData(&quot;text&quot;, ev.target.innerHTML);
+        ev.dataTransfer.setDragImage(ev.target, 0, 0);
+        eleDrag = ev.target;
+        return true;
+    };
+    eleDrags[i].ondragend = function(ev) {
+        /*拖拽结束*/
+        ev.dataTransfer.clearData(&quot;text&quot;);
+        eleDrag = null;
+        return false
+    };
+}
+eleDustbin.ondragover = function(ev) {
+    /*拖拽元素在目标元素头上移动的时候*/
+    ev.preventDefault();
+    return true;
+};
+
+eleDustbin.ondragenter = function(ev) {
+    /*拖拽元素进入目标元素头上的时候*/
+    this.style.color = &quot;#ffffff&quot;;
+    return true;
+};
+eleDustbin.ondrop = function(ev) {
+    /*拖拽元素进入目标元素头上，同时鼠标松开的时候*/
+    if (eleDrag) {
+        eleRemind.innerHTML = &apos;&lt;strong&gt;&quot;&apos; + eleDrag.innerHTML + &apos;&quot;&lt;/strong&gt;被扔进了垃圾箱&apos;;
+        eleDrag.parentNode.removeChild(eleDrag);
+    }
+    this.style.color = &quot;#000000&quot;;
+    return false;
+};
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/21/2020-09-23/" rel="next" title="理解vue中的组件和插件机制">
+                <i class="fa fa-chevron-left"></i> 理解vue中的组件和插件机制
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/25/2021-01-25/" rel="prev" title="使用Canvas实现图片裁剪">
+                使用Canvas实现图片裁剪 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="Liucheng" />
+            
+              <p class="site-author-name" itemprop="name">Liucheng</p>
+              <p class="site-description motion-element" itemprop="description">记录点点滴滴的进步</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、概述"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、使用原生js实现拖拽功能"><span class="nav-number">2.</span> <span class="nav-text">二、使用原生js实现拖拽功能</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Liucheng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

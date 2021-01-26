@@ -252,6 +252,531 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2021/01/25/2021-01-25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/25/2021-01-25/" itemprop="url">使用Canvas实现图片裁剪</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-25T11:07:55+08:00">
+                2021-01-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <img src="/2021/01/25/2021-01-25/图片裁剪.png">
+<h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><blockquote>
+<p>Canvas API 提供了一个通过JavaScript 和 HTML的 canvas 元素来绘制图形的方式。它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面。</p>
+</blockquote>
+<p>Canvas 最有意思的一项特性是针对图像的操作能力，可以动态的合成图像、制作图形的背景，支持浏览器的各种图片格式，甚至可以使用同一页面中其他canvas元素生成的图片作为图片源。</p>
+<p>【引入图像到canvas】：</p>
+<ul>
+<li>获得一个指向HTMLImageElement的对象或者另一个canvas元素的引用作为源，也可以通过URL的方式来使用图片</li>
+<li>使用drawImage()函数将图片绘制到画布上</li>
+</ul>
+<p>【canvas API图片源的来源】：<br>1、HTMLImageElement：Image()函数构造出来的，或者任何的img元素<br>2、HTMLVideoElement：video元素，从视频中抓取当前帧作为一个图像<br>3、HTMLCanvasElement：canvas元素<br>4、ImageBitmap：位图，可以通过上述源生成</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/01/25/2021-01-25/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/12/17/2020-12-17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/17/2020-12-17/" itemprop="url">Javascript实现元素的拖拽效果</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-17T15:04:17+08:00">
+                2020-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>参考：<a href="https://juejin.cn/post/6844904158273765384" target="_blank" rel="noopener">https://juejin.cn/post/6844904158273765384</a></p>
+</blockquote>
+<h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><p>在日常开发中我们都会遇见一些拖拽DOM元素的需求，本文总结了如何实现DOM元素拖拽功能的方法；主要分为两种；</p>
+<ul>
+<li>一是通过监听鼠标mouse事件</li>
+<li>二是使用Html5的拖拽的API drag &amp; drop</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/12/17/2020-12-17/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/09/21/2020-09-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/21/2020-09-23/" itemprop="url">理解vue中的组件和插件机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-21T18:26:39+08:00">
+                2020-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>Vue是一套用于构建用户界面的渐进式框架。通俗来讲Vue.Js是一个轻量级，易上手，易使用的，便捷灵活的MVVM框架。</p>
+<h2 id="二、vue组件"><a href="#二、vue组件" class="headerlink" title="二、vue组件"></a>二、vue组件</h2><p>vue组件是vue的强大功能之一，组件具有封装可复用的特点，可以在复杂的应用中拆分成独立模块使用，所有的vue组件同时也都是vue的实例，可接受相同的选项对象。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/21/2020-09-23/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/09/08/2020-09-08/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/08/2020-09-08/" itemprop="url">javascript面向对象编程（一）——封装和继承</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-08T16:42:27+08:00">
+                2020-09-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><blockquote>
+<p>js是否是面向对象的语言是有争议的，但是js是基于对象的语言。在JS中几乎所有的东西都可以看成是一个对象，但是JS中的对象模型和大多数面向对象语言的对象模型不太一样。面向对象的三个特点：封装、继承和多态。</p>
+</blockquote>
+<ul>
+<li><p>封装：隐藏内部逻辑的实现、属性和方法，仅对外公开接口。外部只需要关注如何使用接口而不需要关心内部如何实现。</p>
+</li>
+<li><p>继承：子类可以使用父类的所有功能，并且对这些功能进行扩展。继承的过程，就是从一般到特殊的过程</p>
+</li>
+<li><p>多态：所谓多态，就是指一个引用类型在不同情况下的多种状态。在java中多态是指通过指向父类的引用，来调用在不同子类中实现的方法。</p>
+</li>
+</ul>
+<p>js实际上是无态的，是一种动态语言，一个变量的类型是在运行的过程中由js引擎来决定的，所以说js天生就支持多态。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/08/2020-09-08/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/09/03/2020-09-03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -322,82 +847,17 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>参考文献 <a href="https://juejin.im/post/6844903589920374792" target="_blank" rel="noopener">ES6的Set和Map数据结构，由你制造</a></p>
 </blockquote>
 <p>Map和Set是ES6规范引入的新特性作为新的内置对象，这次在项目中刚好使用了Set数据结构，就整理关于这两个新特性的知识。<br>Map的主要应用场景是数据存储，而Set的主要作用是数组的去重。<br>Set是一种叫做集合的数据结构，Map是一种叫做字典的数据结构</p>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>Map 对象保存键值对，并且能够记住键的原始插入顺序。任何值(对象或者原始值) 都可以作为一个键或一个值。具有极快的查找速度。（Map对象是键值唯一不重复）<br>Map的主要作用就是用来存储数据的，相对于object只提供“字符串-值”的对应，Map提供了“值-值”的对应。<br>Map的基本使用方法：</p>
-<pre><code>const m = new Map();
-const o = {p: &apos;test1&apos;};
-m.set(o, &apos;content&apos;);
-m.get(o) // &apos;content&apos;
-
-m.has(o) // true
-m.delete(o) 
-m.has(o) // false
-</code></pre><p>1.构造函数<br>    Map()<br>2.属性<br>    Map.prototype.size  返回Map对象的键/值对的数量。<br>3.方法<br>    set(key, val): 向字典中添加新元素<br>    get(key):通过键值查找特定的数值并返回<br>    has(key):如果键存在字典中返回true,否则false<br>    delete(key): 通过键值从字典中移除对应的数据<br>    clear():将这个字典中的所有元素删除</p>
-<p>4.使用 for..of 方法迭代 Map</p>
-<pre><code>let myMap = new Map();
-myMap.set(0, &apos;zero&apos;);
-myMap.set(1, &apos;one&apos;);
-for(let [key, value] of myMap) {
-    console.log(key + &quot;=&quot; + value);
-}
-// 两个log &quot;0=zero&quot; &quot;1=one&quot;
-for (let key of myMap.keys()) {
-    console.log(key)
-} 0, 1 两个log
-</code></pre><p>5.使用 forEach() 方法迭代 Map</p>
-<pre><code>myMap.forEach(function(value, key) {
-  console.log(key + &quot; = &quot; + value);
-})
-// 将会显示两个logs。 一个是 &quot;0 = zero&quot; 另一个是 &quot;1 = one&quot;
-</code></pre><p>6.Map 与数组的关系</p>
-<ul>
-<li>一个二维键值对数组可以通过Map构造函数转成一个Map对象</li>
-<li><p>一个Map对象可通过Array.from函数转换成一个二维键值对数组、或者使用展开运算符转换成一个二维数组</p>
-<pre><code>let kvArray = [[&quot;key1&quot;, &quot;value1&quot;], [&quot;key2&quot;, &quot;value2&quot;]];
-
-let myMap = new Map(kvArray);
-
-myMap.get(&quot;key1&quot;); // 返回值为 &quot;value1&quot;
-
-console.log(Array.from(myMap)); // 输出和kvArray相同的数组
-
-console.log([...myMap]);  // 输出和kvArray相同的数组
-</code></pre></li>
-</ul>
-<h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set是一种集合的数据结构，集合具有 无序 且 唯一的特点，因此Set类似数组，但是其中没有重复的值。<br>Set的基本用法：</p>
-<pre><code>const s = new Set();
-
-[2, 3, 5, 4, 5, 2, 2].forEach(x =&gt; s.add(x));
-
-for (let i of s) {
-  console.log(i);   // 2 3 5 4
-}
-
-// 去除数组的重复成员
-let array = [1,2,1,4,5,3];
-[...new Set(array)]     // [1, 2, 4, 5, 3]
-</code></pre><p>1.构造函数<br>new Set()<br>2.属性<br>size：返回集合所包含元素的数量<br>3.操作方法</p>
-<p>add(value)：向集合添加一个新的项<br>delete(value)：从集合中移除一个值<br>has(value)：如果值在集合中存在，返回true,否则false<br>clear(): 移除集合里所有的项</p>
-<p>4.遍历方法</p>
-<p>keys()：返回一个包含集合中所有键的数组<br>values()：返回一个包含集合中所有值的数组<br>entries：返回一个包含集合中所有键值对的数组(感觉没什么用就不实现了)<br>forEach()：用于对集合成员执行某种操作，没有返回值<br>5.应用<br>Set的主要作用是实现数组的去重</p>
-<pre><code>let myArray = [&quot;val1&quot;, &quot;val2&quot;, &quot;val3&quot;];
-// 用Set构造器可以将数组Array转换成Set
-let mySet = new Set(myArray);
-
-mySet.has(&quot;val1&quot;) // true
-//用...(展开操作符)可以将Set转换成Array
-console.log([...mySet]) // 与myArray完全一致
-
-//数组去重
-const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,32,3,4,5]
-console.log([...new Set(numbers)]) 
-// [2, 3, 4, 5, 6, 7, 32]
-</code></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/09/03/2020-09-03/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1151,559 +1611,11 @@ console.log(result) // 10
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/07/24/2020-07-24-javascript函数作用域/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liucheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星*空">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/24/2020-07-24-javascript函数作用域/" itemprop="url">【翻译】关于javascript函数作用域解释</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-24T10:20:14+08:00">
-                2020-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一、Quiz-Time"><a href="#一、Quiz-Time" class="headerlink" title="一、Quiz Time"></a>一、Quiz Time</h3><p>如下的代码执行后输出什么呢？为什么？</p>
-<pre><code>function jerry() {
-    console.log(name)
-}
-
-function tom() {
-    var name = &apos;tom&apos;;
-    jerry();
-}
-
-var name = &apos;cartoon&apos;;
-tom();
-</code></pre><p>上面的代码执行后是会输出 cartoon、tom或者undefined？但更重要的是，你是如何决定答案的呢?你是按Scope吗?还是执行上下文execution context呢?</p>
-<h3 id="二、Scope-作用域"><a href="#二、Scope-作用域" class="headerlink" title="二、Scope(作用域)"></a>二、Scope(作用域)</h3><p>上面代码执行的答案是 cartoon，让我们来探讨深入理解一下。</p>
-<blockquote>
-<p>In JavaScript, Scope is the mechanism to determine the accessibility of variables throughout its existence. It could be inside or outside of a function call.<br>在JavaScript中，作用域是在整个过程中确定变量可访问性的机制。它可以在函数调用的内部或外部。</p>
-</blockquote>
-<p>我们来拆分一下上面的代码，去理解变量的可访问性随着变量的声明和函数的创建如何改变。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/24/2020-07-24-javascript函数作用域/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/07/10/React-Hooks-的常见错误写法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liucheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星*空">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/10/React-Hooks-的常见错误写法/" itemprop="url">React Hooks 的常见错误写法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-10T11:37:31+08:00">
-                2020-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>原文地址（英文）：<a href="https://www.lorenzweiss.de/common_mistakes_react_hooks/" target="_blank" rel="noopener">https://www.lorenzweiss.de/common_mistakes_react_hooks/</a></p>
-</blockquote>
-<h3 id="1、在不需要再次render的时候使用useState"><a href="#1、在不需要再次render的时候使用useState" class="headerlink" title="1、在不需要再次render的时候使用useState"></a>1、在不需要再次render的时候使用useState</h3><p>react的核心概念之一就是处理state，你可以通过state控制你的整个数据流和渲染（rendering），每次虚拟Dom树再次渲染时，都很有可能和state的改变有关。</p>
-<p>通过使用useState hook你可以在函数组件中定义state，这样处理state就变得很简单整洁，但是当我们看到下面的例子时也会觉得困惑。</p>
-<p>假如有两个按钮，一个按钮是计数器，另一个按钮负责发送当前的数值。然而，当前的数值并不在组件内展示，它只是在按钮发送请求中使用。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/10/React-Hooks-的常见错误写法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/06/23/使用antd实现上传图片的表单操作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liucheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星*空">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/23/使用antd实现上传图片的表单操作/" itemprop="url">使用antd实现上传图片的表单操作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-23T18:29:41+08:00">
-                2020-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="一、antd介绍"><a href="#一、antd介绍" class="headerlink" title="一、antd介绍"></a>一、antd介绍</h3><p>antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品，有蚂蚁金服出品，本篇文章记录使用antd中upload组件与服务端配合实现文件的上传，本文中使用的antd版本是3.x版本。<br>官网：<a href="https://ant.design/index-cn" target="_blank" rel="noopener">https://ant.design/index-cn</a></p>
-<h3 id="二、antd中使用upload、Form组件实现文件上传"><a href="#二、antd中使用upload、Form组件实现文件上传" class="headerlink" title="二、antd中使用upload、Form组件实现文件上传"></a>二、antd中使用upload、Form组件实现文件上传</h3><p>1.具体功能<br>在一个服务记录的表单中，有一项是上传图片，需在保存表单的时候提交已经上传的图片地址<br>2.实现流程</p>
-<ul>
-<li>点击上传按钮，将图片上传到服务端指定的api接口</li>
-<li>服务端接口返回上传图片的地址链接</li>
-<li>将图片的地址链接绑定到表单的对应项</li>
-<li>点击保存按钮，提交表单</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/23/使用antd实现上传图片的表单操作/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/06/19/react-Hook学习笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Liucheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/header.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="星*空">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/19/react-Hook学习笔记/" itemprop="url">react Hook学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-19T11:01:11+08:00">
-                2020-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <img src="/2020/06/19/react-Hook学习笔记/react.png" title="React Hook 学习">
-<h3 id="一、什么是react-Hook？"><a href="#一、什么是react-Hook？" class="headerlink" title="一、什么是react Hook？"></a>一、什么是react Hook？</h3><p>React可以分为两种，一种是继承React.Component的class组件，另一种是函数组件；在class组件中有生命周期以及当前组件的state，react为了能在函数组件中使用state和react特性，在react16.8之后增加了Hook特性；所谓的Hook就是一种特殊函数，可以使函数组件“钩入”react特性。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/06/19/react-Hook学习笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1753,7 +1665,7 @@ tom();
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1819,7 +1731,7 @@ tom();
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

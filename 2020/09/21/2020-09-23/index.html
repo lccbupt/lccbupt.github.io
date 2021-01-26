@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、前言Vue是一套用于构建用户界面的渐进式框架。通俗来讲Vue.Js是一个轻量级，易上手，易使用的，便捷灵活的MVVM框架。 二、vue组件vue组件是vue的强大功能之一，组件具有封装可复用的特点，可以在复杂的应用中拆分成独立模块使用，所有的vue组件同时也都是vue的实例，可接受相同的选项对象。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解vue中的组件和插件机制">
+<meta property="og:url" content="http://lccbupt.github.io/2020/09/21/2020-09-23/index.html">
+<meta property="og:site_name" content="星*空">
+<meta property="og:description" content="一、前言Vue是一套用于构建用户界面的渐进式框架。通俗来讲Vue.Js是一个轻量级，易上手，易使用的，便捷灵活的MVVM框架。 二、vue组件vue组件是vue的强大功能之一，组件具有封装可复用的特点，可以在复杂的应用中拆分成独立模块使用，所有的vue组件同时也都是vue的实例，可接受相同的选项对象。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-09-23T10:27:28.183Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解vue中的组件和插件机制">
+<meta name="twitter:description" content="一、前言Vue是一套用于构建用户界面的渐进式框架。通俗来讲Vue.Js是一个轻量级，易上手，易使用的，便捷灵活的MVVM框架。 二、vue组件vue组件是vue的强大功能之一，组件具有封装可复用的特点，可以在复杂的应用中拆分成独立模块使用，所有的vue组件同时也都是vue的实例，可接受相同的选项对象。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lccbupt.github.io/2020/09/21/2020-09-23/"/>
+
+
+
+
+
+  <title>理解vue中的组件和插件机制 | 星*空</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">星*空</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live beautifully,Dream passionately,Love completely</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2020/09/21/2020-09-23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">理解vue中的组件和插件机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-21T18:26:39+08:00">
+                2020-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>Vue是一套用于构建用户界面的渐进式框架。通俗来讲Vue.Js是一个轻量级，易上手，易使用的，便捷灵活的MVVM框架。</p>
+<h2 id="二、vue组件"><a href="#二、vue组件" class="headerlink" title="二、vue组件"></a>二、vue组件</h2><p>vue组件是vue的强大功能之一，组件具有封装可复用的特点，可以在复杂的应用中拆分成独立模块使用，所有的vue组件同时也都是vue的实例，可接受相同的选项对象。<br><a id="more"></a></p>
+<h3 id="2-1-Vue组件的注册"><a href="#2-1-Vue组件的注册" class="headerlink" title="2.1 Vue组件的注册"></a>2.1 Vue组件的注册</h3><p>Vue组件的注册有两种方式，一是全局注册，另一种是局部注册。</p>
+<h4 id="2-1-1-全局注册"><a href="#2-1-1-全局注册" class="headerlink" title="2.1.1 全局注册"></a>2.1.1 全局注册</h4><p> 1.方法<br> 通过Vue.component(‘组件名’, {<br>    // options 选项<br> })<br> 2.特点<br> 全局注册的组件能够在任何地方使用；所有的vue实例化都会去渲染这个组件；<br> 全局注册往往会存在一些缺点，比如在webpack构建的系统中，全局注册所有的组件意味着即使你不再使用一个组件，但是它仍然会在你最终构建的结构中，这样就增加了没有必要的js。</p>
+<h4 id="2-1-2-局部注册"><a href="#2-1-2-局部注册" class="headerlink" title="2.1.2 局部注册"></a>2.1.2 局部注册</h4><p> 1.方法<br> 通过Vue实例选项中的components选项注册仅在其作用域中的可用局部组件<br> 2.在模块系统中局部注册<br> 可以新建components文件夹，将每个组件放在各自的文件中，通过模块导入导出实现组件局部注册</p>
+<h2 id="三、vue插件"><a href="#三、vue插件" class="headerlink" title="三、vue插件"></a>三、vue插件</h2><p>插件通常是Vue添加全局功能使用，插件的功能范围包括：</p>
+<ul>
+<li>添加全局方法或者property</li>
+<li>添加全局资源：指令、过滤器、过渡等</li>
+<li>通过全局混入来添加一些组件选项，如vue-router</li>
+<li>添加vue实例方法，通过把它们添加到 Vue.prototype 上实现。</li>
+<li>一个库，提供自己的 API，同时提供上面提到的一个或多个功能</li>
+</ul>
+<p>3.1 使用插件<br>通过全局方法 Vue.use() 使用插件。它需要在你调用 new Vue()启动应用之前完成。</p>
+<p>3.2 开发插件<br>Vue.js 的插件应该暴露一个 install 方法。这个方法的第一个参数是 Vue 构造器，第二个参数是一个可选的选项对象：</p>
+<pre><code>MyPlugin.install = function (Vue, options) {
+  // 1. 添加全局方法或 property
+  Vue.myGlobalMethod = function () {
+    // 逻辑...
+  }
+
+  // 2. 添加全局资源
+  Vue.directive(&apos;my-directive&apos;, {
+    bind (el, binding, vnode, oldVnode) {
+      // 逻辑...
+    }
+    ...
+  })
+
+  // 3. 注入组件选项
+  Vue.mixin({
+    created: function () {
+      // 逻辑...
+    }
+    ...
+  })
+
+  // 4. 添加实例方法
+  Vue.prototype.$myMethod = function (methodOptions) {
+    // 逻辑...
+  }
+}
+</code></pre><p>3.3 主要实现方法</p>
+<ul>
+<li>暴露一个install方法</li>
+<li>在Vue原型上做一系列的功能或者函数挂载</li>
+<li>Vue.use时传入定制化参数</li>
+</ul>
+<p>3.4 全局弹框插件开发</p>
+<pre><code>import MessageBoxVue from &apos;../components/MessageBox&apos;
+
+let Message = {
+  install(Vue) {
+    // 创建了一个构造器
+    let MessageConstruct = Vue.extend(MessageBoxVue) 
+
+    Vue.prototype.$message = function(options, callback) {
+
+      let message = new MessageConstruct();
+      message.options = Object.assign({}, options);
+
+
+      let vm = message.$mount()
+
+      let div = document.createElement(&apos;div&apos;);
+
+      document.body.appendChild(div)
+      div.appendChild(vm.$el)
+
+      function destroy() {
+        div.parentNode.removeChild(div);
+
+      }
+      if(typeof callback === &apos;function&apos;) {
+        callback({
+          destroy
+        })
+      }
+      return vm
+    }
+  }
+}
+export default Message
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/09/08/2020-09-08/" rel="next" title="javascript面向对象编程（一）——封装和继承">
+                <i class="fa fa-chevron-left"></i> javascript面向对象编程（一）——封装和继承
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/12/17/2020-12-17/" rel="prev" title="Javascript实现元素的拖拽效果">
+                Javascript实现元素的拖拽效果 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="Liucheng" />
+            
+              <p class="site-author-name" itemprop="name">Liucheng</p>
+              <p class="site-description motion-element" itemprop="description">记录点点滴滴的进步</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、前言"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、vue组件"><span class="nav-number">2.</span> <span class="nav-text">二、vue组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Vue组件的注册"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 Vue组件的注册</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-全局注册"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 全局注册</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-局部注册"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 局部注册</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、vue插件"><span class="nav-number">3.</span> <span class="nav-text">三、vue插件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Liucheng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

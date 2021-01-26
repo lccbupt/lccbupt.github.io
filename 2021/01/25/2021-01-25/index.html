@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、概述 Canvas API 提供了一个通过JavaScript 和 HTML的 canvas 元素来绘制图形的方式。它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面。  Canvas 最有意思的一项特性是针对图像的操作能力，可以动态的合成图像、制作图形的背景，支持浏览器的各种图片格式，甚至可以使用同一页面中其他canvas元素生成的图片作为图片源。 【引入图像到canva">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Canvas实现图片裁剪">
+<meta property="og:url" content="http://lccbupt.github.io/2021/01/25/2021-01-25/index.html">
+<meta property="og:site_name" content="星*空">
+<meta property="og:description" content="一、概述 Canvas API 提供了一个通过JavaScript 和 HTML的 canvas 元素来绘制图形的方式。它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面。  Canvas 最有意思的一项特性是针对图像的操作能力，可以动态的合成图像、制作图形的背景，支持浏览器的各种图片格式，甚至可以使用同一页面中其他canvas元素生成的图片作为图片源。 【引入图像到canva">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://lccbupt.github.io/2021/01/25/2021-01-25/图片裁剪.png">
+<meta property="og:updated_time" content="2021-01-26T01:59:15.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Canvas实现图片裁剪">
+<meta name="twitter:description" content="一、概述 Canvas API 提供了一个通过JavaScript 和 HTML的 canvas 元素来绘制图形的方式。它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面。  Canvas 最有意思的一项特性是针对图像的操作能力，可以动态的合成图像、制作图形的背景，支持浏览器的各种图片格式，甚至可以使用同一页面中其他canvas元素生成的图片作为图片源。 【引入图像到canva">
+<meta name="twitter:image" content="http://lccbupt.github.io/2021/01/25/2021-01-25/图片裁剪.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lccbupt.github.io/2021/01/25/2021-01-25/"/>
+
+
+
+
+
+  <title>使用Canvas实现图片裁剪 | 星*空</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">星*空</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Live beautifully,Dream passionately,Love completely</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2021/01/25/2021-01-25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liucheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="星*空">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用Canvas实现图片裁剪</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-25T11:07:55+08:00">
+                2021-01-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2021/01/25/2021-01-25/图片裁剪.png">
+<h3 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h3><blockquote>
+<p>Canvas API 提供了一个通过JavaScript 和 HTML的 canvas 元素来绘制图形的方式。它可以用于动画、游戏画面、数据可视化、图片编辑以及实时视频处理等方面。</p>
+</blockquote>
+<p>Canvas 最有意思的一项特性是针对图像的操作能力，可以动态的合成图像、制作图形的背景，支持浏览器的各种图片格式，甚至可以使用同一页面中其他canvas元素生成的图片作为图片源。</p>
+<p>【引入图像到canvas】：</p>
+<ul>
+<li>获得一个指向HTMLImageElement的对象或者另一个canvas元素的引用作为源，也可以通过URL的方式来使用图片</li>
+<li>使用drawImage()函数将图片绘制到画布上</li>
+</ul>
+<p>【canvas API图片源的来源】：<br>1、HTMLImageElement：Image()函数构造出来的，或者任何的img元素<br>2、HTMLVideoElement：video元素，从视频中抓取当前帧作为一个图像<br>3、HTMLCanvasElement：canvas元素<br>4、ImageBitmap：位图，可以通过上述源生成</p>
+<a id="more"></a>
+<h3 id="二、绘制图片"><a href="#二、绘制图片" class="headerlink" title="二、绘制图片"></a>二、绘制图片</h3><p>在获取到源图像对象后，就可以使用drawImage方法将源图像渲染到canvas里。</p>
+<pre><code>/**
+    image: img 或者 canvas对象
+    x：在canvas中起始的横坐标
+    y：在canvas中起始的纵坐标
+*/
+drawImage(image, x, y) 
+// 例子
+function draw() {
+    var ctx = document.getElementById(&quot;canvas&quot;).getContext(&quot;2d&quot;);
+    var img = new Image();
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0);
+        ctx.beginPath();
+        ctx.moveTo(30, 96);
+        ...
+    }
+    img.src=&quot;http://xxx.png&quot;
+}
+</code></pre><h3 id="三、缩放Scaling"><a href="#三、缩放Scaling" class="headerlink" title="三、缩放Scaling"></a>三、缩放Scaling</h3><p>drawImage 方法的又一变种是增加了两个用于控制图像在 canvas 中缩放的参数。</p>
+<pre><code>/**
+    image: img 或者 canvas 对象
+    x,y: 坐标的起始位置
+    width,height: 向canvas画入时应该缩放的大小
+**/
+drawImage(image, x, y, width, height)
+</code></pre><h3 id="四、切片Slicing"><a href="#四、切片Slicing" class="headerlink" title="四、切片Slicing"></a>四、切片Slicing</h3><p>drawImage 方法的第三个方式是有8个新参数，用于控制做切片显示的</p>
+<pre><code>drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
+
+第一个参数和其它的是相同的，都是一个图像或者另一个 canvas 的引用。其他8个中前4个是定义图像源的切片位置和大小，后4个则是定义切片的目标显示位置和大小。
+
+/**
+    相框的例子
+**/
+&lt;html&gt;
+ &lt;body onload=&quot;draw();&quot;&gt;
+   &lt;canvas id=&quot;canvas&quot; width=&quot;150&quot; height=&quot;150&quot;&gt;&lt;/canvas&gt;
+   &lt;div style=&quot;display:none;&quot;&gt;
+     &lt;img id=&quot;source&quot; src=&quot;https://mdn.mozillademos.org/files/5397/rhino.jpg&quot; width=&quot;300&quot; height=&quot;227&quot;&gt;
+     &lt;img id=&quot;frame&quot; src=&quot;https://mdn.mozillademos.org/files/242/Canvas_picture_frame.png&quot; width=&quot;132&quot; height=&quot;150&quot;&gt;
+   &lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;
+
+function draw() {
+  var ctx = document.getElementById(&apos;canvas&apos;).getContext(&apos;2d&apos;);
+
+  // Draw slice
+  ctx.drawImage(document.getElementById(&apos;source&apos;),33,71,104,124,21,20,87,104);
+
+  // Draw frame
+  ctx.drawImage(document.getElementById(&apos;frame&apos;),0,0);
+}
+</code></pre><h3 id="五、通过canvas实现图片上传裁剪"><a href="#五、通过canvas实现图片上传裁剪" class="headerlink" title="五、通过canvas实现图片上传裁剪"></a>五、通过canvas实现图片上传裁剪</h3><p>在项目中会遇见头像更新等功能，根据上传的图片实现固定的尺寸裁剪之后上传至服务端；具体的流程为：<br>1、获取图片：本地图片上传 new FileReader对象 或者 图片链接 new Image对象<br>2、canvas绘制图片<br>3、canvas裁剪图片<br>4、输出裁剪图片toBlob<br>5、上传至服务端</p>
+<pre><code>// 1.上传图片；通过监听input的onChage事件来回去file对象
+
+&lt;input type=&quot;file&quot; accept=&quot;image/*&quot; onChange={this.handleChange} /&gt;
+
+const handleChange = (e) =&gt; {
+    const file = Array.from(e.target.value);
+    // 可以检验图片的大小和格式操作
+    // 在每次上传之后，记得将input的value置空，防止再次上传相同图片无法触发onchange事件
+}
+
+// 2.canvas绘制图片
+// 首先先解析图片，使用FileReader
+const fileInfo = (file) =&gt; {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function(e) {
+        let img = new Image();
+        img.onload = function() {
+            ...// 处理图片的高宽等信息
+        }
+        img.src = e.target.result
+    }
+}
+//预览图片
+使用drawImage 绘制图片到canvas上
+
+// 3、裁剪操作
+初始化配置：
+const initConfig = () =&gt; {
+    this.ctx = document.getElementById(&quot;canvas&quot;).getContext(&quot;2d&quot;);
+    this.draging = false;
+    this.startX = null;
+    this.startY = null;
+}
+// 鼠标点击事件
+const mouseDown = (e) =&gt;
+    this.draging = true;
+    this.startX = e.nativeEvent.offsetX;
+    this.startY = e.nativeEvent.offsetY;
+}
+// 移动鼠标，绘制裁剪框
+const mouseMove = (e) =&gt; {
+    if (!this.draging) return;
+    let tmpWid = e.nativeEvent.offsetX-startX,
+        tmpHig = e.nativeEvent.offsetY-startY;
+    // 开始绘制裁剪框
+    drawTrim(startX, startY, tmpWid, tmpHig)
+}
+//松开鼠标
+const mouseOut = (e) =&gt; {
+    if (this.draging) {}
+    this.draging = false;
+}
+</code></pre><p>裁剪框的绘制主要分为：1、绘制蒙层阴影；2、裁剪框部分镂空；3、将图片绘制在蒙层下方</p>
+<pre><code>const drawTrim= (startX, startY, width, height) =&gt; {
+    const canvas = document.getElementById(&quot;canvas&quot;);
+    const ctx = canvas.getContext(&quot;2d&quot;);
+    // 消除画布
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // 蒙层
+    ctx.save();
+    ctx.fillStyle=&apos;rgba(0,0,0,0.5)&apos;;
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+    // 将蒙层凿开，变成透明
+    ctx.globalCompositeOperation = &apos;source-atop&apos;;
+    ctx.clearRect(startX, startY, width, height); // 裁剪框
+
+    ctx.restore();
+
+    //将图片绘制在蒙层下面
+    ctx.save();
+    ctx.globalCompositeOperation = &apos;destination-over&apos;;
+    ctx.drawImage(this.image, 0, 0, canvas.width, canvas.height);
+    ctx.restore();
+}
+</code></pre><p>最后将裁剪框内的图像输出图片，有两种方式：</p>
+<ul>
+<li>canvas.toDataURL()</li>
+<li>canvas.toBlob()</li>
+</ul>
+<p>再此之前需要将裁剪的部分绘制到新的canvas画布上；</p>
+<pre><code>const uploadImg = (type) =&gt; {
+    this.canvas.toBlob((blog) =&gt; {
+        blob.lastModifiedDate = new Date();
+        let fd = new FormData();
+        fb.append(&apos;image&apos;, blob);
+    })
+}
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/12/17/2020-12-17/" rel="next" title="Javascript实现元素的拖拽效果">
+                <i class="fa fa-chevron-left"></i> Javascript实现元素的拖拽效果
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/header.jpg"
+                alt="Liucheng" />
+            
+              <p class="site-author-name" itemprop="name">Liucheng</p>
+              <p class="site-description motion-element" itemprop="description">记录点点滴滴的进步</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、概述"><span class="nav-number">1.</span> <span class="nav-text">一、概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、绘制图片"><span class="nav-number">2.</span> <span class="nav-text">二、绘制图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、缩放Scaling"><span class="nav-number">3.</span> <span class="nav-text">三、缩放Scaling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、切片Slicing"><span class="nav-number">4.</span> <span class="nav-text">四、切片Slicing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、通过canvas实现图片上传裁剪"><span class="nav-number">5.</span> <span class="nav-text">五、通过canvas实现图片上传裁剪</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Liucheng</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
