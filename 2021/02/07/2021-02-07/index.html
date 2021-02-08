@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
+<meta name="description" content="一、序关于一场糟糕的面试的自我反省，平时的工作业务逻辑不复杂，很多实现直接使用了相应的库函数和工具类框架，导致关于很多知识点都是一知半解，比如针对防抖函数和节流函数的实现原理，以及其中涉及的js基础知识，this指向等问题，是值得去深入探究的，在编写一个函数时，最先要理解该函数方法实现的流程，为了解决什么问题而设计；其次理清思路，一步步去实现方法。">
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="async函数">
-<meta property="og:url" content="http://lccbupt.github.io/2018/11/26/async函数/index.html">
+<meta property="og:title" content="关于防抖函数和节流函数的总结">
+<meta property="og:url" content="http://lccbupt.github.io/2021/02/07/2021-02-07/index.html">
 <meta property="og:site_name" content="星*空">
-<meta property="og:description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
+<meta property="og:description" content="一、序关于一场糟糕的面试的自我反省，平时的工作业务逻辑不复杂，很多实现直接使用了相应的库函数和工具类框架，导致关于很多知识点都是一知半解，比如针对防抖函数和节流函数的实现原理，以及其中涉及的js基础知识，this指向等问题，是值得去深入探究的，在编写一个函数时，最先要理解该函数方法实现的流程，为了解决什么问题而设计；其次理清思路，一步步去实现方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-17T03:45:11.229Z">
+<meta property="og:updated_time" content="2021-02-08T08:38:20.343Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="async函数">
-<meta name="twitter:description" content="1.async函数基本用法 async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：  async function getStockByName(name) {     const symbol = await getStockSymbol(name);     const sto">
+<meta name="twitter:title" content="关于防抖函数和节流函数的总结">
+<meta name="twitter:description" content="一、序关于一场糟糕的面试的自我反省，平时的工作业务逻辑不复杂，很多实现直接使用了相应的库函数和工具类框架，导致关于很多知识点都是一知半解，比如针对防抖函数和节流函数的实现原理，以及其中涉及的js基础知识，this指向等问题，是值得去深入探究的，在编写一个函数时，最先要理解该函数方法实现的流程，为了解决什么问题而设计；其次理清思路，一步步去实现方法。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://lccbupt.github.io/2018/11/26/async函数/"/>
+  <link rel="canonical" href="http://lccbupt.github.io/2021/02/07/2021-02-07/"/>
 
 
 
 
 
-  <title>async函数 | 星*空</title>
+  <title>关于防抖函数和节流函数的总结 | 星*空</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2018/11/26/async函数/">
+    <link itemprop="mainEntityOfPage" href="http://lccbupt.github.io/2021/02/07/2021-02-07/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liucheng">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">async函数</h1>
+          <h1 class="post-title" itemprop="name headline">关于防抖函数和节流函数的总结</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-26T17:59:02+08:00">
-                2018-11-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-07T16:45:18+08:00">
+                2021-02-07
               </time>
             
 
@@ -325,51 +325,90 @@
       
 
       
-        <h4 id="1-async函数基本用法"><a href="#1-async函数基本用法" class="headerlink" title="1.async函数基本用法"></a>1.async函数基本用法</h4><blockquote>
-<p>async函数返回一个promise对象；可以使用then方法添加回调函数。当函数执行的时候，遇到await就先返回，等异步操作完成，再接着执行函数体后面的语句。例子如下：</p>
-</blockquote>
-<pre><code>async function getStockByName(name) {
-    const symbol = await getStockSymbol(name);
-    const stockPrice = await getStockPrice(symbol)
-    return stcokPrice;
+        <h2 id="一、序"><a href="#一、序" class="headerlink" title="一、序"></a>一、序</h2><p>关于一场糟糕的面试的自我反省，平时的工作业务逻辑不复杂，很多实现直接使用了相应的库函数和工具类框架，导致关于很多知识点都是一知半解，比如针对防抖函数和节流函数的实现原理，以及其中涉及的js基础知识，this指向等问题，是值得去深入探究的，在编写一个函数时，最先要理解该函数方法实现的流程，为了解决什么问题而设计；其次理清思路，一步步去实现方法。<br><a id="more"></a></p>
+<h2 id="二、防抖函数"><a href="#二、防抖函数" class="headerlink" title="二、防抖函数"></a>二、防抖函数</h2><ul>
+<li>原理：在某个的时间段内，无论触发多少次回调，只执行最后一次；</li>
+<li>应用场景：input标签输入onchange事件的监听</li>
+<li>实现方案：使用定时器，函数第一次执行时设定一个定时器，之后调用时发现已经设定过定时器就清空之前的定时器，并重新设定一个新的定时器，如果存在没有被清空的定时器，当定时器计时结束后触发函数执行</li>
+<li><p>代码实现</p>
+<pre><code>function debounce(fn, time) {
+    let timer;
+    return function() {
+        let args = arguments;
+        let that = this;
+        if(timer) clearTimeout(timer);
+        timer = setTimeout(function() {
+            fn.apply(that, args)
+        }, time)
+    }
 }
-getStockByName(&apos;gogle&apos;).then(function(result) {
-    console.log(result)
-})
-</code></pre><hr>
-<a id="more"></a>
-<h4 id="2-async函数特点"><a href="#2-async函数特点" class="headerlink" title="2.async函数特点"></a>2.async函数特点</h4><p>（1）、返回Promise对象<br>　async函数内部return返回的值，成为then方法回调的参数<br>　async函数内部平抛出错误会导致返回的Promise对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到<br>（2）、搭配await命令<br>　await命令后面返回一个Promise对象，返回该对象的结果，如果不是promise对象，就直接返回对应的值<br>（３）、async函数写法直观，相比于promise，generator的写法更简单易懂。</p>
-<pre><code>function login(urls) {
-    const textPromises = urls.map(url =&gt; {
-        return fetch(url).then(respose =&gt; respose.text());
-    })
-    textPromise.reduce((chain, textPromise) =&gt; {
-        return chain.then(() =&gt; textPromise)
-            .then(text =&gt; console.log(text))
-    }, Promise.resolve());
-} //  promise写法实现异步操作按顺序读取url，按顺序输出
+</code></pre></li>
+</ul>
+<h2 id="三、节流函数"><a href="#三、节流函数" class="headerlink" title="三、节流函数"></a>三、节流函数</h2><ul>
+<li>原理：在某段时间间隔执行一次回调函数</li>
+<li>应用场景：监听滚动事件</li>
+<li>实现方案：时间差 和 延时函数两种</li>
+<li><p>代码实现：</p>
+<pre><code>// 使用时间差判断
+function throttle(fn, time) {
+  let pretime = 0;
 
-//上面代码使用fetch方法，同时远程读取一组 URL。每个fetch操作都返回一个 Promise
- 对象，放入textPromises数组。然后，reduce方法依次处理每个 Promise 
- 对象，然后使用then，将所有 Promise 对象连起来，因此就可以依次输出结果
-
-async function login(urls) {
-    for(const url of urls) {
-        const response = await fetch(url);
-        console.log(await respose.text());
+  return function() {
+    const args = arguments;
+    let nowtime = +new Date();
+    if(nowtime - pretime &gt; time) {
+      pretime = nowtime;
+      fn.apply(this, args);
     }
-}// async 函数实现
+  }
+}
 
-async function login() {
-    const textPromises = urls.map(async url =&gt; {
-        const respose = await fetch(url)
-        reurn respose.text();
-    })
-    for(const textpromise of textPromises) {
-        console.log(await texpromise)
-    }
-}// 多个await并发发出
-</code></pre>
+// 使用延时函数实现
+function throttle(fn, delay) {
+  let timer;
+
+  return function() {
+    const args = arguments;
+    const that = this;
+    if(timer) return;
+    timer = setTimeout(function() {
+      fn.apply(that, args);
+      timer = null;
+    }, delay)
+  }
+}
+</code></pre></li>
+</ul>
+<h2 id="三、知识点"><a href="#三、知识点" class="headerlink" title="三、知识点"></a>三、知识点</h2><p>1、关于this指向问题</p>
+<ul>
+<li>在以上的方法中都使用了return一个匿名函数，这样在该匿名函数中this指向window</li>
+<li>在箭头函数中没有自己的this；内部this指向外层代码</li>
+<li><p>使用setTimeout中的回调函数，在非严格模式下this指向window，严格模式下指向undefined</p>
+<pre><code>function foo() {
+    console.log(this.id)
+    console.log(this)
+    setTimeout(function() {
+        console.log(this.id)
+        console.log(this)
+    }, 100)
+}
+var id = 21;
+foo() //输出依次为：21，window,21,window
+foo.call({id: 42}); //输出依次为：42，{id:42},21, window
+//若将setTimeout改为箭头函数，则输出会不一样
+function foo() {
+    console.log(this.id)
+    console.log(this)
+    setTimeout(() =&gt; {
+        console.log(this.id)
+        console.log(this)
+    }, 100)
+}
+foo.call({id: 84}); //84, {id:84},84, {id:84}
+// 使用call方法改变了foo函数运行时其函数体内this的指向,从而使箭头函数中this的指向发生变化
+</code></pre></li>
+</ul>
+
       
     </div>
     
@@ -399,8 +438,8 @@ async function login() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/20/ajaxPrefilter/" rel="next" title="了解一下jQuery.ajaxPrefilter()">
-                <i class="fa fa-chevron-left"></i> 了解一下jQuery.ajaxPrefilter()
+              <a href="/2021/01/25/2021-01-25/" rel="next" title="使用Canvas实现图片裁剪">
+                <i class="fa fa-chevron-left"></i> 使用Canvas实现图片裁剪
               </a>
             
           </div>
@@ -408,10 +447,6 @@ async function login() {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/27/promise详解/" rel="prev" title="promise对象">
-                promise对象 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,7 +582,7 @@ async function login() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-async函数基本用法"><span class="nav-number">1.</span> <span class="nav-text">1.async函数基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-async函数特点"><span class="nav-number">2.</span> <span class="nav-text">2.async函数特点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、序"><span class="nav-number">1.</span> <span class="nav-text">一、序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、防抖函数"><span class="nav-number">2.</span> <span class="nav-text">二、防抖函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、节流函数"><span class="nav-number">3.</span> <span class="nav-text">三、节流函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、知识点"><span class="nav-number">4.</span> <span class="nav-text">三、知识点</span></a></li></ol></div>
             
 
           </div>
