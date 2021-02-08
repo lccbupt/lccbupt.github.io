@@ -1,5 +1,8 @@
 ### github 和 hexo 搭建简易博客
 
+- 安装hexo：npm install -g hexo
+- 初始化项目：hexo init
+
 >参考网页方法：https://blog.csdn.net/gdutxiaoxu/article/details/53576018
 
     在安装好hexo就可以使用以下命令发布博客了
